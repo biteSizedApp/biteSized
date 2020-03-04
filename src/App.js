@@ -38,17 +38,19 @@ class App extends Component {
       // address
       console.log("address: ", result.data.restaurants[0].restaurant.location.address);
       // rating
-      console.log("Rating: ", result.data.restaurants[0].restaurant.user_rating.aggregate_rating);
+      console.log("Rating: ", result.data.restaurants[0].restaurant.user_rating.aggregate_rating, "/ 5");
       // price range
-      console.log("Price Range: ", result.data.restaurants[0].restaurant.price_range);
+      console.log("Price Range: ", result.data.restaurants[0].restaurant.price_range, "/ 5");
       // cuisine
       console.log("Cuisine: ", result.data.restaurants[0].restaurant.cuisines);
       // image
-      console.log("Image url: ", result.data.restaurants[0].restaurant.photos_url);
-      // menu
-      console.log("Menu url: ", result.data.restaurants[0].restaurant.menu_url);
+      console.log("Image url: ", result.data.restaurants[0].restaurant.featured_image);
+      // website
+      console.log("website url: ", result.data.restaurants[0].restaurant.url);
       // timings
       console.log("Timings: ", result.data.restaurants[0].restaurant.timings);
+      // average cost for 2 without drinks
+      console.log("Average cost for 2 without drinking: $", result.data.restaurants[0].restaurant.average_cost_for_two)
     })
   }
 

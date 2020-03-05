@@ -1,65 +1,45 @@
 import React, { Component } from 'react';
 import './App.css';
+import RestaurantList from './components/RestaurantList';
 
-import axios from "axios";
-// import Qs from "qs";
-
-
-
-
-
+// import axios from "axios";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      hassanKey: "cff8655f9125581c7db4a5e95cd60d6f",
-      olgaKey: "7cec49712d95851f70de3b8beaf245d9"
-    }  
-  }
-
-  // use /search/location_id endpoint to search for restaurants in this city/town/country
-
-
-  zomatoApiCall = () => {
-    axios({
-      url: "https://developers.zomato.com/api/v2.1/search?entity_id=89&q=italian",
-      method: "GET",
-      responseType: "jsonp",
-      headers: {
-        "user-key": this.state.hassanKey,
-      }
-    }).then((result) => {
-      // console.log(result.data.restaurants);
-      console.log(result.data.restaurants[0].restaurant);
-
-      // name
-      console.log("Name: ", result.data.restaurants[0].restaurant.name);
-      // address
-      console.log("address: ", result.data.restaurants[0].restaurant.location.address);
-      // rating
-      console.log("Rating: ", result.data.restaurants[0].restaurant.user_rating.aggregate_rating, "/ 5");
-      // price range
-      console.log("Price Range: ", result.data.restaurants[0].restaurant.price_range, "/ 5");
-      // cuisine
-      console.log("Cuisine: ", result.data.restaurants[0].restaurant.cuisines);
-      // image
-      console.log("Image url: ", result.data.restaurants[0].restaurant.featured_image);
-      // website
-      console.log("website url: ", result.data.restaurants[0].restaurant.url);
-      // timings
-      console.log("Timings: ", result.data.restaurants[0].restaurant.timings);
-      // average cost for 2 without drinks
-      console.log("Average cost for 2 without drinking: $", result.data.restaurants[0].restaurant.average_cost_for_two)
-    })
-  }
-
+  
 
   render() {
     return (
       <div className="App">
-        <h1>hello</h1>
-        <button onClick={this.zomatoApiCall}>call API</button>
+        <Search />
+        <header>
+          <nav>
+            <button>Home</button>
+            <button>Your Trips</button>
+          </nav>
+          <h1>bite-sized travel</h1>
+        </header>
+        <main>
+          <section>
+            <div>
+              <h2>About</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
+            </div>
+          </section>
+          
+          <section>
+            <div>
+              <button className="tripsHeaders">Find restaurants</button>
+              <button className="tripsHeaders">Saved restaurants</button>
+            </div>
+            <ul>
+              {/* restaurant cards will be dynamically added here */}
+            </ul>
+            <button>Show more</button>
+          </section>
+          <footer>
+            <p>Copyright 2020</p>
+          </footer>
+        </main>
       </div>
     );
   }

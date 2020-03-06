@@ -8,6 +8,23 @@ class SavedCard extends Component {
     }
   }
 
+  removeList = (id) => {
+    Swal.fire({
+      title: 'Remove restaurant',
+      text: 'Are you sure you want to remove this restaurant?',
+      confirmButtonColor: '#E7635D',
+      cancelButtonColor: '#EDEDC3',
+      showCancelButton: true,
+      confirmButtonText: 'yes'
+    }).then(result => {
+      if (result.value) {
+        const dbRef = firebase.database().ref();
+        dbRef.child(id).remove();
+        Swal.fire('Removed', 'The restaurant has been removed');
+      }
+    });
+  }
+
   render() {
     return (
       <div className="Card">

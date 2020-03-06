@@ -6,15 +6,13 @@ import React, { Component} from 'react';
 // render the component
 
 
-class Card extends Component {
+class SuggestedCard extends Component {
     constructor() {
         super();
         this.state = {
             restaurant: {}
         }
     }
-
-    
 
     render() {
         return (
@@ -37,4 +35,4 @@ class Card extends Component {
     }
 }
 
-export default Card
+export default SuggestedCard

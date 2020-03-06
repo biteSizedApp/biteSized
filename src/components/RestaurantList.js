@@ -18,7 +18,7 @@ class RestaurantList extends Component {
 
     componentDidMount() {
         axios({
-            url: `https://developers.zomato.com/api/v2.1/search?entity_id=89&count=10 `,
+            url: `https://developers.zomato.com/api/v2.1/search?entity_id=89&count=10&sort=rating `,
             method: "GET",
             responseType: "json",
             headers: {
@@ -26,6 +26,8 @@ class RestaurantList extends Component {
             }
         }).then(( res ) => {
             console.log(res.data);
+        }).catch((error) => {
+            console.log(error)
         })
     }
 

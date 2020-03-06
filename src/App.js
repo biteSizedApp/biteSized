@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+
+import NewTrip from './components/NewTrip';
 import RestaurantList from './components/RestaurantList';
 
 // import axios from "axios";
@@ -10,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search />
+        <NewTrip />
         <header>
           <nav>
             <button>Home</button>

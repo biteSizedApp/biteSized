@@ -31,7 +31,6 @@ class RestaurantList extends Component {
     }
 
 
-
     render() {
         return (
             <div className="RestaurantList">
@@ -41,3 +40,4 @@ class RestaurantList extends Component {
 }
 
 export default RestaurantList
+

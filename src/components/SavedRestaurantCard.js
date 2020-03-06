@@ -22,8 +22,8 @@ class SavedCard extends Component {
         </address>
         <p>Price for two: $20</p>
         <p>Rating: 5</p>
-        {/* click to add to saved restaurants list. THe icon will change to a checkmark */}
-        <button>Add to list</button>
+        {/* click to add to saved restaurants list. The icon will change to a check mark */}
+        <button>Remove from list</button>
       </div>
     )
   }

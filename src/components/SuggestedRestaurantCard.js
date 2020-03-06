@@ -6,6 +6,8 @@ import React, { Component} from 'react';
 // render the component
 
 
+() => {}
+
 class SuggestedCard extends Component {
     constructor() {
         super();

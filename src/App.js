@@ -2,46 +2,29 @@ import React, { Component } from 'react';
 import './App.css';
 
 import NewTrip from './components/NewTrip';
-import RestaurantList from './components/RestaurantList';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 // import axios from "axios";
 
 class App extends Component {
-  
 
   render() {
     return (
       <div className="App">
-        <NewTrip />
-        <header>
-          <nav>
-            <button>Home</button>
-            <button>Your Trips</button>
-          </nav>
-          <h1>bite-sized travel</h1>
-        </header>
+        <Header />
+        
         <main>
-          <section>
+          <section className="about">
             <div>
               <h2>About</h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
             </div>
           </section>
-          
-          <section>
-            <div>
-              <button className="tripsHeaders">Find restaurants</button>
-              <button className="tripsHeaders">Saved restaurants</button>
-            </div>
-            <ul>
-              {/* restaurant cards will be dynamically added here */}
-            </ul>
-            <button>Show more</button>
-          </section>
-          <footer>
-            <p>Copyright 2020</p>
-          </footer>
+          <NewTrip />
         </main>
+
+        <Footer />
       </div>
     );
   }

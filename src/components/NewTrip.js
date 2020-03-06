@@ -70,9 +70,7 @@ class NewTrip extends Component {
                     if (this.state.cityName.length % 2 === 0) {
                         this.getInfo(this.state.cityName)
                 }
-                } else {
-
-                }
+                } 
         })
     }
 

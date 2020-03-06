@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        
+
         <main>
           <section className="about">
             <div>

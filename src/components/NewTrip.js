@@ -90,6 +90,8 @@ class NewTrip extends Component {
     }
 
     render() {
+        console.log(this.state.cityId);
+        
         return(
             <div className="NewTrip">
                 <RestaurantList cityId={this.state.cityId}/>

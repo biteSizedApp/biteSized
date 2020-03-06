@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import RestaurantList from './RestaurantList';
 import Suggestions from './Suggestions';
+// import Autosuggest from 'react-autosuggest';
 
 // user types city name in input field,
 // axios call is made to retrieve an array of suggested cities that match
@@ -20,7 +21,8 @@ class NewTrip extends Component {
             trip: {},
             cityName: "",
             cityId: '',
-            suggestedCities: []
+            suggestedCities: [],
+            userSelection: ""
         }
     }
 
@@ -33,7 +35,7 @@ class NewTrip extends Component {
                 "user-key": "7cec49712d95851f70de3b8beaf245d9",
             }
         }).then((res) => {
-            const northAmericanCities = res.data.location_suggestions.filter((value, index) => {
+            const northAmericanCities = res.data.location_suggestions.filter((value) => {
                 if (value.country_id === 37 || value.country_id === 216 ) {
                     return value
                 }
@@ -51,16 +53,22 @@ class NewTrip extends Component {
 
     getCityId = (e) => {
         e.preventDefault();
-        const copyOfSuggestedCities = [...this.state.suggestedCities];
-        const suggestedCitiesNames = copyOfSuggestedCities.filter((city) => {
-            return this.state.cityName === city.name;
-        })
+        if (this.state.cityName.trim() !== "" && this.state.cityName.trim() !== "none") {
+            const copyOfSuggestedCities = [...this.state.suggestedCities];
+            const suggestedCitiesNames = copyOfSuggestedCities.filter((city) => {
+                return this.state.cityName === city.name;
+            })
+            this.setState({
+                cityId: suggestedCitiesNames[0].id
+            })
+        } else {
+            console.log("please choose a city first");
+        }
+        document.getElementById("citySearch").focus();
         this.setState({
-            cityId: suggestedCitiesNames[0].id
+            cityName: ""
         })
-
     }
-
 
     handleInputChange = () => {
         this.setState({
@@ -74,6 +82,13 @@ class NewTrip extends Component {
         })
     }
 
+    getUserChoice = (event) => {
+        this.setState({
+            cityName: event.target.value,
+        })
+
+    }
+
     render() {
         return(
             <div className="NewTrip">
@@ -85,16 +100,17 @@ class NewTrip extends Component {
                         <input type="text" id="tripName" />
                         <label htmlFor="citySearch">Where are you going?</label>
                         <input
-                        autoComplete="off"
+                            autoComplete="off"
                             type="search"
                             id="citySearch"
                             ref={input => this.search = input}
                             onChange={this.handleInputChange}
+                            value={this.state.cityName}
                         />
+                        <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
                         <button>save trip</button>
                     </form>
                 </section>
-                <Suggestions results={this.state.suggestedCities} />
             </div>
         )
     }

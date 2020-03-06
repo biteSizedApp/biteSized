@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Suggestions from './Suggestions'
 
 
 // the city id from the parent component is passed into axios call as props to retrieve the restaurant list as an array
@@ -25,35 +24,18 @@ class RestaurantList extends Component {
                 "user-key": "cff8655f9125581c7db4a5e95cd60d6f",
             }
         }).then(( res ) => {
-            console.log(res.data);
+            // console.log(res.data);
         }).catch((error) => {
             console.log(error)
         })
     }
 
-    handleInputChange = () => {
-        this.setState({
-            query: this.search.value
-        }, () => {
-            if (this.state.query && this.state.query.length > 1) {
-                if (this.state.query.length % 2 === 0) {
-                    this.getInfo()
-                }
-            } else if (!this.state.query) {
-            }
-        })
-    }
+
 
     render() {
         return (
-            <form>
-                <input
-                    placeholder="Search for..."
-                    ref={input => this.search = input}
-                    onChange={this.handleInputChange}
-                />
-                <Suggestions results={this.state.results} />
-            </form>
+            <div className="RestaurantList">
+            </div>
         )
     }
 }

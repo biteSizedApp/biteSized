@@ -5,8 +5,8 @@ import React, { Component} from 'react';
 // parse needed information (e.g. name, address) with props
 // render the component
 
-
-() => {}
+// this empty function was left as such and was causing errors so i commented it out but didnt delete it in case someone wanted to add something to it
+// () => {}
 
 class SuggestedCard extends Component {
     constructor() {

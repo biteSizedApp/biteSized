@@ -113,7 +113,7 @@ class NewTrip extends Component {
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
                 <RestaurantList cityId={this.state.cityId} />
-                <button>Show more</button>
+                <button className="showMore">Show more</button>
             </section>
         )
     }

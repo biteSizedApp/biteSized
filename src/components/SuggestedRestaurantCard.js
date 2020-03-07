@@ -16,20 +16,30 @@ class SuggestedCard extends Component {
         }
     }
 
+    createNewRestaurantList = () => {
+        this.setState({
+            restaurantName: this.props.name,
+            restaurantCuisine: this.props.cuisines,
+            restaurantAddress: this.props.location.address,
+            restaurantNumber: this.props.phone_number,
+            restaurantAvgPrice: this.props.average_cost_for_two,
+            restaurantRating: this.props.user_rating.aggregate_rating,
+
+        })
+    }
+
     render() {
         return (
             <div className="Card">
                 <img src="" alt=""/>
-                <p>Restaurant Name</p>
-                <p>Type of cuisine</p>
+                    <p>{this.state.restaurantName}</p>
+                    <p>{this.state.restaurantCuisine}</p>
                 <address>
-                    <p>123 Sample St</p>
-                    <p>City, State</p> 
-                    <p>Phone #</p>
-                    <a href="#">Website</a>
+                    <p>{this.state.restaurantAddress}</p> 
+                    <p>{this.state.restaurantNumber}</p>
                 </address>
-                <p>Price for two: $20</p>
-                <p>Rating: 5</p>
+                <p>{this.state.restaurantAvgPrice}</p>
+                <p>{this.state.restaurantRating}</p>
                 {/* click to add to saved restaurants list. THe icon will change to a checkmark */}
                 <button>Add to list</button>
             </div>

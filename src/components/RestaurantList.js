@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import SuggestedCard from './SuggestedRestaurantCard';
+import SuggestedRestaurantCard from './SuggestedRestaurantCard';
 // import Suggestions from './Suggestions'
 
 
@@ -32,6 +32,7 @@ class RestaurantList extends Component {
       }
       //  saving the results to state
     }).then((results) => {
+      console.log(results);
       this.setState({
         results: results.data.restaurants
       })
@@ -49,7 +50,10 @@ class RestaurantList extends Component {
         {this.state.results.map((item) => {
           return (
 
-            <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id} />
+            <SuggestedRestaurantCard
+              restaurant={item.restaurant}
+              key={item.restaurant.id}
+            />
 
           )
         })}

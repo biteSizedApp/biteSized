@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-const Header = () => {
-  return (
-    <header className="heroImage">
-    </header>
-  )
-=======
 import React, { Component } from 'react';
 
 
@@ -15,15 +6,19 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <nav>
-          <button>Home</button>
-          <button>Your Trips</button>
-        </nav>
-        <h1>bite-sized travel</h1>
+        <div className="headerTitle">
+          <img className="icon" src={require("../assets/headerIcon.png")} alt="icon of utensils on a plate" />
+            <h1>bite-sized travel</h1>
+            <nav>
+              <button>Home</button>
+              <button>Your Trips</button>
+            </nav>
+        </div>
+        <div className="heroImage">
+        </div>
       </header>
     );
   }
->>>>>>> testBranch
 }
 
 export default Header;

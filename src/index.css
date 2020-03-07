@@ -44,12 +44,10 @@ html, body {
 }
 
 .headerTitle {
-  margin: 0 auto;
-  padding: 1rem;
-  text-align: center;
+  display: flex;
 }
 
-.headerNav {
+nav {
   display: flex;
   justify-content: flex-end;
 }
@@ -61,6 +59,7 @@ main {
 
 h1 {
   font-size: 4rem;
+  padding: 1rem;
   font-family: 'Cormorant Garamond', serif;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
@@ -83,14 +82,44 @@ label {
   font-size: 1.5rem;
 }
 
-input {
+.icon {
+  width: 50px;
+  height: 50px;
+  padding: 1rem;
+}
+
+input[type=text],
+input[type=search] {
   margin: 1rem;
+  width: 15%;
+  height: 20px;
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+}
+
+nav button:hover,
+button:hover {
+  cursor: pointer;
 }
 
 nav button {
-  background-color: #ffffff;
+  font-size: 1.5rem;
+  background-color: transparent;
   border: none;
   color: #000000;
+}
+
+nav button:hover {
+  border-bottom: 3px solid #EDEDC3;
+}
+
+.showMore {
+  color: #000000;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border-bottom: 3px solid #EDEDC3;
 }
 
 button {
@@ -102,7 +131,8 @@ button {
   background-color: #D03529;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+footer {
+  color: #ffffff;
+  background-color: #5D5D5D;
+  padding: 1.5rem;
 }

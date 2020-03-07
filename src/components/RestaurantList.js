@@ -41,6 +41,12 @@ class RestaurantList extends Component {
      })
 
  }
+
+
+ addRestaurant = () => {
+    
+
+ }
  render() {
      
      return (

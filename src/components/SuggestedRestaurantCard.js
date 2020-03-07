@@ -1,12 +1,10 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 
 
 // get restaurant object from the search
 // parse needed information (e.g. name, address) with props
 // render the component
 
-
-() => {}
 
 class SuggestedCard extends Component {
     constructor() {
@@ -16,15 +14,23 @@ class SuggestedCard extends Component {
         }
     }
 
+
+    createRestaurantObject = () => {
+        this.state.restaurant: {
+            name: this.props.restaurant.name,
+            cuisineType: this.restaurant. 
+        }
+    }
+
     render() {
         return (
             <div className="Card">
-                <img src="" alt=""/>
+                <img src="" alt="" />
                 <p>Restaurant Name</p>
                 <p>Type of cuisine</p>
                 <address>
                     <p>123 Sample St</p>
-                    <p>City, State</p> 
+                    <p>City, State</p>
                     <p>Phone #</p>
                     <a href="#">Website</a>
                 </address>

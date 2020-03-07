@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
 
-import NewTrip from './components/NewTrip';
-import RestaurantList from './components/RestaurantList';
+import NewTrip from "./components/NewTrip";
+import Nav from "./components/Nav";
+import Header from "./components/Header";
+import RestaurantList from "./components/RestaurantList";
 
 // import axios from "axios";
 
@@ -12,16 +13,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NewTrip />
-        <header>
-          <nav>
-            <button>Home</button>
-            <button>Your Trips</button>
-          </nav>
-          <h1>bite-sized travel</h1>
-        </header>
+        <Nav />
+        <Header />
         <main>
           <section>
+            <NewTrip />
             <div>
               <h2>About</h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>

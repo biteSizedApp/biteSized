@@ -1,10 +1,105 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@500&display=swap');
+
+h1,
+h2,
+p,
+main,
+div,
+img,
+section, 
+ul,
+li,
+body,
+button {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+
+html, body {
+  font-size: 62.5%;
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+  width: 100%;
+  height: 100%;
+	overflow-x: hidden;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.heroImage {
+	width: 100%;
+	min-height: 100vh;
+	background: url(./assets/hero.jpg) no-repeat top center fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.headerSection {
+  display: flex;
+}
+
+.headerTitle {
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.headerNav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 4rem;
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+input {
+  margin: 1rem;
+}
+
+nav button {
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+}
+
+button {
+  font-family: Barlow;
+  padding: 1rem;
+  margin: 1rem;
+  color: #ffffff;
+  border: none;
+  background-color: #D03529;
 }
 
 code {

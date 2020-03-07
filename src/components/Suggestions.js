@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-
+// function component that takes in an array of suggested cities as props and triggers the getUserChoice function in NewTrip component to bind the city name with the select change 
 const Suggestions = (props) => {
     const options = props.results.map(city => (
         <option key={city.id} value={city.name}>

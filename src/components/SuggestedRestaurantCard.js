@@ -16,10 +16,10 @@ class SuggestedCard extends Component {
 
 
     createRestaurantObject = () => {
-        this.state.restaurant: {
+        this.setState.restaurant ({
             name: this.props.restaurant.name,
-            cuisineType: this.restaurant. 
-        }
+            cuisineType: this.restaurant,
+        })
     }
 
     render() {

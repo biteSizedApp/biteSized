@@ -36,16 +36,16 @@ class NewTrip extends Component {
             }
         }).then((res) => {
             const northAmericanCities = res.data.location_suggestions.filter((value) => {
-                if (value.country_id === 37 || value.country_id === 216 ) {
+                if (value.country_id === 37 || value.country_id === 216) {
                     return value
                 }
             });
             const topSuggestions = northAmericanCities.filter((value, index) => {
-                return index <=4
+                return index <= 4
             })
-                this.setState({
-                    suggestedCities: topSuggestions 
-                })
+            this.setState({
+                suggestedCities: topSuggestions
+            })
         }).catch((error) => {
             console.log(error)
         })
@@ -74,11 +74,11 @@ class NewTrip extends Component {
         this.setState({
             cityName: this.search.value
         }, () => {
-                if (this.state.cityName) {
-                    if (this.state.cityName.length % 2 === 0) {
-                        this.getInfo(this.state.cityName)
-                    }
-                } 
+            if (this.state.cityName) {
+                if (this.state.cityName.length % 2 === 0) {
+                    this.getInfo(this.state.cityName)
+                }
+            }
         })
     }
 
@@ -91,28 +91,29 @@ class NewTrip extends Component {
 
     render() {
         console.log(this.state.cityId);
-        
-        return(
-          <section className="NewTrip">
-              <Suggestions results={this.state.suggestedCities} />
-              <form action="" onSubmit={this.getCityId}>
-                <h3>new trip</h3>
-                <label htmlFor="tripName">Please enter a name for your trip</label>
-                <input type="text" id="tripName" />
-                <label htmlFor="citySearch">Where are you going?</label>
-                <input
-                autoComplete="off"
-                    type="search"
-                    id="citySearch"
-                    ref={input => this.search = input}
-                    onChange={this.handleInputChange}
-                />
-                <button>save trip</button>
-              </form>
-              <button className="tripsHeaders">Find restaurants</button>
-              <button className="tripsHeaders">Saved restaurants</button>
-              <RestaurantList cityId={this.state.cityId} />
-              <button>Show more</button>
+
+        return (
+            <section className="NewTrip">
+                <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
+                <form action="" onSubmit={this.getCityId}>
+                    <h3>new trip</h3>
+                    <label htmlFor="tripName">Please enter a name for your trip</label>
+                    <input type="text" id="tripName" />
+                    <label htmlFor="citySearch">Where are you going?</label>
+                    <input
+                        autoComplete="off"
+                        type="search"
+                        id="citySearch"
+                        ref={input => this.search = input}
+                        onChange={this.handleInputChange}
+                        value={this.state.cityName}
+                    />
+                    <button>save trip</button>
+                </form>
+                <button className="tripsHeaders">Find restaurants</button>
+                <button className="tripsHeaders">Saved restaurants</button>
+                <RestaurantList cityId={this.state.cityId} />
+                <button>Show more</button>
             </section>
         )
     }

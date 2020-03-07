@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import SuggestedCard from './SuggestedCard';
+import SuggestedCard from './SuggestedRestaurantCard';
 // import Suggestions from './Suggestions'
 
 
@@ -10,17 +10,16 @@ import SuggestedCard from './SuggestedCard';
 // map throughout the filtered array, pass each restaurant object into Card component as props
 
 class RestaurantList extends Component {
-    constructor() {
-      super();
+  constructor() {
+    super();
 
-      this.state = {
-        //   placeholder for city ID. Will be removed.
-          query: "89",
-        //   storing the list of restaurants fom axios call
-          results: []
-      }
-
+    this.state = {
+      //   placeholder for city ID. Will be removed.
+      query: "89",
+      //   storing the list of restaurants fom axios call
+      results: []
     }
+  }
 
  componentDidMount() {
      axios({
@@ -36,17 +35,17 @@ class RestaurantList extends Component {
                 results: results.data.restaurants
             })
                
-     }).catch((error) => {
-         console.log(error)
-     })
-
+        }).catch((error) => {
+            console.log(error)
+        })
  }
 
 
- addRestaurant = () => {
+//  addRestaurant = () => {
     
 
- }
+//  }
+
  render() {
      
      return (
@@ -62,8 +61,6 @@ class RestaurantList extends Component {
         </div>
      )
  }
-        
-    
 }
 
 export default RestaurantList;

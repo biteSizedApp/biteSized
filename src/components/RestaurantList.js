@@ -14,8 +14,10 @@ class RestaurantList extends Component {
     super();
 
     this.state = {
-      //   storing the list of restaurants fom axios call
-      results: []
+      // storing the list of restaurants from axios call
+      results: [],
+      // stores the list of saved restaurants that will be saved to the trip 
+      savedRestaurants: [],
     }
   }
 
@@ -50,7 +52,6 @@ class RestaurantList extends Component {
         <div>
             {/* Map through results array and passing the results on our Suggested card component */}
           {this.state.results.map( (item) => {
-            console.log(item.restaurant);
               return (
                 
                 <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id}/>

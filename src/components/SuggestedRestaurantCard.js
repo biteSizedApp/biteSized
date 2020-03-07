@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 
 // get restaurant object from the search
 // parse needed information (e.g. name, address) with props
+// create a new, smaller restaurant object that can be save to the trip
 // render the component
+// when "add to list" button is clicked, pass the restaurant object from the state to the RestaurantList component, where it will be stored in an array
 
 
 class SuggestedCard extends Component {
@@ -22,9 +24,12 @@ class SuggestedCard extends Component {
         }
     }
 
+    addToListHandler = (e) => {
+        e.preventDefault();
+        console.log('click');
+    }
 
     render() {
-        console.log('restocard', this.state.restaurant);
         return (
             <div className="card">
                 <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
@@ -38,7 +43,7 @@ class SuggestedCard extends Component {
                 <p>{this.state.restaurant.rating}</p>
 
                 {/* click to add to saved restaurants list. THe icon will change to a check mark */}
-                <button>Add to list</button>
+                <button onClick={this.addToListHandler}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
             </div>
         )
     }

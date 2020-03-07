@@ -7,54 +7,37 @@ import React, { Component } from 'react';
 
 
 class SuggestedCard extends Component {
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
-            restaurant: {}
+            restaurant: {
+                name: props.restaurant.name,
+                cuisineType: props.restaurant.cuisines,
+                address: props.restaurant.location.address,
+                phoneNumber: props.restaurant.phone_numbers,
+                avgCostForTwo: props.restaurant.average_cost_for_two,
+                rating: props.restaurant.user_rating.aggregate_rating,
+                featuredImg: props.restaurant.featured_image,
+            }
         }
     }
 
-    // createRestaurantObject = () => {
-    //     this.setState ({
-    //         restaurant: {
-    //             restaurantName: this.props.name,
-    //             cuisineType: this.props.cuisines,
-    //             // address: this.props.location.address,
-    //             phoneNumber: this.props.phone_number,
-    //             avgCostPerPerson: this.props.average_cost_for_two,
-    //             // rating: this.props.user_rating.aggregate_rating,
-    //         }
-    //     })
-    // }
-
-
-    componentDidMount() {
-        // this.createRestaurantObject();
-        this.setState({
-            restaurant: {
-                restaurantName: this.props.name,
-                cuisineType: this.props.cuisines,
-                // address: this.props.location.address,
-                phoneNumber: this.props.phone_number,
-                avgCostPerPerson: this.props.average_cost_for_two,
-                // rating: this.props.user_rating.aggregate_rating,
-            }
-        })
-    }
 
     render() {
+        console.log('restocard', this.state.restaurant);
         return (
-            <div className="Card">
-                <img src="" alt="" />
-                <p>{this.state.restaurantName}</p>
-                <p>{this.state.cuisineType}</p>
+            <div className="card">
+                <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
+                <p>{this.state.restaurant.name}</p>
+                <p>{this.state.restaurant.cuisineType}</p>
                 <address>
-                    <p>{this.state.address}</p>
-                    <p>{this.state.phoneNumber}</p>
+                    <p>{this.state.restaurant.address}</p>
+                    <p>{this.state.restaurant.phoneNumber}</p>
                 </address>
-                <p>{this.state.avgCostPerPerson}</p>
-                <p>{this.state.rating}</p>
-                {/* click to add to saved restaurants list. THe icon will change to a checkmark */}
+                <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
+                <p>{this.state.restaurant.rating}</p>
+
+                {/* click to add to saved restaurants list. THe icon will change to a check mark */}
                 <button>Add to list</button>
             </div>
         )

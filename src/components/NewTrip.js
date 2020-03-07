@@ -26,6 +26,8 @@ class NewTrip extends Component {
         }
     }
 
+    // the axios call which is being triggred as the user is typing in the handleInputChange function
+    // it takes in the letters being written by the user and displays suggestions
     getInfo = (cityName) => {
         axios({
             url: `https://developers.zomato.com/api/v2.1/cities?q=${cityName}`,
@@ -51,6 +53,7 @@ class NewTrip extends Component {
         })
     }
 
+    // this function takes in the city name submitted by the user and sets the city ID accordingly
     getCityId = (e) => {
         e.preventDefault();
         if (this.state.cityName.trim() !== "" && this.state.cityName.trim() !== "none") {
@@ -70,6 +73,7 @@ class NewTrip extends Component {
         })
     }
 
+    // this function listens for user typing, binds the city name to the user typing and fires the axios call 
     handleInputChange = () => {
         this.setState({
             cityName: this.search.value
@@ -82,16 +86,15 @@ class NewTrip extends Component {
         })
     }
 
+    // this function binds the city name to the select change 
     getUserChoice = (event) => {
         this.setState({
             cityName: event.target.value,
         })
-
     }
 
     render() {
         console.log(this.state.cityId);
-
         return (
             <section className="NewTrip">
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />

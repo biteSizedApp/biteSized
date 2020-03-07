@@ -14,11 +14,31 @@ class SuggestedCard extends Component {
         }
     }
 
+    // createRestaurantObject = () => {
+    //     this.setState ({
+    //         restaurant: {
+    //             restaurantName: this.props.name,
+    //             cuisineType: this.props.cuisines,
+    //             // address: this.props.location.address,
+    //             phoneNumber: this.props.phone_number,
+    //             avgCostPerPerson: this.props.average_cost_for_two,
+    //             // rating: this.props.user_rating.aggregate_rating,
+    //         }
+    //     })
+    // }
 
-    createRestaurantObject = () => {
-        this.setState.restaurant ({
-            name: this.props.restaurant.name,
-            cuisineType: this.restaurant,
+
+    componentDidMount() {
+        // this.createRestaurantObject();
+        this.setState({
+            restaurant: {
+                restaurantName: this.props.name,
+                cuisineType: this.props.cuisines,
+                // address: this.props.location.address,
+                phoneNumber: this.props.phone_number,
+                avgCostPerPerson: this.props.average_cost_for_two,
+                // rating: this.props.user_rating.aggregate_rating,
+            }
         })
     }
 
@@ -26,16 +46,14 @@ class SuggestedCard extends Component {
         return (
             <div className="Card">
                 <img src="" alt="" />
-                <p>Restaurant Name</p>
-                <p>Type of cuisine</p>
+                <p>{this.state.restaurantName}</p>
+                <p>{this.state.cuisineType}</p>
                 <address>
-                    <p>123 Sample St</p>
-                    <p>City, State</p>
-                    <p>Phone #</p>
-                    <a href="#">Website</a>
+                    <p>{this.state.address}</p>
+                    <p>{this.state.phoneNumber}</p>
                 </address>
-                <p>Price for two: $20</p>
-                <p>Rating: 5</p>
+                <p>{this.state.avgCostPerPerson}</p>
+                <p>{this.state.rating}</p>
                 {/* click to add to saved restaurants list. THe icon will change to a checkmark */}
                 <button>Add to list</button>
             </div>

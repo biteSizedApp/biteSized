@@ -42,10 +42,17 @@ class RestaurantList extends Component {
  }
 
 
-//  addRestaurant = () => {
-    
+ addRestaurantToList = (e, restaurantObj) => {
+    e.preventDefault();
+    console.log('saved restaurant: ', restaurantObj);
 
-//  }
+  // have to figure out how to append to the list in state
+   this.setState(prevState => {
+     return {
+       savedRestaurants: [...prevState.savedRestaurants, restaurantObj]
+     }
+   }, () => console.log(this.state.savedRestaurants))
+ }
 
  render() {
      return (
@@ -54,7 +61,7 @@ class RestaurantList extends Component {
           {this.state.results.map( (item) => {
               return (
                 
-                <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id}/>
+                <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList}/>
                 
               )
           })}

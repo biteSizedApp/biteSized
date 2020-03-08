@@ -24,11 +24,6 @@ class SuggestedCard extends Component {
         }
     }
 
-    addToListHandler = (e) => {
-        e.preventDefault();
-        console.log('click');
-    }
-
     render() {
         return (
             <div className="card">
@@ -42,8 +37,8 @@ class SuggestedCard extends Component {
                 <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
                 <p>{this.state.restaurant.rating}</p>
 
-                {/* click to add to saved restaurants list. THe icon will change to a check mark */}
-                <button onClick={this.addToListHandler}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
+                {/* click to add to saved restaurants listThe icon will change to a check mark */}
+                <button onClick={ (e) => {this.props.addRestaurantToList(e, this.state.restaurant)}}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
             </div>
         )
     }

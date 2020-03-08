@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import SuggestedCard from './SuggestedRestaurantCard';
+import SuggestedRestaurantCard from './SuggestedRestaurantCard';
 // import Suggestions from './Suggestions'
 
 
 // the city id from the parent component is passed into axios call as props to retrieve the restaurant list as an array
 // filter through the restaurant array by rating (display highest rating first)
-
 // map throughout the filtered array, pass each restaurant object into Card component as props
 
 class RestaurantList extends Component {
@@ -41,7 +40,7 @@ class RestaurantList extends Component {
         })
  }
 
-// takes an individual restaurant object and appends it to savedRestaurants array in the state. This function is passed as props to SuggestedRestaurantCard component and is executed when user clicks the "add to list" button
+// takes an individual restaurant object and appends it to savedRestaurants array in the state. This function is passed as props to SuggestedRestaurantCard component and is executed when user clicks the "add to list" button. It also calls a function from parent (NewTrip) that passes the savedRestarants array to it, and saves it in its state (in trip object)
  addRestaurantToList = (e, restaurantObj) => {
     e.preventDefault();
 
@@ -50,10 +49,13 @@ class RestaurantList extends Component {
      return {
        savedRestaurants: [...prevState.savedRestaurants, restaurantObj]
      }
+   }, () => {
+    //  callback from NewTrip.js
+       this.props.addRestaurantListToTrip(this.state.savedRestaurants);
    })
  }
 
- 
+
  render() {
      return (
         <div>
@@ -61,7 +63,7 @@ class RestaurantList extends Component {
           {this.state.results.map( (item) => {
               return (
                 
-                <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList}/>
+                <SuggestedRestaurantCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} addRestaurantListToTrip={this.props.addRestaurantListToTrip}/>
                 
               )
           })}

@@ -24,10 +24,10 @@ class NewTrip extends Component {
                 city: '',
                 restaurantList: [],
             },
-            cityName: "",
+            cityName: '',
             cityId: '',
             suggestedCities: [],
-            userSelection: ""
+            userSelection: ''
         }
     }
 
@@ -102,6 +102,17 @@ class NewTrip extends Component {
         })
     }
 
+
+    // add saved restaurant list from RestaurantList component to the trip object in state
+    addRestaurantListToTrip = (restaurantList) => {
+        this.setState ({
+            trip: {
+                restaurantList: restaurantList,
+            }
+        }, () => console.log(this.state.trip.restaurantList))
+    }
+
+
     render() {
         return (
             <section className="NewTrip">
@@ -124,7 +135,7 @@ class NewTrip extends Component {
                 </form>
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
-                <RestaurantList cityId={this.state.cityId} />
+                <RestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip}/>
                 {/* displays more results on click */}
                 <button>Show more</button>
             </section>

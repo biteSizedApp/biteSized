@@ -69,8 +69,11 @@ class NewTrip extends Component {
             const suggestedCitiesNames = copyOfSuggestedCities.filter((city) => {
                 return this.state.cityName === city.name;
             })
+            // using an async callback function on the setState method which only executes after the state is set to make sure the correct cityId is passed. the callback function uses refs to call the getRestaurantList function in the RestaurantList component which is the axios call
             this.setState({
                 cityId: suggestedCitiesNames[0].id
+            }, () => {
+                    this.refs.child.getRestaurantList(this.state.cityId);
             })
         } else {
             // should add notification on the page (like sweet alerts)
@@ -81,6 +84,8 @@ class NewTrip extends Component {
             cityName: ""
         })
     }
+
+
 
     // this function listens for user typing, binds the city name to the user typing and fires the axios call 
     handleInputChange = () => {
@@ -124,7 +129,7 @@ class NewTrip extends Component {
                 </form>
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
-                <RestaurantList cityId={this.state.cityId} />
+                <RestaurantList ref="child" cityId={this.state.cityId} />
                 {/* displays more results on click */}
                 <button>Show more</button>
             </section>

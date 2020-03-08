@@ -18,7 +18,12 @@ class NewTrip extends Component {
     constructor() {
         super();
         this.state = {
-            trip: {},
+            // stores the information about the trip, that will be saved to firebase
+            trip: {
+                tripName: '',
+                city: '',
+                restaurantList: [],
+            },
             cityName: "",
             cityId: '',
             suggestedCities: [],
@@ -114,11 +119,13 @@ class NewTrip extends Component {
                         onChange={this.handleInputChange}
                         value={this.state.cityName}
                     />
+                    {/* saves the trip object to firebase */}
                     <button>save trip</button>
                 </form>
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
                 <RestaurantList cityId={this.state.cityId} />
+                {/* displays more results on click */}
                 <button>Show more</button>
             </section>
         )

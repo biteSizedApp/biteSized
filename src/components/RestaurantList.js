@@ -41,19 +41,19 @@ class RestaurantList extends Component {
         })
  }
 
-
+// takes an individual restaurant object and appends it to savedRestaurants array in the state. This function is passed as props to SuggestedRestaurantCard component and is executed when user clicks the "add to list" button
  addRestaurantToList = (e, restaurantObj) => {
     e.preventDefault();
-    console.log('saved restaurant: ', restaurantObj);
 
-  // have to figure out how to append to the list in state
+  // 
    this.setState(prevState => {
      return {
        savedRestaurants: [...prevState.savedRestaurants, restaurantObj]
      }
-   }, () => console.log(this.state.savedRestaurants))
+   })
  }
 
+ 
  render() {
      return (
         <div>

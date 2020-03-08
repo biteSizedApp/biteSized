@@ -97,7 +97,7 @@ class NewTrip extends Component {
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
                 <form action="" onSubmit={this.getCityId}>
                     <h3>new trip</h3>
-                    <label htmlFor="tripName">Please enter a name for your trip</label>
+                    <label htmlFor="tripName">Name your trip</label>
                     <input type="text" id="tripName" placeholder="i.e. T Dot Restaurants" />
                     <label htmlFor="citySearch">Where are you going? </label>
                     <input

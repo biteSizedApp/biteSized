@@ -99,17 +99,20 @@ class NewTrip extends Component {
     getUserChoice = (event) => {
         this.setState({
             cityName: event.target.value,
-        })
+            // trip: {
+            //     tripName: event.target.value,
+            // }
+        }, () => console.log(this.state))
     }
 
 
-    // add saved restaurant list from RestaurantList component to the trip object in state
+    // add saved restaurant list from RestaurantList component to the trip object in state (called in SuggestedRestaurantCard when user clicks 'add to list' button)
     addRestaurantListToTrip = (restaurantList) => {
         this.setState ({
             trip: {
                 restaurantList: restaurantList,
             }
-        }, () => console.log(this.state.trip.restaurantList))
+        }, () => console.log(this.state))
     }
 
 

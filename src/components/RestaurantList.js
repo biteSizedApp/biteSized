@@ -24,7 +24,6 @@ class RestaurantList extends Component {
 
   // OLGA: i'm not getting filtered results if we write axios call in componentDidMount. If i write it in componentDidUpdate i do get the filtered results, but it keeps making the call indefinitely
   getRestaurantList = (cityId) => {
-    console.log(cityId);
     axios({
       url: `https://developers.zomato.com/api/v2.1/search?entity_id=${cityId}&entity_type=city&count=10&sort=rating `,
       // url: `https://developers.zomato.com/api/v2.1/search?entity_id=89&entity_type=city&count=10&sort=rating `, //test

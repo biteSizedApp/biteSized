@@ -26,7 +26,7 @@ class NewTrip extends Component {
         }
     }
 
-    // the axios call which is being triggred as the user is typing in the handleInputChange function
+    // the axios call which is being triggered as the user is typing in the handleInputChange function
     // it takes in the letters being written by the user and displays suggestions
     getInfo = (cityName) => {
         axios({
@@ -39,10 +39,12 @@ class NewTrip extends Component {
         }).then((res) => {
             const northAmericanCities = res.data.location_suggestions.filter((value) => {
                 if (value.country_id === 37 || value.country_id === 216) {
+                    // returns an object for cities that match the typed query AND are located within US or Canada
                     return value
                 }
             });
             const topSuggestions = northAmericanCities.filter((value, index) => {
+                // shows the first 5 matched cities
                 return index <= 4
             })
             this.setState({
@@ -53,9 +55,10 @@ class NewTrip extends Component {
         })
     }
 
-    // this function takes in the city name submitted by the user and sets the city ID accordingly
+    // this function takes in the city name submitted by the user and sets the city ID  in component state accordingly
     getCityId = (e) => {
         e.preventDefault();
+        // checks if the input is empty
         if (this.state.cityName.trim() !== "" && this.state.cityName.trim() !== "none") {
             const copyOfSuggestedCities = [...this.state.suggestedCities];
             const suggestedCitiesNames = copyOfSuggestedCities.filter((city) => {
@@ -65,6 +68,7 @@ class NewTrip extends Component {
                 cityId: suggestedCitiesNames[0].id
             })
         } else {
+            // should add notification on the page (like sweet alerts)
             console.log("please choose a city first");
         }
         document.getElementById("citySearch").focus();
@@ -94,7 +98,6 @@ class NewTrip extends Component {
     }
 
     render() {
-        console.log(this.state.cityId);
         return (
             <section className="NewTrip">
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />

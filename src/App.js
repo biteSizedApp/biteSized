@@ -34,7 +34,7 @@ class App extends Component {
         <Header />
         <main>
           <section>
-            <div>
+            <div className="aboutSection">
               <h2>About</h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
             </div>

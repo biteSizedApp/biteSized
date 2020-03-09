@@ -156,7 +156,7 @@ class NewTrip extends Component {
                     {/* saves the trip object to firebase */}
                     <button>save trip</button>
                 </form>
-<<<<<<< HEAD
+
                 <button
                     className="tripsHeaders"
                     value="findRestaurants"
@@ -171,11 +171,7 @@ class NewTrip extends Component {
                 </button>
                 {componentToDisplay}
                 <button>Show more</button>
-=======
-                <button className="tripsHeaders">Find restaurants</button>
-                <button className="tripsHeaders">Saved restaurants</button>
-                <RestaurantList ref="child" cityId={this.state.cityId} />
->>>>>>> 4660d6ece3fe7e9575878e14fb48ebf98452b090
+
             </section>
         )
     }

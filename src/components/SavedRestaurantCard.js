@@ -11,19 +11,17 @@ class SavedRestaurantCard extends Component {
   render() {
     return (
       <div className="Card">
-        <img src="" alt="" />
-        <p>Restaurant Name</p>
-        <p>Type of cuisine</p>
+        <img src="" alt=""></img>
+        <p>""</p>
+        <p>""</p>
         <address>
-          <p>123 Sample St</p>
-          <p>City, State</p>
-          <p>Phone #</p>
-          <a href="#">Website</a>
+          <p>""</p>
+          <p>""</p>
         </address>
-        <p>Price for two: $20</p>
-        <p>Rating: 5</p>
+        <p>Average cost for two: $ ""</p>
+        <p>""</p>
         {/* click to add to saved restaurants list. The icon will change to a check mark */}
-        <button>Remove from list</button>
+        <button><i className="fas fa-times" aria-hidden></i></button>
       </div>
     )
   }

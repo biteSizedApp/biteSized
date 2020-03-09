@@ -26,19 +26,21 @@ class SuggestedRestaurantCard extends Component {
 
     render() {
         return (
-            <div className="card">
-                <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
-                <p>{this.state.restaurant.name}</p>
-                <p>{this.state.restaurant.cuisineType}</p>
-                <address>
-                    <p>{this.state.restaurant.address}</p>
-                    <p>{this.state.restaurant.phoneNumber}</p>
-                </address>
-                <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
-                <p>{this.state.restaurant.rating}</p>
+            <div className="SuggestedRestaurantCard">
+                <div className="Card">
+                    <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
+                    <p>{this.state.restaurant.name}</p>
+                    <p>{this.state.restaurant.cuisineType}</p>
+                    <address>
+                        <p>{this.state.restaurant.address}</p>
+                        <p>{this.state.restaurant.phoneNumber}</p>
+                    </address>
+                    <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
+                    <p>{this.state.restaurant.rating}</p>
 
-                {/* click to add to saved restaurants listThe icon will change to a check mark */}
-                <button onClick={ (e) => {this.props.addRestaurantToList(e, this.state.restaurant)}}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
+                    {/* click to add to saved restaurants listThe icon will change to a check mark */}
+                    <button onClick={ (e) => {this.props.addRestaurantToList(e, this.state.restaurant)}}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
+                </div>
             </div>
         )
     }

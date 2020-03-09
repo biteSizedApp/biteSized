@@ -82,7 +82,8 @@ class NewTrip extends Component {
         }
         document.getElementById("citySearch").focus();
         this.setState({
-            cityName: ""
+            cityName: "",
+            suggestedCities: []
         })
     }
 
@@ -165,7 +166,6 @@ class NewTrip extends Component {
 
                 <RestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/>
                 {/* displays more results on click */}
-                <button>Show more</button>
             </section>
         )
     }

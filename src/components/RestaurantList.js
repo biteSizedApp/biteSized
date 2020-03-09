@@ -34,30 +34,36 @@ class RestaurantList extends Component {
       }
       //  saving the results to state
     }).then((results) => {
-      this.setState({
+      if(cityId === this.state.cityId) {
+        this.setState({
           results: this.state.results.concat(results.data.restaurants),
           cityId,
-      })
-      console.log(this.state.results.length);
+        })
+      } else {
+        this.setState({
+          results: results.data.restaurants,
+          cityId,
+        })
+      }
     }).catch((error) => {
       console.log(error)
     })
   }
 
-// takes an individual restaurant object and appends it to savedRestaurants array in the state. This function is passed as props to SuggestedRestaurantCard component and is executed when user clicks the "add to list" button. It also calls a function from parent (NewTrip) that passes the savedRestarants array to it, and saves it in its state (in trip object)
- addRestaurantToList = (e, restaurantObj) => {
+  // takes an individual restaurant object and appends it to savedRestaurants array in the state. This function is passed as props to SuggestedRestaurantCard component and is executed when user clicks the "add to list" button. It also calls a function from parent (NewTrip) that passes the savedRestarants array to it, and saves it in its state (in trip object)
+  addRestaurantToList = (e, restaurantObj) => {
     e.preventDefault();
 
-  // 
-   this.setState(prevState => {
-     return {
-       savedRestaurants: [...prevState.savedRestaurants, restaurantObj]
-     }
-   }, () => {
-    //  callback from NewTrip.js
-       this.props.addRestaurantListToTrip(this.state.savedRestaurants);
-   })
- }
+    // 
+    this.setState(prevState => {
+      return {
+        savedRestaurants: [...prevState.savedRestaurants, restaurantObj]
+      }
+    }, () => {
+      //  callback from NewTrip.js
+      this.props.addRestaurantListToTrip(this.state.savedRestaurants);
+    })
+  }
 
   displayMore = () => {
     this.setState({
@@ -77,12 +83,17 @@ class RestaurantList extends Component {
         {this.state.results.map((item) => {
           return (
 
-            <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} />
+            <SuggestedRestaurantCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} />
 
           )
         })}
         {/* displays more results on click */}
-        <button onClick={this.displayMore}>Show more</button>
+        {
+        this.state.results.length !== 0
+        ? <button onClick={this.displayMore}>Show more</button>
+        : null
+        }
+        
       </div>
     )
   }

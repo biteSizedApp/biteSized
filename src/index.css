@@ -175,11 +175,6 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
 }
 
 /* CARD STYLING */
-.cardSection {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .card {
   margin: 2rem;

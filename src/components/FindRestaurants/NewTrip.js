@@ -14,8 +14,8 @@ import Suggestions from './Suggestions';
 // get id from the city object and pass it to the SuggestedRestaurantList as prop
 
 class NewTrip extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             // stores the information about the trip, that will be saved to firebase
             trip: {
@@ -189,12 +189,11 @@ class NewTrip extends Component {
                     onClick={this.handleSavedClick}>
                     Saved restaurants
                 </button>
-                <button>Show more</button>
-                <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} />
-                {/* <button className="tripsHeaders">Find restaurants</button>
-                <button className="tripsHeaders">Saved restaurants</button>
+                <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
+                {/* {/* <button className="tripsHeaders">Find restaurants</button>
+                <button className="tripsHeaders">Saved restaurants</button> */}
 
-                // <SuggestedRestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/> */}
+                {/* <SuggestedRestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/> */}
                 {/* displays more results on click */}
             </section>
         )

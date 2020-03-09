@@ -5,13 +5,13 @@ class SavedRestaurantCard extends Component {
     super();
     this.state = {
       restaurant: {
-        name: props.restaurant.name,
-        cuisineType: props.restaurant.cuisines,
-        address: props.restaurant.location.address,
-        phoneNumber: props.restaurant.phone_numbers,
-        avgCostForTwo: props.restaurant.average_cost_for_two,
-        rating: props.restaurant.user_rating.aggregate_rating,
-        featuredImg: props.restaurant.featured_image,
+        name: this.props.restaurant.name,
+        cuisineType: this.props.restaurant.cuisines,
+        address: this.props.restaurant.location.address,
+        phoneNumber: this.props.restaurant.phone_numbers,
+        avgCostForTwo: this.props.restaurant.average_cost_for_two,
+        rating: this.props.restaurant.user_rating.aggregate_rating,
+        featuredImg: this.props.restaurant.featured_image,
       }
     }
   }

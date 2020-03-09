@@ -28,7 +28,6 @@ class SuggestedRestaurantList extends Component {
   getRestaurantList = (cityId) => {
     axios({
       url: `https://developers.zomato.com/api/v2.1/search?entity_id=${cityId}&entity_type=city&count=10&sort=rating&start=${this.state.start}`,
-      // url: `https://developers.zomato.com/api/v2.1/search?entity_id=89&entity_type=city&count=10&sort=rating `, //test
       method: "GET",
       responseType: "json",
       headers: {
@@ -36,7 +35,7 @@ class SuggestedRestaurantList extends Component {
       }
       //  saving the results to state
     }).then((results) => {
-      if(cityId === this.state.cityId) {
+      if (cityId === this.state.cityId) {
         this.setState({
           results: this.state.results.concat(results.data.restaurants),
           cityId,
@@ -82,17 +81,16 @@ class SuggestedRestaurantList extends Component {
   render() {
     return (
       <div className="SuggestedRestaurantList">
-        {/* displays more results on click */}
-        {this.state.results.map((item) => {
+        {
+        this.props.listToDisplay === 'displaySavedRestos'
+        ? <SavedRestaurantList ref="child" savedRestaurants={this.state.savedRestaurants}/>
+        : this.state.results.map((item) => {
           return (
             // if the find restaurant button is clicked, show this
-            this.props.listToDisplay === 'displaySavedRestos'
-              ? <SavedRestaurantList restaurant={item.restaurant} key={item.restaurant.id} />
-              : <SuggestedRestaurantCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} />
+            <SuggestedRestaurantCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} />
             // if the saved restaurant button is clicked, show the SavedRestaurnatList component
-          )
-        })}
-
+          )}
+        )}
         {
         this.state.results.length !== 0
         ? <button onClick={this.displayMore}>Show more</button>

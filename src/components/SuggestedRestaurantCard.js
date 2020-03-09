@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 // when "add to list" button is clicked, pass the restaurant object from the state to the RestaurantList component, where it will be stored in an array
 
 
-class SuggestedCard extends Component {
+class SuggestedRestaurantCard extends Component {
     constructor(props) {
         super();
         this.state = {
@@ -44,4 +44,4 @@ class SuggestedCard extends Component {
     }
 }
 
-export default SuggestedCard
+export default SuggestedRestaurantCard

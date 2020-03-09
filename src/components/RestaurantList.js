@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import SuggestedCard from './SuggestedRestaurantCard';
+import SuggestedRestaurantCard from './SuggestedRestaurantCard';
 // import Suggestions from './Suggestions'
 
 
@@ -22,15 +22,15 @@ class RestaurantList extends Component {
   }
 
   // OLGA: i'm not getting filtered results if we write axios call in componentDidMount. If i write it in componentDidUpdate i do get the filtered results, but it keeps making the call indefinitely
- componentDidMount() {
-     axios({
+  componentDidMount() {
+    axios({
         //  url: `https://developers.zomato.com/api/v2.1/search?entity_id=${this.props.cityId}&entity_type=city&count=10&sort=rating `,
          url: `https://developers.zomato.com/api/v2.1/search?entity_id=89&entity_type=city&count=10&sort=rating `, //test
-         method: "GET",
-         responseType: "json",
-         headers: {
-             "user-key": "cff8655f9125581c7db4a5e95cd60d6f",
-         }
+        method: "GET",
+        responseType: "json",
+        headers: {
+            "user-key": "cff8655f9125581c7db4a5e95cd60d6f",
+        }
         //  saving the results to state
         }).then(( results ) => {
             this.setState({
@@ -39,35 +39,35 @@ class RestaurantList extends Component {
         }).catch((error) => {
             console.log(error)
         })
- }
+  }
 
 
- addRestaurantToList = (e, restaurantObj) => {
+  addRestaurantToList = (e, restaurantObj) => {
     e.preventDefault();
     console.log('saved restaurant: ', restaurantObj);
 
   // have to figure out how to append to the list in state
-   this.setState(prevState => {
-     return {
-       savedRestaurants: [...prevState.savedRestaurants, restaurantObj]
-     }
-   }, () => console.log(this.state.savedRestaurants))
- }
+  this.setState(prevState => {
+    return {
+      savedRestaurants: [...prevState.savedRestaurants, restaurantObj]
+    }
+  }, () => console.log(this.state.savedRestaurants))
+}
 
- render() {
-     return (
+  render() {
+    return (
         <div>
             {/* Map through results array and passing the results on our Suggested card component */}
           {this.state.results.map( (item) => {
               return (
                 
-                <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList}/>
+                <SuggestedRestaurantCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList}/>
                 
               )
           })}
         </div>
-     )
- }
+    )
+  }
 }
 
 export default RestaurantList;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import RestaurantList from './RestaurantList';
+import SavedRestaurantCard from './SavedRestaurantCard';
 import Suggestions from './Suggestions';
 // import Autosuggest from 'react-autosuggest';
 
@@ -15,19 +16,22 @@ import Suggestions from './Suggestions';
 // get id from the city object and pass it to the RestaurantList as prop
 
 class NewTrip extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             trip: {},
             cityName: "",
-            cityId: '',
+            cityId: "",
             suggestedCities: [],
-            userSelection: ""
+            userSelection: "",
+            buttonIsActive: false,
+            // 
         }
     }
 
     // the axios call which is being triggered as the user is typing in the handleInputChange function
     // it takes in the letters being written by the user and displays suggestions
+
     getInfo = (cityName) => {
         axios({
             url: `https://developers.zomato.com/api/v2.1/cities?q=${cityName}`,
@@ -97,7 +101,31 @@ class NewTrip extends Component {
         })
     }
 
+    // this function will show the default restaurant list 
+    handleFindClick() {
+        this.setState ({
+            buttonIsActive: true
+        });
+    }
+
+
+    // this function will hide the default restaurant list and show the user's saved restaurants
+    handleSavedClick() {
+        this.setState ({
+            buttonIsActive: false
+        })
+    }
+
+
     render() {
+        const buttonIsActive = this.state.buttonIsActive;
+        // conditional that renders the proper component depending on user's click
+        if (buttonIsActive) {
+            return <SavedRestaurantCard />
+        } else {
+            return <RestaurantList />
+        }
+
         return (
             <section className="NewTrip">
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
@@ -116,8 +144,18 @@ class NewTrip extends Component {
                     />
                     <button>save trip</button>
                 </form>
-                <button className="tripsHeaders">Find restaurants</button>
-                <button className="tripsHeaders">Saved restaurants</button>
+                <button
+                    className="tripsHeaders"
+                    value="findRestaurants"
+                    onClick={this.handleHide}>
+                    Find restaurants
+                </button>
+                <button
+                    className="tripsHeaders"
+                    value="savedRestaurants"
+                    onClick={this.handleShow}>
+                    Saved restaurants
+                </button>
                 <RestaurantList cityId={this.state.cityId} />
                 <button>Show more</button>
             </section>

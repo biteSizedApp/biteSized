@@ -3,8 +3,10 @@ import axios from 'axios';
 
 import SuggestedRestaurantList from './SuggestedRestaurantList';
 import Suggestions from './Suggestions';
+
 import firebase from '../../firebase';
 // import Autosuggest from 'react-autosuggest';
+
 
 // user types city name in input field,
 // axios call is made to retrieve an array of suggested cities that match

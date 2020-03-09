@@ -162,6 +162,7 @@ class NewTrip extends Component {
                 </form>
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
+
                 <RestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/>
                 {/* displays more results on click */}
                 <button>Show more</button>

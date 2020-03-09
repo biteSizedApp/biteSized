@@ -18,13 +18,14 @@ class RestaurantList extends Component {
       // stores the list of saved restaurants that will be saved to the trip 
       savedRestaurants: [],
       cityId: "",
+      start: 0
     }
   }
 
   // OLGA: i'm not getting filtered results if we write axios call in componentDidMount. If i write it in componentDidUpdate i do get the filtered results, but it keeps making the call indefinitely
   getRestaurantList = (cityId) => {
     axios({
-      url: `https://developers.zomato.com/api/v2.1/search?entity_id=${cityId}&entity_type=city&count=10&sort=rating `,
+      url: `https://developers.zomato.com/api/v2.1/search?entity_id=${cityId}&entity_type=city&count=10&sort=rating&start=${this.state.start}`,
       // url: `https://developers.zomato.com/api/v2.1/search?entity_id=89&entity_type=city&count=10&sort=rating `, //test
       method: "GET",
       responseType: "json",
@@ -34,8 +35,10 @@ class RestaurantList extends Component {
       //  saving the results to state
     }).then((results) => {
       this.setState({
-        results: results.data.restaurants,
+          results: this.state.results.concat(results.data.restaurants),
+          cityId,
       })
+      console.log(this.state.results.length);
     }).catch((error) => {
       console.log(error)
     })
@@ -56,21 +59,33 @@ class RestaurantList extends Component {
    })
  }
 
+  displayMore = () => {
+    this.setState({
+      // count: this.state.count + 10,
+      start: this.state.start + 10
+    }, () => {
+      this.getRestaurantList(this.state.cityId);
+    })
+  }
 
- render() {
-     return (
-        <div>
-          {/* Map through results array and passing the results on our Suggested card component */}
-          {this.state.results.map( (item) => {
-              return (
-                
-                <SuggestedRestaurantCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} addRestaurantListToTrip={this.props.addRestaurantListToTrip}/>
-                
-              )
-          })}
-        </div>
-     )
- }
+
+
+  render() {
+    return (
+      <div className="RestaurantList">
+        {/* Map through results array and passing the results on our Suggested card component */}
+        {this.state.results.map((item) => {
+          return (
+
+            <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} />
+
+          )
+        })}
+        {/* displays more results on click */}
+        <button onClick={this.displayMore}>Show more</button>
+      </div>
+    )
+  }
 }
 
 export default RestaurantList;

@@ -18,17 +18,17 @@ class SavedRestaurantList extends Component {
 
   render() {
     return (
-      // <div>
-        // {/* Map through results array and passing the results on our saved restaurant card component */}
-        // {/* {this.state.savedRestaurant.map((item, index) => { */}
-          // {/* return ( */}
-          <div>{this.state.savedRestaurant}</div>
-      //       {/* // <SavedRestaurantCard restaurant={item.restaurant} key={index} /> */}
+      <div>
+        {/* Map through results array and passing the results on our saved restaurant card component */}
+        {this.state.savedRestaurant.map((item, index) => {
+          console.log(item);
+          return ( 
+            <SavedRestaurantCard restaurant={item} key={index} />
 
 
-      //     // )
-      //   {/* })} */}
-      // {/* </div> */}
+          )
+        })}
+      </div>
     )
   }
 }

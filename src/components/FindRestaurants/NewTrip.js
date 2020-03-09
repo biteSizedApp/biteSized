@@ -75,7 +75,7 @@ class NewTrip extends Component {
             this.setState({
                 cityId: suggestedCitiesNames[0].id
             }, () => {
-                    this.refs.child.getRestaurantList(this.state.cityId);
+                    this.refs.child.getRestaurantList();
             })
         } else {
             // should add notification on the page (like sweet alerts)

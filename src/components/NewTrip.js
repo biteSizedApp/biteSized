@@ -130,8 +130,6 @@ class NewTrip extends Component {
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
                 <RestaurantList ref="child" cityId={this.state.cityId} />
-                {/* displays more results on click */}
-                <button>Show more</button>
             </section>
         )
     }

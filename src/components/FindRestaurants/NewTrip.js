@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import SuggestedRestaurantList from './SuggestedRestaurantList';
 import Suggestions from './Suggestions';
+import firebase from '../../firebase';
 // import Autosuggest from 'react-autosuggest';
 
 // user types city name in input field,
@@ -140,34 +141,61 @@ class NewTrip extends Component {
         }, () => console.log(this.state))
     }
 
+    saveToDb = (e) => {
+        // e.preventDefault();
+        console.log('clicked!');
+        const dbRef = firebase.database().ref();
+        dbRef.push(this.state.trip);
+    }
+
 
     render() {
         return (
-            <section className="NewTrip">
-                <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
-                <form action="" onSubmit={this.getCityId}>
-                    <h3>new trip</h3>
-                    <label htmlFor="tripName">Please enter a name for your trip</label>
-                    <input type="text" id="tripName" onChange={this.handleNameInputChange}/>
-                    <label htmlFor="citySearch">Where are you going?</label>
-                    <input
-                        autoComplete="off"
-                        type="search"
-                        id="citySearch"
-                        ref={input => this.search = input}
-                        onChange={this.handleCityInputChange}
-                        value={this.state.cityName}
-                    />
-                    {/* saves the trip object to firebase */}
-                    <button>save trip</button>
-                </form>
+          <section className="NewTrip">
+            <Suggestions
+              results={this.state.suggestedCities}
+              getUserChoice={this.getUserChoice}
+            />
+            <form action="" onSubmit={this.getCityId}>
+              <h3>new trip</h3>
+              <label htmlFor="tripName">
+                Please enter a name for your trip
+              </label>
+              <input
+                type="text"
+                id="tripName"
+                onChange={this.handleNameInputChange}
+              />
+              <label htmlFor="citySearch">Where are you going?</label>
+              <input
+                autoComplete="off"
+                type="search"
+                id="citySearch"
+                ref={input => (this.search = input)}
+                onChange={this.handleCityInputChange}
+                value={this.state.cityName}
+              />
+              <button id="citySearchSubmit">GO</button>
+              {/* saves the trip object to firebase */}
+
+            </form>
+
+            <button id="saveTrip" onClick={this.saveToDb}>save trip</button>
+
+            <div>
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
+            </div>
 
-                <SuggestedRestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/>
-                {/* displays more results on click */}
-            </section>
-        )
+            <SuggestedRestaurantList
+              cityId={this.state.cityId}
+              addRestaurantListToTrip={this.addRestaurantListToTrip}
+              ref="child"
+              cityId={this.state.cityId}
+            />
+            {/* displays more results on click */}
+          </section>
+        );
     }
 }
 

@@ -24,7 +24,7 @@ class NewTrip extends Component {
             cityId: "",
             suggestedCities: [],
             userSelection: "",
-            listToDisplay: '',
+            listToDisplay: "",
             // 
         }
     }
@@ -124,7 +124,7 @@ class NewTrip extends Component {
         if (listToDisplay === 'displaySavedRestos') {
             componentToDisplay = <SavedRestaurantCard />
         } else if (listToDisplay === 'displayFindRestos') {
-            componentToDisplay = <RestaurantList cityId={this.state.cityId}/>
+            componentToDisplay = <RestaurantList cityId={this.state.cityId} />
         }
 
         return (

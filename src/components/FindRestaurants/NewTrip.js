@@ -3,10 +3,10 @@ import axios from 'axios';
 
 import SuggestedRestaurantList from './SuggestedRestaurantList';
 import Suggestions from './Suggestions';
-
 import firebase from '../../firebase';
-// import Autosuggest from 'react-autosuggest';
 
+import Swal from 'sweetalert2';
+// import Autosuggest from 'react-autosuggest';
 
 // user types city name in input field,
 // axios call is made to retrieve an array of suggested cities that match
@@ -90,8 +90,6 @@ class NewTrip extends Component {
         })
     }
 
-
-
     // this function listens for user typing, binds the city name to the user typing and fires the axios call 
     handleCityInputChange = () => {
         this.setState({
@@ -130,7 +128,6 @@ class NewTrip extends Component {
         }, () => console.log(this.state))
     }
 
-
     // add saved restaurant list from SuggestedRestaurantList component to the trip object in state (called in SuggestedRestaurantCard when user clicks 'add to list' button)
     addRestaurantListToTrip = (restaurantList) => {
         // copies the object within this.state.trip
@@ -143,13 +140,47 @@ class NewTrip extends Component {
         }, () => console.log(this.state))
     }
 
+    // this.state.trip.tripName === true && this.state.trip.restaurantList.length > 0 
     saveToDb = (e) => {
-        // e.preventDefault();
-        console.log('clicked!');
-        const dbRef = firebase.database().ref();
-        dbRef.push(this.state.trip);
-    }
-
+        e.preventDefault();
+        console.log(this.state.trip.restaurantList.length);
+        
+        if (
+          this.state.trip.city &&
+          this.state.trip.tripName &&
+          this.state.trip.restaurantList.length > 0
+        ) {
+          Swal.fire({
+            title: "Your trip has been saved!",
+            icon: "success",
+            timer: 2000
+          }).then(() => {
+            const dbRef = firebase.database().ref();
+            dbRef.push(this.state.trip);
+          });
+        } else if (!this.state.trip.tripName) {
+          Swal.fire({
+            title: "Please enter a name for your trip",
+            icon: "error",
+            timer: 2000
+          });
+        } else if (!this.state.trip.city) {
+          Swal.fire({
+            title: "Please choose a city",
+            icon: "error",
+            timer: 2000
+          }); 
+        } else if (this.state.trip.restaurantList.length === 0) {
+          Swal.fire({
+            title: "Please choose at least one restaurant to add to your trip.",
+            icon: "error",
+            timer: 2000
+          });   
+        } else {
+            console.log('it doesnt work!');
+            
+        }
+    }  
 
     render() {
         return (

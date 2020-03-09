@@ -143,23 +143,48 @@ class NewTrip extends Component {
         }, () => console.log(this.state))
     }
 
+
+    // this.state.trip.tripName === true && this.state.trip.restaurantList.length > 0 
     saveToDb = (e) => {
         e.preventDefault();
-
-        Swal.fire({
-            title: 'Your trip has been saved!',
-            icon: 'success',
+        console.log(this.state.trip.restaurantList.length);
+        
+        if (
+          this.state.trip.city &&
+          this.state.trip.tripName &&
+          this.state.trip.restaurantList.length > 0
+        ) {
+          Swal.fire({
+            title: "Your trip has been saved!",
+            icon: "success",
             timer: 2000
-        }).then(() => {
+          }).then(() => {
             const dbRef = firebase.database().ref();
             dbRef.push(this.state.trip);
-        })
-
-
-
-
-    }
-
+          });
+        } else if (!this.state.trip.tripName) {
+          Swal.fire({
+            title: "Please enter a name for your trip",
+            icon: "error",
+            timer: 2000
+          });
+        } else if (!this.state.trip.city) {
+          Swal.fire({
+            title: "Please choose a city",
+            icon: "error",
+            timer: 2000
+          }); 
+        } else if (this.state.trip.restaurantList.length === 0) {
+          Swal.fire({
+            title: "Please choose at least one restaurant to add to your trip.",
+            icon: "error",
+            timer: 2000
+          });   
+        } else {
+            console.log('it doesnt work!');
+            
+        }
+    }  
 
     render() {
         return (

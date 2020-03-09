@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 // when "add to list" button is clicked, pass the restaurant object from the state to the RestaurantList component, where it will be stored in an array
 
 
-class SuggestedCard extends Component {
+class SuggestedRestaurantCard extends Component {
     constructor(props) {
         super();
         this.state = {
@@ -26,22 +26,23 @@ class SuggestedCard extends Component {
 
     render() {
         return (
-            <div className="card">
-                <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
-                <p>{this.state.restaurant.name}</p>
-                <p>{this.state.restaurant.cuisineType}</p>
-                <address>
-                    <p>{this.state.restaurant.address}</p>
-                    <p>{this.state.restaurant.phoneNumber}</p>
-                </address>
-                <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
-                <p>{this.state.restaurant.rating}</p>
+            <div className="cardSection">
+                <div className="card">
+                    <button className="addToList" onClick={(e) => { this.props.addRestaurantToList(e, this.state.restaurant) }}><i className="fas fa-plus" aria-hidden></i> add to list</button>
 
-                {/* click to add to saved restaurants listThe icon will change to a check mark */}
-                <button onClick={ (e) => {this.props.addRestaurantToList(e, this.state.restaurant)}}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
+                    <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
+
+                    <p className="restaurantTitle"><span className="restaurantName">{this.state.restaurant.name}</span> - {this.state.restaurant.cuisineType}</p>
+                    <address>
+                        <p>{this.state.restaurant.address}</p>
+                        <p>{this.state.restaurant.phoneNumber}</p>
+                    </address>
+                    <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
+                    <p className="rating">{this.state.restaurant.rating}</p>
+                </div>
             </div>
         )
     }
 }
 
-export default SuggestedCard
+export default SuggestedRestaurantCard;

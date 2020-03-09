@@ -104,7 +104,7 @@ class NewTrip extends Component {
                 <form action="" onSubmit={this.getCityId}>
                     <h3>new trip</h3>
                     <label htmlFor="tripName">Please enter a name for your trip</label>
-                    <input type="text" id="tripName" />
+                    <input type="text" id="tripName" placeholder="create a trip name"/>
                     <label htmlFor="citySearch">Where are you going?</label>
                     <input
                         autoComplete="off"
@@ -113,13 +113,14 @@ class NewTrip extends Component {
                         ref={input => this.search = input}
                         onChange={this.handleInputChange}
                         value={this.state.cityName}
+                        placeholder="search cities near you"
                     />
                     <button>save trip</button>
                 </form>
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
                 <RestaurantList cityId={this.state.cityId} />
-                <button>Show more</button>
+                <button class="showMore">Show more</button>
             </section>
         )
     }

@@ -9,18 +9,21 @@ import Footer from './components/Footer';
 
 class App extends Component {
 
+
   render() {
     return (
       <div className="App">
         <Header />
 
         <main>
-          <section className="about">
-            <div>
-              <h2>About</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
-            </div>
-          </section>
+          <div className="wrapper">
+            <section className="about">
+              <div>
+                <h2>About</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
+              </div>
+            </section>
+          </div>
           <NewTrip />
         </main>
 

@@ -4,6 +4,8 @@ import axios from 'axios';
 import SuggestedRestaurantList from './SuggestedRestaurantList';
 import Suggestions from './Suggestions';
 import firebase from '../../firebase';
+
+import Swal from 'sweetalert2';
 // import Autosuggest from 'react-autosuggest';
 
 // user types city name in input field,
@@ -142,10 +144,20 @@ class NewTrip extends Component {
     }
 
     saveToDb = (e) => {
-        // e.preventDefault();
-        console.log('clicked!');
-        const dbRef = firebase.database().ref();
-        dbRef.push(this.state.trip);
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Your trip has been saved!',
+            icon: 'success',
+            timer: 2000
+        }).then(() => {
+            const dbRef = firebase.database().ref();
+            dbRef.push(this.state.trip);
+        })
+
+
+
+
     }
 
 

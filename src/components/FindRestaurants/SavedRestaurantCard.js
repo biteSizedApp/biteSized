@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
 
-class SavedCard extends Component {
-  constructor() {
+class SavedRestaurantCard extends Component {
+  constructor(props) {
     super();
     this.state = {
-      restaurant: {}
+      restaurant: {
+        name: props.restaurant.name,
+        cuisineType: props.restaurant.cuisineType,
+        address: props.restaurant.address,
+        phoneNumber: props.restaurant.phoneNumber,
+        avgCostForTwo: props.restaurant.avgCostForTwo,
+        rating: props.restaurant.rating,
+        featuredImg: props.restaurant.featuredImg,
+      }
     }
   }
 
   render() {
     return (
-      <div className="Card">
-        <img src="" alt="" />
-        <p>Restaurant Name</p>
-        <p>Type of cuisine</p>
+      <div className="card">
+        <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
+        <p>{this.state.restaurant.name}</p>
+        <p>{this.state.restaurant.cuisineType}</p>
         <address>
-          <p>123 Sample St</p>
-          <p>City, State</p>
-          <p>Phone #</p>
-          <a href="#">Website</a>
+          <p>{this.state.restaurant.address}</p>
+          <p>{this.state.restaurant.phoneNumber}</p>
         </address>
-        <p>Price for two: $20</p>
-        <p>Rating: 5</p>
-        {/* click to add to saved restaurants list. The icon will change to a check mark */}
-        <button>Remove from list</button>
+        <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
+        <p>{this.state.restaurant.rating}</p>
+
+        {/* click to add to saved restaurants listThe icon will change to a check mark */}
+        <button onClick={(e) => { this.props.removeRestaurantToList(e, this.state.restaurant) }}><i className="fas fa-plus" aria-hidden></i>remove</button>
       </div>
     )
   }
 }
 
-export default SavedCard
+export default SavedRestaurantCard;

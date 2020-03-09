@@ -3,18 +3,10 @@ import axios from 'axios';
 
 import SuggestedRestaurantList from './SuggestedRestaurantList';
 import Suggestions from './Suggestions';
-<<<<<<< HEAD
-=======
-
->>>>>>> db78c627823b82f661deff40901b484ab2052320
 import firebase from '../../firebase';
 
 import Swal from 'sweetalert2';
 // import Autosuggest from 'react-autosuggest';
-<<<<<<< HEAD
-=======
-
->>>>>>> db78c627823b82f661deff40901b484ab2052320
 
 // user types city name in input field,
 // axios call is made to retrieve an array of suggested cities that match
@@ -98,8 +90,6 @@ class NewTrip extends Component {
         })
     }
 
-
-
     // this function listens for user typing, binds the city name to the user typing and fires the axios call 
     handleCityInputChange = () => {
         this.setState({
@@ -138,7 +128,6 @@ class NewTrip extends Component {
         }, () => console.log(this.state))
     }
 
-
     // add saved restaurant list from SuggestedRestaurantList component to the trip object in state (called in SuggestedRestaurantCard when user clicks 'add to list' button)
     addRestaurantListToTrip = (restaurantList) => {
         // copies the object within this.state.trip
@@ -150,7 +139,6 @@ class NewTrip extends Component {
             trip: prevState,
         }, () => console.log(this.state))
     }
-
 
     // this.state.trip.tripName === true && this.state.trip.restaurantList.length > 0 
     saveToDb = (e) => {

@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import SavedRestaurantCard from './SavedRestaurantCard'
 
 class SavedRestaurantList extends Component {
   constructor() {
     super()
     this.state = {
-      restaurant: {}
+      // storing the saved restaurant object
+      savedRestaurant: []
     }
+  }
+
+  render() {
+    return (
+      <div>
+        {/* Map through results array and passing the results on our saved restaurant card component */}
+        {this.state.savedRestaurant.map((item) => {
+          return (
+
+            <SavedRestaurantCard restaurant={item.restaurant} key={item.restaurant.id} />
+
+
+          )
+        })}
+      </div>
+    )
   }
 }
 

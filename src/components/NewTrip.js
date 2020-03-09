@@ -112,7 +112,7 @@ class NewTrip extends Component {
     }
 
     // this function will show the default restaurant list 
-    handleFindClick = () =>{
+    handleFindClick = () => {
         this.setState ({
             listToDisplay: 'displayFindRestos'
         });
@@ -128,15 +128,6 @@ class NewTrip extends Component {
 
 
     render() {
-        let componentToDisplay;
-        const listToDisplay = this.state.listToDisplay;
-        // conditional that renders the proper component depending on user's click
-        if (listToDisplay === 'displaySavedRestos') {
-            componentToDisplay = <SavedRestaurantCard />
-        } else if (listToDisplay === 'displayFindRestos') {
-            componentToDisplay = <RestaurantList cityId={this.state.cityId} />
-        }
-
         return (
             <section className="NewTrip">
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
@@ -169,9 +160,8 @@ class NewTrip extends Component {
                     onClick={this.handleSavedClick}>
                     Saved restaurants
                 </button>
-                {componentToDisplay}
                 <button>Show more</button>
-
+                <RestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} />
             </section>
         )
     }

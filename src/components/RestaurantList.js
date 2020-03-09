@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import SuggestedRestaurantCard from './SuggestedRestaurantCard';
+import SavedRestaurantList from './SavedRestaurantList';
 
 
 // the city id from the parent component is passed into axios call as props to retrieve the restaurant list as an array
@@ -59,9 +60,11 @@ class RestaurantList extends Component {
             {/* Map through results array and passing the results on our Suggested card component */}
           {this.state.results.map( (item) => {
               return (
-                
-                <SuggestedRestaurantCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList}/>
-                
+                // if the find restaurant button is clicked, show this
+                this.props.listToDisplay === 'displaySavedRestos'
+                  ? <SavedRestaurantList restaurant={item.restaurant} key={item.restaurant.id} />
+                  : <SuggestedRestaurantCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} />
+                // if the saved restaurant button is clicked, show the SavedRestaurnatList component
               )
           })}
         </div>

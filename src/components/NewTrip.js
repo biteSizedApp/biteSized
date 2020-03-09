@@ -24,14 +24,15 @@ class NewTrip extends Component {
                 city: '',
                 restaurantList: [],
             },
-            cityName: "",
+            cityName: '',
             cityId: '',
             suggestedCities: [],
-            userSelection: ""
+            userSelection: '',
+            testState: false,
         }
     }
 
-    // the axios call which is being triggered as the user is typing in the handleInputChange function
+    // the axios call which is being triggered as the user is typing in the handleCityInputChange function
     // it takes in the letters being written by the user and displays suggestions
     getInfo = (cityName) => {
         axios({
@@ -88,7 +89,7 @@ class NewTrip extends Component {
 
 
     // this function listens for user typing, binds the city name to the user typing and fires the axios call 
-    handleInputChange = () => {
+    handleCityInputChange = () => {
         this.setState({
             cityName: this.search.value
         }, () => {
@@ -102,10 +103,42 @@ class NewTrip extends Component {
 
     // this function binds the city name to the select change 
     getUserChoice = (event) => {
+        // copies the object within this.state.trip
+        const prevState = this.state.trip;
+        // adds city name as another property to the copied trip object
+        prevState.city = event.target.value;
+
         this.setState({
             cityName: event.target.value,
-        })
+            // assigns the new object with added city name to the state
+            trip: prevState,
+        }, () => console.log(this.state))
     }
+
+    handleNameInputChange = (event) => {
+        // copies the object within this.state.trip
+        const prevState = this.state.trip;
+        // adds trip name as another property to the copied trip object
+        prevState.tripName = event.target.value;
+
+        this.setState ({
+            trip: prevState,
+        }, () => console.log(this.state))
+    }
+
+
+    // add saved restaurant list from RestaurantList component to the trip object in state (called in SuggestedRestaurantCard when user clicks 'add to list' button)
+    addRestaurantListToTrip = (restaurantList) => {
+        // copies the object within this.state.trip
+        const prevState = this.state.trip;
+        // adds restaurant list as another property to the copied trip object
+        prevState.restaurantList = restaurantList;
+
+        this.setState ({
+            trip: prevState,
+        }, () => console.log(this.state))
+    }
+
 
     render() {
         return (
@@ -114,14 +147,14 @@ class NewTrip extends Component {
                 <form action="" onSubmit={this.getCityId}>
                     <h3>new trip</h3>
                     <label htmlFor="tripName">Please enter a name for your trip</label>
-                    <input type="text" id="tripName" />
+                    <input type="text" id="tripName" onChange={this.handleNameInputChange}/>
                     <label htmlFor="citySearch">Where are you going?</label>
                     <input
                         autoComplete="off"
                         type="search"
                         id="citySearch"
                         ref={input => this.search = input}
-                        onChange={this.handleInputChange}
+                        onChange={this.handleCityInputChange}
                         value={this.state.cityName}
                     />
                     {/* saves the trip object to firebase */}
@@ -129,7 +162,10 @@ class NewTrip extends Component {
                 </form>
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
-                <RestaurantList ref="child" cityId={this.state.cityId} />
+
+                <RestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/>
+                {/* displays more results on click */}
+                <button>Show more</button>
             </section>
         )
     }

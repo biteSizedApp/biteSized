@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SavedCard extends Component {
+class SavedRestaurantCard extends Component {
   constructor() {
     super();
     this.state = {
@@ -29,4 +29,4 @@ class SavedCard extends Component {
   }
 }
 
-export default SavedCard
+export default SavedRestaurantCard

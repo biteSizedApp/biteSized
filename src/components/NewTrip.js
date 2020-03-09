@@ -24,7 +24,7 @@ class NewTrip extends Component {
             cityId: "",
             suggestedCities: [],
             userSelection: "",
-            buttonIsActive: false,
+            listToDisplay: '',
             // 
         }
     }
@@ -102,34 +102,35 @@ class NewTrip extends Component {
     }
 
     // this function will show the default restaurant list 
-    handleFindClick() {
+    handleFindClick = () =>{
         this.setState ({
-            buttonIsActive: true
+            listToDisplay: 'displayFindRestos'
         });
     }
 
 
     // this function will hide the default restaurant list and show the user's saved restaurants
-    handleSavedClick() {
+    handleSavedClick = () => {
         this.setState ({
-            buttonIsActive: false
+            listToDisplay: 'displaySavedRestos'
         })
     }
 
 
     render() {
-        const buttonIsActive = this.state.buttonIsActive;
+        let componentToDisplay;
+        const listToDisplay = this.state.listToDisplay;
         // conditional that renders the proper component depending on user's click
-        if (buttonIsActive) {
-            return <SavedRestaurantCard />
-        } else {
-            return <RestaurantList />
+        if (listToDisplay === 'displaySavedRestos') {
+            componentToDisplay = <SavedRestaurantCard />
+        } else if (listToDisplay === 'displayFindRestos') {
+            componentToDisplay = <RestaurantList cityId={this.state.cityId}/>
         }
 
         return (
             <section className="NewTrip">
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
-                <form action="" onSubmit={this.getCityId}>
+                <form action="SUBMIT" onSubmit={this.getCityId}>
                     <h3>new trip</h3>
                     <label htmlFor="tripName">Please enter a name for your trip</label>
                     <input type="text" id="tripName" />
@@ -147,16 +148,16 @@ class NewTrip extends Component {
                 <button
                     className="tripsHeaders"
                     value="findRestaurants"
-                    onClick={this.handleHide}>
+                    onClick={this.handleFindClick}>
                     Find restaurants
                 </button>
                 <button
                     className="tripsHeaders"
                     value="savedRestaurants"
-                    onClick={this.handleShow}>
+                    onClick={this.handleSavedClick}>
                     Saved restaurants
                 </button>
-                <RestaurantList cityId={this.state.cityId} />
+                {componentToDisplay}
                 <button>Show more</button>
             </section>
         )

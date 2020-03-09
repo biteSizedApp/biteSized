@@ -3,10 +3,18 @@ import axios from 'axios';
 
 import SuggestedRestaurantList from './SuggestedRestaurantList';
 import Suggestions from './Suggestions';
+<<<<<<< HEAD
+=======
+
+>>>>>>> db78c627823b82f661deff40901b484ab2052320
 import firebase from '../../firebase';
 
 import Swal from 'sweetalert2';
 // import Autosuggest from 'react-autosuggest';
+<<<<<<< HEAD
+=======
+
+>>>>>>> db78c627823b82f661deff40901b484ab2052320
 
 // user types city name in input field,
 // axios call is made to retrieve an array of suggested cities that match

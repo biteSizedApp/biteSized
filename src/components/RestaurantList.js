@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import SuggestedRestaurantCard from './SuggestedRestaurantCard';
-// import Suggestions from './Suggestions'
 
 
 // the city id from the parent component is passed into axios call as props to retrieve the restaurant list as an array

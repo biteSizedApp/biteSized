@@ -19,7 +19,12 @@ class NewTrip extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            trip: {},
+            // stores the information about the trip, that will be saved to firebase
+            trip: {
+                tripName: '',
+                city: '',
+                restaurantList: [],
+            },
             cityName: "",
             cityId: "",
             suggestedCities: [],
@@ -68,8 +73,11 @@ class NewTrip extends Component {
             const suggestedCitiesNames = copyOfSuggestedCities.filter((city) => {
                 return this.state.cityName === city.name;
             })
+            // using an async callback function on the setState method which only executes after the state is set to make sure the correct cityId is passed. the callback function uses refs to call the getRestaurantList function in the RestaurantList component which is the axios call
             this.setState({
                 cityId: suggestedCitiesNames[0].id
+            }, () => {
+                    this.refs.child.getRestaurantList(this.state.cityId);
             })
         } else {
             // should add notification on the page (like sweet alerts)
@@ -80,6 +88,8 @@ class NewTrip extends Component {
             cityName: ""
         })
     }
+
+
 
     // this function listens for user typing, binds the city name to the user typing and fires the axios call 
     handleInputChange = () => {
@@ -143,8 +153,10 @@ class NewTrip extends Component {
                         onChange={this.handleInputChange}
                         value={this.state.cityName}
                     />
+                    {/* saves the trip object to firebase */}
                     <button>save trip</button>
                 </form>
+<<<<<<< HEAD
                 <button
                     className="tripsHeaders"
                     value="findRestaurants"
@@ -159,6 +171,11 @@ class NewTrip extends Component {
                 </button>
                 {componentToDisplay}
                 <button>Show more</button>
+=======
+                <button className="tripsHeaders">Find restaurants</button>
+                <button className="tripsHeaders">Saved restaurants</button>
+                <RestaurantList ref="child" cityId={this.state.cityId} />
+>>>>>>> 4660d6ece3fe7e9575878e14fb48ebf98452b090
             </section>
         )
     }

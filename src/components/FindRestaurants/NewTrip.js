@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import RestaurantList from './RestaurantList';
+import SuggestedRestaurantList from './SuggestedRestaurantList';
 import Suggestions from './Suggestions';
 // import Autosuggest from 'react-autosuggest';
 
@@ -12,7 +12,7 @@ import Suggestions from './Suggestions';
 // to display, we will map through the suggested cities
 // the index or id of the array to get the specific object from the array
 // users selects a suggestion from the suggestedCities array
-// get id from the city object and pass it to the RestaurantList as prop
+// get id from the city object and pass it to the SuggestedRestaurantList as prop
 
 class NewTrip extends Component {
     constructor() {
@@ -70,7 +70,7 @@ class NewTrip extends Component {
             const suggestedCitiesNames = copyOfSuggestedCities.filter((city) => {
                 return this.state.cityName === city.name;
             })
-            // using an async callback function on the setState method which only executes after the state is set to make sure the correct cityId is passed. the callback function uses refs to call the getRestaurantList function in the RestaurantList component which is the axios call
+            // using an async callback function on the setState method which only executes after the state is set to make sure the correct cityId is passed. the callback function uses refs to call the getRestaurantList function in the SuggestedRestaurantList component which is the axios call
             this.setState({
                 cityId: suggestedCitiesNames[0].id
             }, () => {
@@ -128,7 +128,7 @@ class NewTrip extends Component {
     }
 
 
-    // add saved restaurant list from RestaurantList component to the trip object in state (called in SuggestedRestaurantCard when user clicks 'add to list' button)
+    // add saved restaurant list from SuggestedRestaurantList component to the trip object in state (called in SuggestedRestaurantCard when user clicks 'add to list' button)
     addRestaurantListToTrip = (restaurantList) => {
         // copies the object within this.state.trip
         const prevState = this.state.trip;
@@ -164,7 +164,7 @@ class NewTrip extends Component {
                 <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button>
 
-                <RestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/>
+                <SuggestedRestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/>
                 {/* displays more results on click */}
             </section>
         )

@@ -8,7 +8,7 @@ import SuggestedRestaurantCard from './SuggestedRestaurantCard';
 // filter through the restaurant array by rating (display highest rating first)
 // map throughout the filtered array, pass each restaurant object into Card component as props
 
-class RestaurantList extends Component {
+class SuggestedRestaurantList extends Component {
   constructor() {
     super();
 
@@ -78,7 +78,7 @@ class RestaurantList extends Component {
 
   render() {
     return (
-      <div className="RestaurantList">
+      <div className="SuggestedRestaurantList">
         {/* Map through results array and passing the results on our Suggested card component */}
         {this.state.results.map((item) => {
           return (
@@ -99,5 +99,5 @@ class RestaurantList extends Component {
   }
 }
 
-export default RestaurantList;
+export default SuggestedRestaurantList;
 

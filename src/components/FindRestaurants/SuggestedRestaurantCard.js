@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 // parse needed information (e.g. name, address) with props
 // create a new, smaller restaurant object that can be save to the trip
 // render the component
-// when "add to list" button is clicked, pass the restaurant object from the state to the RestaurantList component, where it will be stored in an array
+// when "add to list" button is clicked, pass the restaurant object from the state to the SuggestedRestaurantList component, where it will be stored in an array
 
 
 class SuggestedRestaurantCard extends Component {

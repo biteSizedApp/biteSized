@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../../firebase';
+import Swal from 'sweetalert2';
 
 
 
@@ -8,11 +9,28 @@ class SavedTrip extends Component {
   // delete the card from firebase when user clicks delete button
   deleteCard = (e, tripKey) => {
     e.preventDefault();
-
     const dbRef = firebase.database().ref();
-
-    // find a child in the database with the given key and remove it
-    dbRef.child(tripKey).remove();
+    
+    Swal.fire({
+      title: 'Are you sure you want to delete your trip?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        ).then(() => {
+          // find a child in the database with the given key and remove it
+          dbRef.child(tripKey).remove();
+        })
+      }
+    })    
   }
 
 

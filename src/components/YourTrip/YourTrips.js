@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from '../../firebase';
 
 import SavedTrip from './SavedTrip';
 
@@ -11,25 +12,54 @@ class YourTrips extends Component {
     super();
   
     this.state = {
-      savedTrips = [],
+      savedTrips: [],
     }
+  }
+
+  componentDidMount() {
+    const dbRef = firebase.database().ref();
+
+    dbRef.on('value', (data) => {
+
+      const dbData = data.val();
+      const dbSavedTrips = [];
+
+      for (let key in dbData) {
+        const objToPush = {
+          key: key,
+          trip: dbData[key],
+        }
+
+        dbSavedTrips.push(objToPush);
+      }
+
+      this.setState({
+        savedTrips: dbSavedTrips,
+      }, () => {console.log(this.state.savedTrips)}); 
+    })
   }
 
 
   render() {
+
     return (
       <main>
         {/* is this an h3 ?*/}
         <h3>Your Trips</h3>
         {/* holds all the saved trips cards */}
-        <div className="yourTripsGrid">
+        <ul className="yourTripsGrid">
 
           {/* pass each restaurant object as props */}
-          {this.state.savedTrips.map((trip) => {
-            <SavedTrip tripObject={trip}/>
-          })}
+          {
+            this.state.savedTrips.map((item) => {
+              return (
+                <SavedTrip tripProp={item} key={item.key} />
+              )
+            })
+          }
+          
 
-        </div>
+        </ul>
 
       </main>
     );

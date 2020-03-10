@@ -40,7 +40,7 @@ class SuggestedRestaurantCard extends Component {
         
         } else {
             elementToDisplay = <p><i class="fas fa-check" aria-label="added to restaurant list"></i></p>
-            
+
         }
 
         return (

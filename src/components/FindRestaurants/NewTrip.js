@@ -53,6 +53,9 @@ class NewTrip extends Component {
                     // returns an object for cities that match the typed query AND are located within US or Canada
                     return value
                 }
+                else {
+                    return null
+                }
             });
             const topSuggestions = northAmericanCities.filter((value, index) => {
                 // shows the first 5 matched cities

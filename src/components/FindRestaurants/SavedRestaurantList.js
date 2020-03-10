@@ -25,7 +25,9 @@ class SavedRestaurantList extends Component {
     const filteredArray = copyOfSavedRestaurant.filter((item, index) => {
       if (restaurantObj.name !== item.name) {
         return item
-    } 
+    } else {
+      return null
+    }
     })
     this.setState({
       savedRestaurant: filteredArray

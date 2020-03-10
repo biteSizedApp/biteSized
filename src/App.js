@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import NewTrip from './components/FindRestaurants/NewTrip';
+import NewTrip from './components/findRestaurants/NewTrip';
 import Header from './components/Header';
 import Footer from './components/Footer';
 

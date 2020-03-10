@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import NewTrip from './components/findRestaurants/NewTrip';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+// import axios from "axios";
+
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+
+        <main>
+          <section className="about">
+            <div>
+              <h2>About</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
+            </div>
+          </section>
+          <NewTrip />
+        </main>
+
+        <Footer />
       </div>
     );
   }

@@ -9,6 +9,7 @@ class Header extends Component {
         <nav>
           <button>Home</button>
           <button>Your Trips</button>
+
         </nav>
         <h1>bite-sized travel</h1>
       </header>

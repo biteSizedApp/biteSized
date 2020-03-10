@@ -16,6 +16,22 @@ class SavedRestaurantList extends Component {
     })
   }
 
+  removeRestaurantFromList = (e, restaurantObj) => {
+    // if the restaurantobj.name is equal to the item that we're filtering over
+    // item.restaurnat.name
+    // if this name is not equal to
+
+    const copyOfSavedRestaurant = this.state.savedRestaurant;
+    const filteredArray = copyOfSavedRestaurant.filter((item, index) => {
+      if (restaurantObj.name !== item.name) {
+        return item
+    } 
+    })
+    this.setState({
+      savedRestaurant: filteredArray
+    })
+  }
+
   render() {
     return (
       <div>
@@ -23,8 +39,7 @@ class SavedRestaurantList extends Component {
         {this.state.savedRestaurant.map((item, index) => {
           console.log(item);
           return ( 
-            <SavedRestaurantCard restaurant={item} key={index} />
-
+            <SavedRestaurantCard restaurant={item} key={index} removeRestaurantFromList={this.removeRestaurantFromList}/>
 
           )
         })}

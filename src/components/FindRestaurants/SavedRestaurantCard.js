@@ -30,7 +30,7 @@ class SavedRestaurantCard extends Component {
         <p>{this.state.restaurant.rating}</p>
 
         {/* click to add to saved restaurants listThe icon will change to a check mark */}
-        <button onClick={(e) => { this.props.removeRestaurantToList(e, this.state.restaurant) }}><i className="fas fa-plus" aria-hidden></i>remove</button>
+        <button onClick={(e) => { this.props.removeRestaurantFromList(e, this.state.restaurant) }}><i className="fas fa-plus" aria-hidden></i>remove</button>
       </div>
     )
   }

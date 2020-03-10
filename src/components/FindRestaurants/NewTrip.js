@@ -21,6 +21,7 @@ class NewTrip extends Component {
         super();
         this.state = {
             // stores the information about the trip, that will be saved to firebase
+            // figure out a prop that will reset this trip object in app and header
             trip: {
                 tripName: '',
                 city: '',
@@ -196,6 +197,15 @@ class NewTrip extends Component {
             console.log('it doesnt work!');
 
         }
+        this.setState({
+            trip: {
+                tripName: '',
+                city: '',
+                restaurantList: [],
+            }
+        }, () => {
+            console.log(this.state.trip)
+        }) 
     }
 
     render() {

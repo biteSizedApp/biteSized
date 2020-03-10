@@ -19,7 +19,9 @@ class SavedRestaurantCard extends Component {
   render() {
     return (
       <div className="card">
-        <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
+        {this.state.restaurant.featuredImg !== ""
+        ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}/>
+        : <img src={require('../../assets/placeholder.png')} alt="no image available" />}
         <p>{this.state.restaurant.name}</p>
         <p>{this.state.restaurant.cuisineType}</p>
         <address>

@@ -35,6 +35,7 @@ class SuggestedRestaurantList extends Component {
       }
       //  saving the results to state
     }).then((results) => {
+      console.log(results.data.restaurants)
       if (this.props.cityId === this.state.cityId) {
         this.setState({
           results: this.state.results.concat(results.data.restaurants),

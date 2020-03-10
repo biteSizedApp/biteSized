@@ -30,7 +30,7 @@ class SuggestedRestaurantCard extends Component {
             added: true,
         })
     }
-
+    // test
     render() {
         console.log(this.state.restaurant)
         let elementToDisplay;

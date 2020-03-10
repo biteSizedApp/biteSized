@@ -20,31 +20,11 @@ class SuggestedRestaurantCard extends Component {
                 avgCostForTwo: props.restaurant.average_cost_for_two,
                 rating: props.restaurant.user_rating.aggregate_rating,
                 featuredImg: props.restaurant.featured_image,
-            },
-            added: false,
+            }
         }
-    }
-
-    addToList = (e) => {
-        this.props.addRestaurantToList(e, this.state.restaurant);
-        this.setState ({
-            added: true,
-        })
     }
 
     render() {
-        let elementToDisplay;
-
-        if (!this.state.added) {
-            return (
-                <button onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
-            )
-        } else {
-            return (
-                <p><i class="fas fa-check" aria-label="added to restaurant list"></i></p>
-            )
-        }
-
         return (
             <div className="card">
                 <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>

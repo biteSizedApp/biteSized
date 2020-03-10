@@ -35,7 +35,7 @@ class YourTrips extends Component {
 
       this.setState({
         savedTrips: dbSavedTrips,
-      }, () => {console.log(this.state.savedTrips)}); 
+      }); 
     })
   }
 

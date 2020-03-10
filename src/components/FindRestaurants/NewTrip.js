@@ -33,6 +33,7 @@ class NewTrip extends Component {
             userSelection: '',
             testState: false,
             listToDisplay: "",
+            isLoading: false
         }
     }
 
@@ -77,9 +78,13 @@ class NewTrip extends Component {
             })
             // using an async callback function on the setState method which only executes after the state is set to make sure the correct cityId is passed. the callback function uses refs to call the getRestaurantList function in the SuggestedRestaurantList component which is the axios call
             this.setState({
-                cityId: suggestedCitiesNames[0].id
+                cityId: suggestedCitiesNames[0].id,
+                isLoading: true
             }, () => {
-                this.refs.child.getRestaurantList();
+                this.refs.child.getRestaurantList(this.state.isLoading);
+                this.setState({
+                    isLoading: false
+                })
             })
         } else {
             // should add notification on the page (like sweet alerts)
@@ -101,6 +106,10 @@ class NewTrip extends Component {
                 if (this.state.cityName.length % 2 === 0) {
                     this.getInfo(this.state.cityName)
                 }
+            } else {
+                this.setState({
+                    suggestedCities: []
+                })
             }
         })
     }
@@ -209,6 +218,7 @@ class NewTrip extends Component {
     }
 
     render() {
+        console.log(this.state.cityName)
         return (
             <section className="NewTrip">
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />

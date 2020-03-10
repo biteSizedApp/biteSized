@@ -36,13 +36,11 @@ class SuggestedRestaurantCard extends Component {
         let elementToDisplay;
 
         if (!this.state.added) {
-            return (
-                <button onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
-            )
+            elementToDisplay = <button onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
+        
         } else {
-            return (
-                <p><i class="fas fa-check" aria-label="added to restaurant list"></i></p>
-            )
+            elementToDisplay = <p><i class="fas fa-check" aria-label="added to restaurant list"></i></p>
+            
         }
 
         return (
@@ -58,7 +56,7 @@ class SuggestedRestaurantCard extends Component {
                 <p>{this.state.restaurant.rating}</p>
 
                 {/* click to add to saved restaurants listThe icon will change to a check mark */}
-                <button onClick={ (e) => {this.props.addRestaurantToList(e, this.state.restaurant)}}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
+                {elementToDisplay}
             </div>
         )
     }

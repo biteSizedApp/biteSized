@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { findAllByPlaceholderText } from '@testing-library/react';
-
 
 // get restaurant object from the search
 // parse needed information (e.g. name, address) with props

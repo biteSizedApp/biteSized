@@ -46,8 +46,8 @@ class SuggestedRestaurantCard extends Component {
         return (
             <div className="card">
                 {this.state.restaurant.featuredImg !== ""
-                ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
-                : <img src={require('../../assets/placeholder.png')} alt=""></img>}
+                ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}/>
+                : <img src={require('../../assets/placeholder.png')} alt="no image available"/>}
                 <p>{this.state.restaurant.name}</p>
                 <p>{this.state.restaurant.cuisineType}</p>
                 <address>

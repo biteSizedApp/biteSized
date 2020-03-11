@@ -176,9 +176,7 @@ class NewTrip extends Component {
 
         this.setState({
             trip: prevState,
-        }
-        // , () => console.log(this.state)
-        )
+        })
     }
 
     saveToDb = (e) => {

@@ -56,7 +56,6 @@ class SavedTrip extends Component {
         </button>
 
         <ul>
-          {/* map through saved restaurant list here */}
           {this.props.tripProp.trip.restaurantList.map((restaurant, index) => {
             return (
               <li key={index}>{restaurant.name}</li>

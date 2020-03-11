@@ -324,21 +324,27 @@ button.tripsHeaders {
 
 .cardContainer {
   display: flex;
+  padding: 2%;
 }
 
 .cardContainer img {
   width: 50%;
   margin: 4%;
+  
  }
 
- .cardContainer textarea{
-   margin: 4%;
+.cardContainer textarea{
+  margin: 4%;
  }
 
- .cardContent {
-   margin: 4%;
-   text-align: left;
+.cardContent {
+  margin: 4%;
+  text-align: left;
  }
+
+.savedTripCard {
+  border: 1px solid black;
+}
 
 .restListContainer ul {
   display: flex;
@@ -353,6 +359,14 @@ button.tripsHeaders {
   border: 1px solid black;
   width: 45%;
   margin: 0 2%;
+}
+
+.formContainer {
+  margin: 4%;
+}
+
+.deleteButton {
+
 }
 
 

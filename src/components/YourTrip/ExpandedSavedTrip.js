@@ -26,10 +26,10 @@ class ExpandedSavedTrip extends Component {
                         <p>{restaurant.phoneNumber}</p>
                       </address>
                       <p>Average cost for two: ${restaurant.avgCostForTwo}</p>
-                      <span>
-                        <p>{restaurant.rating}</p>
-                      </span>
                     </div>
+                    <p>
+                      <span className="rating">{restaurant.rating}</span>
+                    </p>
                   </div>
                   <div className="formContainer">
                     <form action="">
@@ -44,7 +44,6 @@ class ExpandedSavedTrip extends Component {
                       </textarea>
                       <button type="submit">Add Note</button>
                     </form>
-
                   </div>
                 </li>
               );

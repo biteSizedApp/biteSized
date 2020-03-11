@@ -6,45 +6,37 @@ class SavedRestaurantList extends Component {
     super()
     this.state = {
       // storing the saved restaurant object
-      savedRestaurant: []
+      savedRestaurant: props.savedRestaurants,
     }
   }
 
-  componentDidMount() {
-    this.setState({
-      savedRestaurant: this.props.savedRestaurants
-    })
-  }
-
-  removeRestaurantFromList = (e, restaurantObj) => {
+  
+  removeRestaurantFromList = (restaurantObj) => {
     // if the restaurantobj.name is equal to the item that we're filtering over
     // item.restaurnat.name
     // if this name is not equal to
 
-    const copyOfSavedRestaurant = this.state.savedRestaurant;
-    const filteredArray = copyOfSavedRestaurant.filter((item, index) => {
+    const copyOfSavedRestaurant = [...this.state.savedRestaurant];
+    const filteredArray = copyOfSavedRestaurant.filter((item) => {
       if (restaurantObj.name !== item.name) {
         return item
-    } else {
-      return null
-    }
+      } else {
+        return null
+      }
     })
     this.setState({
       savedRestaurant: filteredArray
+    }, () => {
+        this.props.removeRestaurantFromList(this.state.savedRestaurant);
     })
+    
   }
 
   render() {
     return (
       <div>
         {/* Map through results array and passing the results on our saved restaurant card component */}
-        {this.state.savedRestaurant.map((item, index) => {
-          console.log(item);
-          return ( 
-            <SavedRestaurantCard restaurant={item} key={index} removeRestaurantFromList={this.removeRestaurantFromList}/>
-
-          )
-        })}
+        <SavedRestaurantCard restaurants={this.state.savedRestaurant} removeRestaurantFromList={this.removeRestaurantFromList}/>
       </div>
     )
   }

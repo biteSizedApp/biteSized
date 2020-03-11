@@ -32,7 +32,6 @@ class SuggestedRestaurantCard extends Component {
     }
 
     render() {
-        console.log(this.state.restaurant)
         let elementToDisplay;
 
         if (!this.state.added) {

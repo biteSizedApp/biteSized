@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 
 import NewTrip from './components/findRestaurants/NewTrip';
-import YourTrips from './components/yourTrip/YourTrips';
+import YourTrips from './components/YourTrip/YourTrips.js';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 // import axios from "axios";
 
 class App extends Component {
-
 
   render() {
     return (
@@ -24,7 +23,8 @@ class App extends Component {
             </section>
           </div>
           <div className="container">
-          <YourTrips />
+          <NewTrip />
+          {/* <YourTrips /> */}
         </div>
 
         <Footer />

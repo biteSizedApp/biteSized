@@ -177,9 +177,9 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
 }
 
 /* CARD STYLING */
-.container {
+/* .container {
   width: 100%;
-}
+} */
 
 .NewTrip {
   display: flex;

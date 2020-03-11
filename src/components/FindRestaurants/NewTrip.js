@@ -62,9 +62,17 @@ class NewTrip extends Component {
                 // shows the first 5 matched cities
                 return index <= 4
             })
-            this.setState({
-                suggestedCities: topSuggestions
-            })
+            if(cityName !== '') {
+                this.setState({
+                    suggestedCities: topSuggestions
+                }, () => {
+                    if(!this.state.cityName) {
+                        this.setState({
+                            suggestedCities: []
+                        })
+                    }
+                })
+            }
         }).catch((error) => {
             console.log(error)
         })
@@ -109,10 +117,6 @@ class NewTrip extends Component {
                 if (this.state.cityName.length % 2 === 0) {
                     this.getInfo(this.state.cityName)
                 }
-            } else {
-                this.setState({
-                    suggestedCities: []
-                })
             }
         })
     }

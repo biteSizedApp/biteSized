@@ -8,7 +8,6 @@ const Suggestions = (props) => {
             {city.name}
         </option>
     ))
-
     return (
         props.results.length !== 0
         ? <select id="suggestionsList" onChange={(e) => props.getUserChoice(e)} required value="none">

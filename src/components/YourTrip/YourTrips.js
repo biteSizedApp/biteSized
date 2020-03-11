@@ -39,7 +39,6 @@ class YourTrips extends Component {
     })
   }
 
-
   render() {
 
     return (

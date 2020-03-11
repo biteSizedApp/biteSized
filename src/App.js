@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import NewTrip from './components/findRestaurants/NewTrip';
-import YourTrips from './components/yourTrip/YourTrips';
+import YourTrips from './components/yourTrip/YourTrips.js';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -12,19 +12,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="main">
         <Header />
-
-        <main>
-          <section className="about">
-            <div>
-              <h2>About</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
-            </div>
-          </section>
+          <div className="wrapper">
+            <section className="about">
+              <div>
+                <h2>About</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
+              </div>
+            </section>
+          </div>
+          <div className="container">
           <NewTrip />
           <YourTrips />
-        </main>
+        </div>
 
         <Footer />
       </div>

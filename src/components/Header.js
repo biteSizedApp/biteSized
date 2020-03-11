@@ -6,12 +6,20 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <nav>
-          <button>Home</button>
-          <button>Your Trips</button>
+        <div className="headerTitle">
+          <img className="icon" src={require("../assets/headerIcon.png")} alt="icon of utensils on a plate" />
 
-        </nav>
-        <h1>bite-sized travel</h1>
+          <div className="title">
+            <h1>bite-sized travel</h1>
+          </div>
+
+          <nav>
+            <button>Home</button>
+            <button>Your Trips</button>
+          </nav>
+        </div>
+        <div className="heroImage">
+        </div>
       </header>
     );
   }

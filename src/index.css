@@ -1,18 +1,326 @@
-body {
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
+
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
+
+html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+
+*, *:before, *:after {box-sizing: inherit}
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@500&display=swap');
+
+
+/* added css variables for the brand colours so its easier to access. Just type var(--rootVariableName) to use it as your value. */
+
+:root {
+  --brandColourRed:#D03529;
+  --brandColourPinkishRed: #E7635D;
+  --brandColourBeige:#EDEDC3;
+}
+
+h1,
+h2,
+p,
+main,
+div,
+img,
+section, 
+ul,
+li,
+body,
+button {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+html, body {
+  font-size: 62.5%;
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+  width: 100%;
+  height: 100%;
+	overflow-x: hidden;
 }
 
-img {
-  width: 400px;
-  /* height: 400px; */
+body {
+  font-size: 1.5rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.heroImage {
+	width: 100%;
+	min-height: 100vh;
+	background: url(./assets/hero.jpg) no-repeat top center fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.headerSection {
+  display: flex;
+}
+
+.headerTitle {
+  display: flex;
+}
+
+.title {
+  margin: 0 auto;
+}
+
+/* applied position relative to the title so we could get it ccntered exactly where we want it. */
+.title h1 {
+  position: relative;
+  left: 12%;
+}
+
+.aboutSection {
+  margin: 2% 0;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+main {
+  display: flex;
+}
+
+h1 {
+  font-size: 4rem;
+  padding: 1rem;
+  letter-spacing: 0.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 3rem;
+  padding: 2rem;
+}
+
+h3 {
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+p {
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+}
+
+/* display flexed the form so that the inputs are stacked on top of each other */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  font-size: 1.5rem;
+  margin: 1% 0;
+}
+
+.icon {
+  width: 65px;
+  height: 65px;
+  padding: 1rem;
+}
+
+/* centered the input boxes */
+input[type=text],
+input[type=search] {
+  width: 70%;
+  height: 10px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+}
+
+nav button:hover,
+button:hover {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+nav button {
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  color: #000000;
+}
+
+/* Put these under one rule to make it DRY-er */
+nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .tripsHeaders:focus, .showMore:focus {
+  border-bottom: 3px solid var(--brandColourBeige);
+}
+
+/* Added font weight to the hover */
+.tripsHeaders:hover {
+  font-weight: 700;
+}
+
+/* CARD STYLING */
+/* .container {
+  width: 100%;
+} */
+
+.NewTrip {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listContainer {
+  flex-direction: column;
+  width: 45%;
+}
+
+.cardSection {
+    width: 100%;
+}
+
+.card {
+  width: 100%;
+  margin: 2rem;
+  padding: 2.7rem;
+  border: 1px solid rgb(100, 100, 100);
+  overflow: hidden;
+  white-space: normal;
+  box-sizing: content-box;
+}
+
+.card img {
+  float: left;
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  padding-right: 2.7rem;
+}
+
+.card p {
+  text-align: left;
+}
+
+.addToList {
+  float: right;
+  position: relative;
+  top: -20%;
+  right: -4%;
+}
+
+.restaurantTitle {
+  font-size: 1.7rem;
+}
+
+.restaurantName {
+  font-weight: 700;
+}
+
+address {
+  margin: 2rem;
+}
+
+.addToList {
+  color: #000000;
+  background-color: transparent;
+}
+
+.rating {
+  float: right;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--brandColourPinkishRed)
+}
+/* END OF CARD STYLES */
+
+/* removed border bottom style and added above for hover */
+.showMore {
+  color: #000000;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin: 3rem;
+  background-color: transparent;
+}
+
+button {
+  font-family: Barlow;
+  padding: 1rem;
+  margin: 1rem;
+  color: #ffffff;
+  border: none;
+  background-color: var(--brandColourRed);
+}
+
+/* changed the background colour of the buttons for "saved restaurants" and "find restaurants" */
+button.tripsHeaders {
+  background-color: #ffffff;
+  text-align: right;
+  color: #000000;
+  font-size: 2rem;
+}
+
+/* centered the save trip button */
+form button {
+  margin: 1rem auto;
+  width: 20%;
+}
+
+.cardContainer {
+  display: flex;
+}
+
+.cardContainer img {
+  width: 50%;
+  margin: 4%;
+ }
+
+ .cardContainer textarea{
+   margin: 4%;
+ }
+
+ .cardContent {
+   margin: 4%;
+   text-align: left;
+ }
+
+.restListContainer ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.restListContainer form {
+  width: 100%;
+}
+.expandedSavedTrip li {
+  border: 1px solid black;
+  width: 45%;
+  margin: 0 2%;
+}
+
+
+footer {
+  color: #ffffff;
+  background-color: #5D5D5D;
+  padding: 1.5rem;
 }

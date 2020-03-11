@@ -233,6 +233,8 @@ class NewTrip extends Component {
                     <h3>new trip</h3>
                     <label htmlFor="tripName">Please enter a name for your trip</label>
                     <input type="text" id="tripName" onChange={this.handleNameInputChange}/>
+                    {/* saves the trip object to firebase */}
+                    <button id="saveTrip" onClick={this.saveToDb}>save trip</button>
                     <label htmlFor="citySearch">Where are you going?</label>
                     <input
                         autoComplete="off"
@@ -245,24 +247,23 @@ class NewTrip extends Component {
                     <button id="citySearchSubmit">GO</button>
                 </form>
 
-                {/* saves the trip object to firebase */}
-                <button id="saveTrip" onClick={this.saveToDb}>save trip</button>
-
-                <div className="toggleTabs">
-                    <button
-                        className="tripsHeaders"
-                        value="findRestaurants"
-                        onClick={this.handleFindClick}>
-                        Find restaurants
-                    </button>
-                    <button
-                        className="tripsHeaders"
-                        value="savedRestaurants"
-                        onClick={this.handleSavedClick}>
-                        Saved restaurants
-                    </button>
+                <div className="listContainer">
+                    <div className="toggleTabs">
+                        <button
+                            className="tripsHeaders"
+                            value="findRestaurants"
+                            onClick={this.handleFindClick}>
+                            Find restaurants
+                        </button>
+                        <button
+                            className="tripsHeaders"
+                            value="savedRestaurants"
+                            onClick={this.handleSavedClick}>
+                            Saved restaurants
+                        </button>
+                        <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
+                    </div>
                 </div>
-                <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
                 {/* {/* <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button> */}
 

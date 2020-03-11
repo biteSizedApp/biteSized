@@ -128,7 +128,9 @@ class NewTrip extends Component {
             cityName: event.target.value,
             // assigns the new object with added city name to the state
             trip: prevState,
-        }, () => console.log(this.state))
+        }
+        // , () => console.log(this.state)
+        )
     }
 
     handleNameInputChange = (event) => {
@@ -139,7 +141,9 @@ class NewTrip extends Component {
 
         this.setState({
             trip: prevState,
-        }, () => console.log(this.state))
+        }
+        // , () => console.log(this.state)
+        )
     }
 
     // this function will show the default restaurant list 
@@ -166,7 +170,9 @@ class NewTrip extends Component {
 
         this.setState({
             trip: prevState,
-        }, () => console.log(this.state))
+        }
+        // , () => console.log(this.state)
+        )
     }
 
     saveToDb = (e) => {
@@ -220,7 +226,6 @@ class NewTrip extends Component {
     }
 
     render() {
-        console.log(this.state.cityName)
         return (
             <section className="NewTrip">
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />

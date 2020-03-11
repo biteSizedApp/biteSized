@@ -39,7 +39,7 @@ class SuggestedRestaurantList extends Component {
         }
         //  saving the results to state
       }).then((results) => {
-        console.log(results.data.restaurants)
+        // console.log(results.data.restaurants)
         if (this.props.cityId === this.state.cityId) {
           this.setState({
             results: this.state.results.concat(results.data.restaurants),
@@ -74,7 +74,7 @@ class SuggestedRestaurantList extends Component {
   // takes an individual restaurant object and appends it to savedRestaurants array in the state. This function is passed as props to SuggestedRestaurantCard component and is executed when user clicks the "add to list" button. It also calls a function from parent (NewTrip) that passes the savedRestarants array to it, and saves it in its state (in trip object)
   addRestaurantToList = (e, restaurantObj) => {
     e.preventDefault();
-    console.log('saved restaurant: ', restaurantObj);
+    // console.log('saved restaurant: ', restaurantObj);
 
     // 
     this.setState(prevState => {
@@ -84,7 +84,6 @@ class SuggestedRestaurantList extends Component {
     }, () => {
       //  callback from NewTrip.js
       this.props.addRestaurantListToTrip(this.state.savedRestaurants);
-
     })
   }
 
@@ -98,15 +97,22 @@ class SuggestedRestaurantList extends Component {
     })
   }
 
+  removeRestaurantFromList = (savedRestaurants) => {
+    this.setState({
+      savedRestaurants: savedRestaurants
+    })
+  }
+
 
 
   render() {
+
     return (
       <div className="SuggestedRestaurantList">
         {
         this.props.listToDisplay === 'displaySavedRestos'
         // if the saved restaurant button is clicked, show the SavedRestaurnatList component
-        ? <SavedRestaurantList ref="child" savedRestaurants={this.state.savedRestaurants}/>
+        ? <SavedRestaurantList ref="child" savedRestaurants={this.state.savedRestaurants} removeRestaurantFromList={this.removeRestaurantFromList}/>
         : (this.state.results.length === 0 && this.state.isLoading === true)
         ? <h2>loading restaurants...</h2>
         : this.state.results.map((item) => {

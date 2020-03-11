@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 // get restaurant object from the search
 // parse needed information (e.g. name, address) with props
 // create a new, smaller restaurant object that can be save to the trip
@@ -33,19 +32,21 @@ class SuggestedRestaurantCard extends Component {
     }
 
     render() {
+        console.log(this.state.restaurant)
         let elementToDisplay;
 
         if (!this.state.added) {
             elementToDisplay = <button onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
         
         } else {
-            elementToDisplay = <p><i class="fas fa-check" aria-label="added to restaurant list"></i></p>
-
+            elementToDisplay = <p><i className="fas fa-check" aria-label="added to restaurant list"></i></p
         }
 
         return (
             <div className="card">
-                <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
+                {this.state.restaurant.featuredImg !== ""
+                ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}/>
+                : <img src={require('../../assets/placeholder.png')} alt="no image available"/>}
                 <p>{this.state.restaurant.name}</p>
                 <p>{this.state.restaurant.cuisineType}</p>
                 <address>

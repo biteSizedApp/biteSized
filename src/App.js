@@ -21,12 +21,11 @@ class App extends Component {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
               </div>
             </section>
-          </div>
           <div className="container">
           <NewTrip />
           {/* <YourTrips /> */}
         </div>
-
+      </div>
         <Footer />
       </div>
     );

@@ -50,7 +50,7 @@ body {
 }
 
 .wrapper {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0;
 }
@@ -128,6 +128,7 @@ form {
   margin-bottom: 3rem;
   position: -webkit-sticky;
   position: sticky;
+  margin-right: 6rem;
 }
 
 label {
@@ -150,22 +151,23 @@ form button {
 /* centered the input boxes */
 input[type=text],
 input[type=search] {
-  width: 70%;
   height: 10px;
-  margin: 0 auto;
   padding: 2rem;
   text-align: center;
   font-family: 'Barlow', sans-serif;
 }
 
 input[type=search] {
-  width: 55%;
+  width: 82%;
   display: inline-block;
   -webkit-appearance: textfield;
 }
 
+input[type=text],
+input[type=search],
 .cityInput {
-  width: 100%;
+  width: calc(100% - 10px);
+  margin: 0 auto;
 }
 
 .submitCity {
@@ -324,6 +326,18 @@ footer {
   padding: 1.5rem;
 }
 
+@media(max-width: 1175px) {
+  form {
+    margin: 2rem;
+  }
+}
+
+@media (max-width: 994px) {
+  .saveTripButton {
+    width: 22%;
+  }
+}
+
 @media (max-width: 994px) {
   .saveTripButton {
     width: 22%;
@@ -340,11 +354,9 @@ footer {
   .NewTrip {
     display: block;
   }
-
   form {
-    width: 100%;
+    width: 80%;;
   }
-
   .listContainer {
     width: 85%;
   }
@@ -353,5 +365,8 @@ footer {
   }
   .card {
     width: 85%;
+  }
+  .saveTripButton {
+    width: 18%;
   }
 }

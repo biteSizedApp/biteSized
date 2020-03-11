@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import firebase from '../../firebase';
+import Swal from 'sweetalert2';
 
 import SuggestedRestaurantList from './SuggestedRestaurantList';
 import Suggestions from './Suggestions';
-import firebase from '../../firebase';
 
-import Swal from 'sweetalert2';
+
+
 
 // user types city name in input field,
 // axios call is made to retrieve an array of suggested cities that match
@@ -46,7 +48,7 @@ class NewTrip extends Component {
             method: "GET",
             responseType: "json",
             headers: {
-                "user-key": "7cec49712d95851f70de3b8beaf245d9",
+                "user-key": "f13ce4f744fbf8bc4b1497187a1d6ad4",
             }
         }).then((res) => {
             const northAmericanCities = res.data.location_suggestions.filter((value) => {
@@ -62,9 +64,17 @@ class NewTrip extends Component {
                 // shows the first 5 matched cities
                 return index <= 4
             })
-            this.setState({
-                suggestedCities: topSuggestions
-            })
+            if(cityName !== '') {
+                this.setState({
+                    suggestedCities: topSuggestions
+                }, () => {
+                    if(!this.state.cityName) {
+                        this.setState({
+                            suggestedCities: []
+                        })
+                    }
+                })
+            }
         }).catch((error) => {
             console.log(error)
         })
@@ -109,10 +119,6 @@ class NewTrip extends Component {
                 if (this.state.cityName.length % 2 === 0) {
                     this.getInfo(this.state.cityName)
                 }
-            } else {
-                this.setState({
-                    suggestedCities: []
-                })
             }
         })
     }
@@ -128,7 +134,9 @@ class NewTrip extends Component {
             cityName: event.target.value,
             // assigns the new object with added city name to the state
             trip: prevState,
-        }, () => console.log(this.state))
+        }
+        // , () => console.log(this.state)
+        )
     }
 
     handleNameInputChange = (event) => {
@@ -139,7 +147,9 @@ class NewTrip extends Component {
 
         this.setState({
             trip: prevState,
-        }, () => console.log(this.state))
+        }
+        // , () => console.log(this.state)
+        )
     }
 
     // this function will show the default restaurant list 
@@ -166,7 +176,7 @@ class NewTrip extends Component {
 
         this.setState({
             trip: prevState,
-        }, () => console.log(this.state))
+        })
     }
 
     saveToDb = (e) => {
@@ -220,9 +230,9 @@ class NewTrip extends Component {
     }
 
     render() {
-        console.log(this.state.cityName)
         return (
             <section className="NewTrip">
+                <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
                     <form action="SUBMIT" onSubmit={this.getCityId}>
                         <h3>new trip</h3>
                         <label htmlFor="citySearch">Where are you going?</label>
@@ -235,9 +245,8 @@ class NewTrip extends Component {
                                 ref={input => this.search = input}
                                 onChange={this.handleCityInputChange}
                                 value={this.state.cityName}
-                            />
-                            <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
-                            <button id="citySearchSubmit" className="submitCity">GO</button>
+                        />
+                        <button id="citySearchSubmit" className="submitCity">GO</button>
                         </div>
                             <label htmlFor="tripName">Please enter a name for your trip</label>
                             <input
@@ -250,6 +259,22 @@ class NewTrip extends Component {
                     </form>
 
                 <div className="listContainer">
+                    <button
+                        className="tripsHeaders"
+                        value="findRestaurants"
+                        onClick={this.handleFindClick}>
+                        Find restaurants
+                    </button>
+                    <button
+                        className="tripsHeaders"
+                        value="savedRestaurants"
+                        onClick={this.handleSavedClick}>
+                        Saved restaurants
+                    </button>
+                        <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
+                </div>
+
+                    {/* <div className="toggleTabs">
                         <button
                             className="tripsHeaders"
                             value="findRestaurants"
@@ -262,14 +287,9 @@ class NewTrip extends Component {
                             onClick={this.handleSavedClick}>
                             Saved restaurants
                         </button>
-                        <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
-                </div>
-                {/* {/* <button className="tripsHeaders">Find restaurants</button>
-                <button className="tripsHeaders">Saved restaurants</button> */}
-
-                {/* <SuggestedRestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/> */}
-                {/* displays more results on click */}
-            </section>
+                    </div>
+                    <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} /> */}
+                </section>
         )
     }
 }

@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+  NavLink
+} from 'react-router-dom';
 
 
 
@@ -10,14 +13,21 @@ class Header extends Component {
           <img className="icon" src={require("../assets/headerIcon.png")} alt="icon of utensils on a plate" />
 
           <div className="title">
-            <h1>bite-sized travel</h1>
+              <h1>bite-sized travel</h1>
           </div>
 
           <nav>
-            <button>Home</button>
-            <button>Your Trips</button>
+            <ul>
+              <li>
+                <NavLink to="/" exact>Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/yourTrips" exact>Your Trips</NavLink> 
+              </li>
+            </ul>  
           </nav>
         </div>
+        
         <div className="heroImage">
         </div>
       </header>

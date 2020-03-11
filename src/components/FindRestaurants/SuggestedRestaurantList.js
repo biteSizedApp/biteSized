@@ -28,7 +28,7 @@ class SuggestedRestaurantList extends Component {
   // OLGA: i'm not getting filtered results if we write axios call in componentDidMount. If i write it in componentDidUpdate i do get the filtered results, but it keeps making the call indefinitely
   getRestaurantList = (isLoading) => {
     this.setState({
-      isLoading: isLoading
+      isLoading
     }, () => {
       axios({
         url: `https://developers.zomato.com/api/v2.1/search?entity_id=${this.props.cityId}&entity_type=city&count=10&sort=rating&start=${this.state.start}`,
@@ -39,7 +39,6 @@ class SuggestedRestaurantList extends Component {
         }
         //  saving the results to state
       }).then((results) => {
-        console.log(results.data.restaurants)
         if (this.props.cityId === this.state.cityId) {
           this.setState({
             results: this.state.results.concat(results.data.restaurants),
@@ -74,9 +73,7 @@ class SuggestedRestaurantList extends Component {
   // takes an individual restaurant object and appends it to savedRestaurants array in the state. This function is passed as props to SuggestedRestaurantCard component and is executed when user clicks the "add to list" button. It also calls a function from parent (NewTrip) that passes the savedRestarants array to it, and saves it in its state (in trip object)
   addRestaurantToList = (e, restaurantObj) => {
     e.preventDefault();
-    console.log('saved restaurant: ', restaurantObj);
 
-    // 
     this.setState(prevState => {
       return {
         savedRestaurants: [...prevState.savedRestaurants, restaurantObj]
@@ -84,7 +81,6 @@ class SuggestedRestaurantList extends Component {
     }, () => {
       //  callback from NewTrip.js
       this.props.addRestaurantListToTrip(this.state.savedRestaurants);
-
     })
   }
 
@@ -94,20 +90,26 @@ class SuggestedRestaurantList extends Component {
       start: this.state.start + 10
     }, () => {
       this.getRestaurantList(this.state.cityId);
-      console.log(this.state.start);
+    })
+  }
+
+  removeRestaurantFromList = (savedRestaurants) => {
+    this.setState({
+      savedRestaurants: savedRestaurants
     })
   }
 
 
 
   render() {
+
     return (
       <div className="SuggestedRestaurantList">
         {
         this.props.listToDisplay === 'displaySavedRestos'
         // if the saved restaurant button is clicked, show the SavedRestaurnatList component
-        ? <SavedRestaurantList ref="child" savedRestaurants={this.state.savedRestaurants}/>
-        : (this.state.results.length === 0 && this.state.isLoading === true)
+        ? <SavedRestaurantList ref="child" savedRestaurants={this.state.savedRestaurants} removeRestaurantFromList={this.removeRestaurantFromList}/>
+        : ( this.state.isLoading === true )
         ? <h2>loading restaurants...</h2>
         : this.state.results.map((item) => {
           return (

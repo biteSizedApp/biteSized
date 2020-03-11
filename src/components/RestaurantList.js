@@ -30,7 +30,7 @@ class RestaurantList extends Component {
       method: "GET",
       responseType: "json",
       headers: {
-        "user-key": "cff8655f9125581c7db4a5e95cd60d6f",
+        "user-key": "f13ce4f744fbf8bc4b1497187a1d6ad4",
       }
       //  saving the results to state
     }).then((results) => {

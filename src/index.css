@@ -36,6 +36,7 @@ button {
 
 
 html, body {
+  color: #404040;
   font-size: 62.5%;
   text-align: center;
   font-family: 'Barlow', sans-serif;
@@ -128,12 +129,20 @@ form {
   flex-direction: column;
   width: 45%;
   padding: 0;
-  margin: 0;
+  margin-bottom: 3rem;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 label {
   font-size: 1.5rem;
   margin: 1% 0;
+}
+
+/* centered the save trip button */
+form button {
+  margin: 1rem auto;
+  width: 20%;
 }
 
 .icon {
@@ -154,7 +163,19 @@ input[type=search] {
 }
 
 input[type=search] {
+  width: 55%;
+  display: inline-block;
   -webkit-appearance: textfield;
+}
+
+.cityInput {
+  width: 100%;
+}
+
+.submitCity {
+  width: 85px;
+  padding: 1.3rem;
+  margin-left: 1rem;
 }
 
 nav button:hover,
@@ -181,10 +202,6 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
 }
 
 /* CARD STYLING */
-/* .container {
-  width: 100%;
-} */
-
 .NewTrip {
   display: flex;
   flex-wrap: wrap;
@@ -192,16 +209,17 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
 
 .listContainer {
   flex-direction: column;
-  width: 45%;
+  flex-wrap: wrap;
+  width: 50%;
 }
 
 .cardSection {
-    width: 100%;
+  margin: 2rem 0;
+  width: 100%;
 }
 
 .card {
-  width: 100%;
-  margin: 2rem;
+  width: 90%;
   padding: 2.7rem;
   border: 1px solid rgb(100, 100, 100);
   overflow: hidden;
@@ -221,11 +239,36 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
   text-align: left;
 }
 
-.addToList {
+.toggleTabs {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+#addToList,
+#addedToList {
   float: right;
   position: relative;
-  top: -20%;
+  background-color: transparent;
+}
+
+#addToList {
+  right: -3%;
+}
+
+#addedToList {
+  right: -2%;
+}
+
+#close,
+#addToList {
+  color: #000000;
+}
+
+#closeCard {
+  float: right;
+  position: relative;
   right: -4%;
+  background-color: transparent;
 }
 
 .restaurantTitle {
@@ -240,11 +283,6 @@ address {
   margin: 2rem;
 }
 
-.addToList {
-  color: #000000;
-  background-color: transparent;
-}
-
 .rating {
   float: right;
   font-size: 3.5rem;
@@ -257,9 +295,9 @@ address {
 .showMore {
   color: #000000;
   font-size: 1.9rem;
-  font-weight: 700;
   margin: 3rem;
   background-color: transparent;
+  font-weight: 700;
 }
 
 button {
@@ -279,10 +317,9 @@ button.tripsHeaders {
   font-size: 2rem;
 }
 
-/* centered the save trip button */
-form button {
-  margin: 1rem auto;
-  width: 20%;
+.saveTripButton {
+  background-color: #000000;
+  padding: 1.7rem;
 }
 
 .cardContainer {
@@ -323,4 +360,36 @@ footer {
   color: #ffffff;
   background-color: #5D5D5D;
   padding: 1.5rem;
+}
+
+@media (max-width: 994px) {
+  .saveTripButton {
+    width: 22%;
+  }
+}
+
+@media (max-width: 960px) {
+  .NewTrip,
+  form,
+  .listContainer,
+  .card {
+    margin: 0 auto;
+  }
+  .NewTrip {
+    display: block;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .listContainer {
+    width: 85%;
+  }
+  .cardSection {
+    margin: 2rem 0;
+  }
+  .card {
+    width: 85%;
+  }
 }

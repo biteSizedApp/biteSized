@@ -229,26 +229,33 @@ class NewTrip extends Component {
         return (
             <section className="NewTrip">
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
-                <form action="SUBMIT" onSubmit={this.getCityId}>
-                    <h3>new trip</h3>
-                    <label htmlFor="tripName">Please enter a name for your trip</label>
-                    <input type="text" id="tripName" onChange={this.handleNameInputChange}/>
-                    {/* saves the trip object to firebase */}
-                    <button id="saveTrip" onClick={this.saveToDb}>save trip</button>
-                    <label htmlFor="citySearch">Where are you going?</label>
-                    <input
-                        autoComplete="off"
-                        type="search"
-                        id="citySearch"
-                        ref={input => this.search = input}
-                        onChange={this.handleCityInputChange}
-                        value={this.state.cityName}
-                    />
-                    <button id="citySearchSubmit">GO</button>
-                </form>
+                    <form action="SUBMIT" onSubmit={this.getCityId}>
+                        <h3>new trip</h3>
+                        <label htmlFor="citySearch">Where are you going?</label>
+                        <div class="cityInput">
+                            <input
+                                autoComplete="off"
+                                type="search"
+                                id="citySearch"
+                                placeholder="search cities near you"
+                                ref={input => this.search = input}
+                                onChange={this.handleCityInputChange}
+                                value={this.state.cityName}
+                            />
+                            <button id="citySearchSubmit" className="submitCity">GO</button>
+                        </div>
+                            <label htmlFor="tripName">Please enter a name for your trip</label>
+                            <input
+                                type="text"
+                                className="newTripName"
+                                placeholder="create a new trip"
+                                onChange={this.handleNameInputChange}
+                            />
+                            {/* saves the trip object to firebase */}
+                            <button id="saveTrip" className="saveTripButton" onClick={this.saveToDb}>save trip</button>
+                    </form>
 
                 <div className="listContainer">
-                    <div className="toggleTabs">
                         <button
                             className="tripsHeaders"
                             value="findRestaurants"
@@ -262,7 +269,6 @@ class NewTrip extends Component {
                             Saved restaurants
                         </button>
                         <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
-                    </div>
                 </div>
                 {/* {/* <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button> */}

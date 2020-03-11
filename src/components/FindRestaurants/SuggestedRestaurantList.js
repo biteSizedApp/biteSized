@@ -124,7 +124,7 @@ class SuggestedRestaurantList extends Component {
         )}
         {
         this.state.results.length !== 0 && this.props.listToDisplay !== 'displaySavedRestos'
-        ? <button onClick={this.displayMore}>Show more</button>
+        ? <button className="showMore" onClick={this.displayMore}>Show more</button>
         : null
         }
       </div>

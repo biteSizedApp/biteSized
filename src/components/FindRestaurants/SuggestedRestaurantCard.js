@@ -29,29 +29,27 @@ class SuggestedRestaurantCard extends Component {
         let elementToDisplay;
 
         if (!this.state.added) {
-            elementToDisplay = <button onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
+            elementToDisplay = <button id="addToList" onClick={this.addToList}><i id="addToList" className="fas fa-plus" aria-hidden></i>Add to list</button>
         
         } else {
-            elementToDisplay = <p><i className="fas fa-check" aria-label="added to restaurant list"></i></p>
+            elementToDisplay = <p><i id="addedToList" className="fas fa-check" aria-label="added to restaurant list"></i></p>
         }
 
         return (
             <div className="cardSection">
                 <div className="card">
+                    {/* click to add to saved restaurants listThe icon will change to a check mark */}
+                    {elementToDisplay}
                     {this.state.restaurant.featuredImg !== ""
                     ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}/>
                     : <img src={require('../../assets/placeholder.png')} alt="no image available"/>}
-                    <p>{this.state.restaurant.name}</p>
-                    <p>{this.state.restaurant.cuisineType}</p>
+                    <p><span className="restaurantTitle restaurantName">{this.state.restaurant.name}</span> - {this.state.restaurant.cuisineType}</p>
                     <address>
                         <p>{this.state.restaurant.address}</p>
                         <p>{this.state.restaurant.phoneNumber}</p>
                     </address>
                     <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
-                    <p>{this.state.restaurant.rating}</p>
-
-                    {/* click to add to saved restaurants listThe icon will change to a check mark */}
-                    {elementToDisplay}
+                    <p><span className="rating">{this.state.restaurant.rating}</span></p>
                 </div>
             </div>
         )

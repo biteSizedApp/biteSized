@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom'
 
-import NewTrip from './components/FindRestaurants/NewTrip';
-import YourTrips from './components/YourTrip/YourTrips';
 import Header from './components/Header';
+import About from './components/About';
+import NewTrip from './components/findRestaurants/NewTrip';
+import YourTrips from './components/yourTrip/YourTrips';
+import ExpandedSavedTrip from './components/yourTrip/ExpandedSavedTrip';
 import Footer from './components/Footer';
 
 // import axios from "axios";
@@ -12,22 +18,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
+      <Router>
+        <div className="App">
+          <Header />
 
-        <main>
-          <section className="about">
-            <div>
-              <h2>About</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
-            </div>
-          </section>
-          <NewTrip />
-          <YourTrips />
-        </main>
+          <main>
+            {/* <About /> */}
+            <Route path="/" exact component={NewTrip} />
+            <Route path="/yourTrips" exact component={YourTrips} />
+            {/* <Route path="/trip" component={ExpandedSavedTrip} /> */}
+          </main>
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }

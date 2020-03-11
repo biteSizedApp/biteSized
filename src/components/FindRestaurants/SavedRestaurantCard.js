@@ -25,14 +25,13 @@ class SavedRestaurantCard extends Component {
           {this.state.restaurant.featuredImg !== ""
           ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name} />
           : <img src={require('../../assets/placeholder.png')} alt="no image available" />}
-          <p>{this.state.restaurant.name}</p>
-          <p>{this.state.restaurant.cuisineType}</p>
+          <p><span className="restaurantTitle restaurantName">{this.state.restaurant.name}</span> - {this.state.restaurant.cuisineType}</p>
           <address>
             <p>{this.state.restaurant.address}</p>
             <p>{this.state.restaurant.phoneNumber}</p>
           </address>
           <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
-          <p>{this.state.restaurant.rating}</p>
+          <p><span className="rating">{this.state.restaurant.rating}</span></p>
         </div>
       </div>
     )

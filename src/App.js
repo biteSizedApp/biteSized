@@ -15,7 +15,7 @@ class App extends Component {
       <div className="main">
         <Header />
           <div className="wrapper">
-            <section className="about">
+            <section className="aboutSection">
               <div>
                 <h2>About</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>

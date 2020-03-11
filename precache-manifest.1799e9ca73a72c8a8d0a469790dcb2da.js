@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fdca3a700fbf67f179c1628e289ba288",
+    "revision": "cef22e57eedd9b924d80ab9ae0f56afa",
     "url": "/biteSized/index.html"
   },
   {
-    "revision": "c5623056956421e8a13d",
+    "revision": "00d47b60e30b4a307ec0",
     "url": "/biteSized/static/css/main.1241fd1d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/biteSized/static/js/2.e7320b92.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c5623056956421e8a13d",
-    "url": "/biteSized/static/js/main.81e36b66.chunk.js"
+    "revision": "00d47b60e30b4a307ec0",
+    "url": "/biteSized/static/js/main.44d34ac2.chunk.js"
   },
   {
     "revision": "ee32854a37a5fcbbaed5",

@@ -39,8 +39,7 @@ class SuggestedRestaurantCard extends Component {
             elementToDisplay = <button onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
         
         } else {
-            elementToDisplay = <p><i className="fas fa-check" aria-label="added to restaurant list"></i></p>
-            
+            elementToDisplay = <p><i className="fas fa-check" aria-label="added to restaurant list"></i></p
         }
 
         return (

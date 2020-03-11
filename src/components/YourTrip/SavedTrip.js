@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
 import firebase from '../../firebase';
 import Swal from 'sweetalert2';
+import { Link, Route } from 'react-router-dom';
 
 import ExpandedSavedTrip from './ExpandedSavedTrip';
 
 
 
 class SavedTrip extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showDetails: false
+    }
+  }
+
+  expandModal = () => {
+    this.setState({
+      showDetails: !this.state.showDetails,
+    })
+  }
 
   // delete the card from firebase when user clicks delete button
   deleteCard = (e, tripKey) => {
@@ -35,15 +49,6 @@ class SavedTrip extends Component {
     })    
   }
 
-  // will take user to individual trip page
-  expandCard = () => {
-    console.log('card expanded');
-  }
-
-  // componentDidMount() {
-  //   console.log(this.props.tripProp.trip.restaurantList);
-  // }
-
   render() {
     return (
       <div className="savedTripCard">
@@ -52,7 +57,7 @@ class SavedTrip extends Component {
         <h5>{this.props.tripProp.trip.city}</h5>
 
         <button className='deleteButton' aria-label="delete card" onClick={(e) => {this.deleteCard(e, this.props.tripProp.key)}}>
-          <i className="fas fa-times" aria-label="hidden"></i>
+          <i className="fas fa-times" aria-hidden></i>
         </button>
 
         <ul>
@@ -64,8 +69,9 @@ class SavedTrip extends Component {
           })}
         </ul>
 
-        <button className="expandCardButton" onClick={this.expandCard}>Expand</button>
-        <ExpandedSavedTrip tripProp={this.props.tripProp}/>
+        <button onClick={this.expandModal}>Expand</button>
+
+        {this.state.showDetails ? <ExpandedSavedTrip tripProp={this.props.tripProp} close={this.expandModal}/> : null}
       </div>
     );
   }

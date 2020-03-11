@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 // get restaurant object from the search
 // parse needed information (e.g. name, address) with props
 // create a new, smaller restaurant object that can be save to the trip
@@ -20,29 +19,50 @@ class SuggestedRestaurantCard extends Component {
                 avgCostForTwo: props.restaurant.average_cost_for_two,
                 rating: props.restaurant.user_rating.aggregate_rating,
                 featuredImg: props.restaurant.featured_image,
-            }
+            },
+            added: false,
         }
     }
 
+    addToList = (e) => {
+        this.props.addRestaurantToList(e, this.state.restaurant);
+        this.setState ({
+            added: true,
+        })
+    }
+
     render() {
+        console.log(this.state.restaurant)
+        let elementToDisplay;
+
+        if (!this.state.added) {
+            elementToDisplay = <button onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
+        
+        } else {
+            elementToDisplay = <p><i className="fas fa-check" aria-label="added to restaurant list"></i></p>
+        }
+
         return (
             <div className="cardSection">
                 <div className="card">
-                    <button className="addToList" onClick={(e) => { this.props.addRestaurantToList(e, this.state.restaurant) }}><i className="fas fa-plus" aria-hidden></i> add to list</button>
-
-                    <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}></img>
-
-                    <p className="restaurantTitle"><span className="restaurantName">{this.state.restaurant.name}</span> - {this.state.restaurant.cuisineType}</p>
+                    {this.state.restaurant.featuredImg !== ""
+                    ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}/>
+                    : <img src={require('../../assets/placeholder.png')} alt="no image available"/>}
+                    <p>{this.state.restaurant.name}</p>
+                    <p>{this.state.restaurant.cuisineType}</p>
                     <address>
                         <p>{this.state.restaurant.address}</p>
                         <p>{this.state.restaurant.phoneNumber}</p>
                     </address>
                     <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
-                    <p className="rating">{this.state.restaurant.rating}</p>
+                    <p>{this.state.restaurant.rating}</p>
+
+                    {/* click to add to saved restaurants listThe icon will change to a check mark */}
+                    {elementToDisplay}
                 </div>
             </div>
         )
     }
 }
 
-export default SuggestedRestaurantCard;
+export default SuggestedRestaurantCard

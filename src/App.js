@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import NewTrip from './components/NewTrip';
+import NewTrip from './components/findRestaurants/NewTrip';
+import YourTrips from './components/yourTrip/YourTrips';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -23,8 +24,9 @@ class App extends Component {
             </section>
           </div>
           <div className="container">
-          <NewTrip />
-          </div>
+          <YourTrips />
+        </div>
+
         <Footer />
       </div>
     );

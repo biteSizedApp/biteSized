@@ -48,7 +48,8 @@ class NewTrip extends Component {
             method: "GET",
             responseType: "json",
             headers: {
-                "user-key": "7cec49712d95851f70de3b8beaf245d9",
+                // "user-key": "7cec49712d95851f70de3b8beaf245d9",
+                "user-key": "f13ce4f744fbf8bc4b1497187a1d6ad4",
             }
         }).then((res) => {
             const northAmericanCities = res.data.location_suggestions.filter((value) => {

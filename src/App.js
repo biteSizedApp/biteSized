@@ -25,7 +25,6 @@ class App extends Component {
             {/* <About /> */}
             <Route path="/" exact component={NewTrip} />
             <Route path="/yourTrips" exact component={YourTrips} />
-            {/* <Route path="/trip" component={ExpandedSavedTrip} /> */}
           </main>
 
           <Footer />

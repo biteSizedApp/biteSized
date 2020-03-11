@@ -3,14 +3,18 @@ import React, { Component } from 'react';
 
 
 class ExpandedSavedTrip extends Component {
+  
+
   render() {
+    const tripObj = this.props.tripProp.trip;
+
     return (
        <div className="expandedSavedTrip">
          <h3>{this.props.tripProp.trip.tripName}</h3>
          <h4>{this.props.tripProp.trip.city}</h4>
          <div className="restListContainer">
           <ul>
-            {this.props.tripProp.trip.restaurantList.map((restaurant, i) => {
+            {tripObj.restaurantList.map((restaurant, i) => {
               return (
                 <li>
                   <div className="cardContainer">
@@ -49,10 +53,10 @@ class ExpandedSavedTrip extends Component {
               );
             }) }
           </ul>
-         </div>
-
+        <button onClick={this.props.close}><i className="fas fa-times" aria-label="close"></i></button>  
         
-       </div>     
+       </div>  
+       </div>   
     );
   }
 }

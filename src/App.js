@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import {
+  HashRouter as Router,
+  Route,
+} from 'react-router-dom'
 
-import NewTrip from './components/findRestaurants/NewTrip';
-import YourTrips from './components/yourTrip/YourTrips.js';
 import Header from './components/Header';
+import About from './components/About';
+import NewTrip from './components/findRestaurants/NewTrip';
+import YourTrips from './components/yourTrip/YourTrips';
 import Footer from './components/Footer';
 
 // import axios from "axios";
@@ -12,23 +17,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="main">
-        <Header />
-          <div className="wrapper">
-            <section className="about">
-              <div>
-                <h2>About</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero praesentium iusto omnis consectetur, ipsum itaque architecto illum impedit, facere dolorem quos aut saepe velit!</p>
-              </div>
-            </section>
-          </div>
-          <div className="container">
-          <NewTrip />
-          <YourTrips />
-        </div>
+      <Router basename="/">
+        <div className="App">
+          <Header />
+            
+          <main>
+            <div className="wrapper">
+            {/* <About /> */}
+            <Route path="/" exact component={NewTrip} />
+            <Route path="/yourTrips" exact component={YourTrips} />
+            </div>
+          </main>
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }

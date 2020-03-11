@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import firebase from '../../firebase';
+import Swal from 'sweetalert2';
 
 import SuggestedRestaurantList from './SuggestedRestaurantList';
 import Suggestions from './Suggestions';
-import firebase from '../../firebase';
 
-import Swal from 'sweetalert2';
+
+
 
 // user types city name in input field,
 // axios call is made to retrieve an array of suggested cities that match
@@ -62,9 +64,17 @@ class NewTrip extends Component {
                 // shows the first 5 matched cities
                 return index <= 4
             })
-            this.setState({
-                suggestedCities: topSuggestions
-            })
+            if(cityName !== '') {
+                this.setState({
+                    suggestedCities: topSuggestions
+                }, () => {
+                    if(!this.state.cityName) {
+                        this.setState({
+                            suggestedCities: []
+                        })
+                    }
+                })
+            }
         }).catch((error) => {
             console.log(error)
         })
@@ -109,10 +119,6 @@ class NewTrip extends Component {
                 if (this.state.cityName.length % 2 === 0) {
                     this.getInfo(this.state.cityName)
                 }
-            } else {
-                this.setState({
-                    suggestedCities: []
-                })
             }
         })
     }
@@ -170,9 +176,7 @@ class NewTrip extends Component {
 
         this.setState({
             trip: prevState,
-        }
-        // , () => console.log(this.state)
-        )
+        })
     }
 
     saveToDb = (e) => {
@@ -273,9 +277,22 @@ class NewTrip extends Component {
                 {/* {/* <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button> */}
 
-                {/* <SuggestedRestaurantList cityId={this.state.cityId} addRestaurantListToTrip={this.addRestaurantListToTrip} ref="child" cityId={this.state.cityId}/> */}
-                {/* displays more results on click */}
-            </section>
+                    <div className="toggleTabs">
+                        <button
+                            className="tripsHeaders"
+                            value="findRestaurants"
+                            onClick={this.handleFindClick}>
+                            Find restaurants
+                        </button>
+                        <button
+                            className="tripsHeaders"
+                            value="savedRestaurants"
+                            onClick={this.handleSavedClick}>
+                            Saved restaurants
+                        </button>
+                    </div>
+                    <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
+                </section>
         )
     }
 }

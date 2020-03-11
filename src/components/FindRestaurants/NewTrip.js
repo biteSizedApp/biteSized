@@ -76,7 +76,12 @@ class NewTrip extends Component {
                 })
             }
         }).catch((error) => {
-            console.log(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Something went wrong!',
+                text: `${error}`,
+                timer: 3000,
+            })
         })
     }
 

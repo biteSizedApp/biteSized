@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 import SavedRestaurantList from './SavedRestaurantList.js'
 import SuggestedRestaurantCard from './SuggestedRestaurantCard.js';
@@ -59,7 +60,12 @@ class SuggestedRestaurantList extends Component {
           })
         }
       }).catch((error) => {
-        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Something went wrong!',
+          text: `${error}`,
+          timer: 3000,
+        })
       })
     })
   }

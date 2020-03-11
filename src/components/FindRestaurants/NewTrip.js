@@ -251,7 +251,6 @@ class NewTrip extends Component {
                     </form>
 
                 <div className="listContainer">
-                    <div className="toggleTabs">
                         <button
                             className="tripsHeaders"
                             value="findRestaurants"
@@ -265,7 +264,6 @@ class NewTrip extends Component {
                             Saved restaurants
                         </button>
                         <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
-                    </div>
                 </div>
                 {/* {/* <button className="tripsHeaders">Find restaurants</button>
                 <button className="tripsHeaders">Saved restaurants</button> */}

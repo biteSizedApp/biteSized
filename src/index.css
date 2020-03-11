@@ -36,6 +36,7 @@ button {
 
 
 html, body {
+  color: #404040;
   font-size: 62.5%;
   text-align: center;
   font-family: 'Barlow', sans-serif;
@@ -140,12 +141,6 @@ form button {
   width: 20%;
 }
 
-footer {
-  color: #ffffff;
-  background-color: #5D5D5D;
-  padding: 1.5rem;
-}
-
 .icon {
   width: 65px;
   height: 65px;
@@ -203,10 +198,6 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
 }
 
 /* CARD STYLING */
-/* .container {
-  width: 100%;
-} */
-
 .NewTrip {
   display: flex;
   flex-wrap: wrap;
@@ -214,16 +205,17 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
 
 .listContainer {
   flex-direction: column;
-  width: 45%;
+  flex-wrap: wrap;
+  width: 50%;
 }
 
 .cardSection {
-    width: 100%;
+  margin: 2rem 0;
+  width: 100%;
 }
 
 .card {
-  width: 100%;
-  margin: 2rem;
+  width: 90%;
   padding: 2.7rem;
   border: 1px solid rgb(100, 100, 100);
   overflow: hidden;
@@ -241,6 +233,11 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
 
 .card p {
   text-align: left;
+}
+
+.toggleTabs {
+  margin-top: 2rem;
+  width: 100%;
 }
 
 #addToList,
@@ -294,9 +291,9 @@ address {
 .showMore {
   color: #000000;
   font-size: 1.9rem;
-  font-weight: 700;
   margin: 3rem;
   background-color: transparent;
+  font-weight: 700;
 }
 
 button {
@@ -319,4 +316,42 @@ button.tripsHeaders {
 .saveTripButton {
   background-color: #000000;
   padding: 1.7rem;
+}
+
+footer {
+  color: #ffffff;
+  background-color: #5D5D5D;
+  padding: 1.5rem;
+}
+
+@media (max-width: 994px) {
+  .saveTripButton {
+    width: 22%;
+  }
+}
+
+@media (max-width: 960px) {
+  .NewTrip,
+  form,
+  .listContainer,
+  .card {
+    margin: 0 auto;
+  }
+  .NewTrip {
+    display: block;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .listContainer {
+    width: 85%;
+  }
+  .cardSection {
+    margin: 2rem 0;
+  }
+  .card {
+    width: 85%;
+  }
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import firebase from '../../firebase';
 import Swal from 'sweetalert2';
 
+import ExpandedSavedTrip from './ExpandedSavedTrip';
+
 
 
 class SavedTrip extends Component {
@@ -33,17 +35,14 @@ class SavedTrip extends Component {
     })    
   }
 
-
   // will take user to individual trip page
   expandCard = () => {
     console.log('card expanded');
   }
 
-
   // componentDidMount() {
   //   console.log(this.props.tripProp.trip.restaurantList);
   // }
-
 
   render() {
     return (
@@ -66,7 +65,7 @@ class SavedTrip extends Component {
         </ul>
 
         <button className="expandCardButton" onClick={this.expandCard}>Expand</button>
-
+        <ExpandedSavedTrip tripProp={this.props.tripProp}/>
       </div>
     );
   }

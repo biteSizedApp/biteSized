@@ -157,7 +157,6 @@ class NewTrip extends Component {
         }, () => console.log(this.state))
     }
 
-    // this.state.trip.tripName === true && this.state.trip.restaurantList.length > 0 
     saveToDb = (e) => {
         e.preventDefault();
         console.log(this.state.trip.restaurantList.length);
@@ -174,6 +173,15 @@ class NewTrip extends Component {
             }).then(() => {
                 const dbRef = firebase.database().ref();
                 dbRef.push(this.state.trip);
+                this.setState({
+                    trip: {
+                        tripName: '',
+                        city: '',
+                        restaurantList: [],
+                    }
+                }, () => {
+                    console.log(this.state.trip)
+                }) 
             });
         } else if (!this.state.trip.tripName) {
             Swal.fire({
@@ -197,15 +205,6 @@ class NewTrip extends Component {
             console.log('it doesnt work!');
 
         }
-        this.setState({
-            trip: {
-                tripName: '',
-                city: '',
-                restaurantList: [],
-            }
-        }, () => {
-            console.log(this.state.trip)
-        }) 
     }
 
     render() {

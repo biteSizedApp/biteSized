@@ -1,32 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class SavedCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      restaurant: {}
-    }
-  }
+function SavedRestaurantCard(props) {
 
-  render() {
+    const copyOfSavedRestaurants = [...props.restaurants];
     return (
-      <div className="Card">
-        <img src="" alt="" />
-        <p>Restaurant Name</p>
-        <p>Type of cuisine</p>
-        <address>
-          <p>123 Sample St</p>
-          <p>City, State</p>
-          <p>Phone #</p>
-          <a href="#">Website</a>
-        </address>
-        <p>Price for two: $20</p>
-        <p>Rating: 5</p>
-        {/* click to add to saved restaurants list. The icon will change to a check mark */}
-        <button>Remove from list</button>
-      </div>
+      copyOfSavedRestaurants.map((item, index) => {
+        return (
+          <div className="card" key={index}>
+            <img src={item.featuredImg} alt={item.name}></img>
+            <p>{item.name}</p>
+            <p>{item.cuisineType}</p>
+            <address>
+              <p>{item.address}</p>
+              <p>{item.phoneNumber}</p>
+            </address>
+            <p>Average cost for two: ${item.avgCostForTwo}</p>
+            <p>{item.rating}</p>
+    
+            {/* click to add to saved restaurants listThe icon will change to a check mark */}
+            <button onClick={(e) => { props.removeRestaurantFromList(item) }}><i className="fas fa-plus" aria-hidden></i>remove</button>
+          </div>
+        )
+      })
     )
-  }
 }
 
-export default SavedCard
+export default SavedRestaurantCard;

@@ -227,9 +227,9 @@ class NewTrip extends Component {
                 <form action="SUBMIT" onSubmit={this.getCityId}>
                     <h3>new trip</h3>
                     <label htmlFor="tripName">Please enter a name for your trip</label>
-                    <input type="text" id="tripName" onChange={this.handleNameInputChange}/>
+                    <input type="text" id="tripName" className="tripName" onChange={this.handleNameInputChange}/>
                     {/* saves the trip object to firebase */}
-                    <button id="saveTrip" onClick={this.saveToDb}>save trip</button>
+                    <button id="saveTrip" className="tripName" onClick={this.saveToDb}>save trip</button>
                     <label htmlFor="citySearch">Where are you going?</label>
                     <input
                         autoComplete="off"

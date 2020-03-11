@@ -217,11 +217,31 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
   text-align: left;
 }
 
-.addToList {
+#addToList,
+#addedToList {
   float: right;
   position: relative;
-  top: -20%;
+  background-color: transparent;
+}
+
+#addToList {
+  right: -3%;
+}
+
+#addedToList {
+  right: -2%;
+}
+
+#close,
+#addToList {
+  color: #000000;
+}
+
+#closeCard {
+  float: right;
+  position: relative;
   right: -4%;
+  background-color: transparent;
 }
 
 .restaurantTitle {
@@ -234,11 +254,6 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
 
 address {
   margin: 2rem;
-}
-
-.addToList {
-  color: #000000;
-  background-color: transparent;
 }
 
 .rating {
@@ -273,6 +288,11 @@ button.tripsHeaders {
   text-align: right;
   color: #000000;
   font-size: 2rem;
+}
+
+.tripName,
+.saveTrip {
+  display: inline-block;
 }
 
 /* centered the save trip button */

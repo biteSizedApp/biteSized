@@ -19,6 +19,8 @@ class SavedRestaurantCard extends Component {
   render() {
     return (
       <div className="card">
+        {/* click to add to saved restaurants listThe icon will change to a check mark */}
+        <button id="closeCard" onClick={(e) => { this.props.removeRestaurantFromList(e, this.state.restaurant) }}><i id="close" className="fas fa-times"></i></button>
         {this.state.restaurant.featuredImg !== ""
         ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name} />
         : <img src={require('../../assets/placeholder.png')} alt="no image available" />}
@@ -30,9 +32,6 @@ class SavedRestaurantCard extends Component {
         </address>
         <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
         <p>{this.state.restaurant.rating}</p>
-
-        {/* click to add to saved restaurants listThe icon will change to a check mark */}
-        <button onClick={(e) => { this.props.removeRestaurantFromList(e, this.state.restaurant) }}><i className="fas fa-times"></i></button>
       </div>
     )
   }

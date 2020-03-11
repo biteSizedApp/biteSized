@@ -124,12 +124,26 @@ form {
   flex-direction: column;
   width: 45%;
   padding: 0;
-  margin: 0;
+  margin-bottom: 3rem;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 label {
   font-size: 1.5rem;
   margin: 1% 0;
+}
+
+/* centered the save trip button */
+form button {
+  margin: 1rem auto;
+  width: 20%;
+}
+
+footer {
+  color: #ffffff;
+  background-color: #5D5D5D;
+  padding: 1.5rem;
 }
 
 .icon {
@@ -150,7 +164,19 @@ input[type=search] {
 }
 
 input[type=search] {
+  width: 55%;
+  display: inline-block;
   -webkit-appearance: textfield;
+}
+
+.cityInput {
+  width: 100%;
+}
+
+.submitCity {
+  width: 85px;
+  padding: 1.3rem;
+  margin-left: 1rem;
 }
 
 nav button:hover,
@@ -290,19 +316,7 @@ button.tripsHeaders {
   font-size: 2rem;
 }
 
-.tripName,
-.saveTrip {
-  display: inline-block;
-}
-
-/* centered the save trip button */
-form button {
-  margin: 1rem auto;
-  width: 20%;
-}
-
-footer {
-  color: #ffffff;
-  background-color: #5D5D5D;
-  padding: 1.5rem;
+.saveTripButton {
+  background-color: #000000;
+  padding: 1.7rem;
 }

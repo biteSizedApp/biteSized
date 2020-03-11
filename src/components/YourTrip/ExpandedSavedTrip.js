@@ -5,15 +5,17 @@ import React, { Component } from 'react';
 class ExpandedSavedTrip extends Component {
   render() {
     return (
-       <div className="expandedSavedTrip">
-         <h3>{this.props.tripProp.trip.tripName}</h3>
-         <h4>{this.props.tripProp.trip.city}</h4>
-         <div>
+      <div className="expandedSavedTrip">
+        <h3>{this.props.tripProp.trip.tripName}</h3>
+        <h4>{this.props.tripProp.trip.city}</h4>
+        <div>
           <ul>
             {this.props.tripProp.trip.restaurantList.map((restaurant, i) => {
               return (
-                <li>                
-                  <img src={restaurant.featuredImg} alt={restaurant.name}></img>
+                <li>        
+                  {restaurant.featuredImg !== ""
+                    ? <img src={restaurant.featuredImg} alt={restaurant.name} />
+                    : <img src={require('../../assets/placeholder.png')} alt="no image available" />}        
                   <p>{restaurant.name}</p>
                   <p>{restaurant.cuisineType}</p>
                   <address>

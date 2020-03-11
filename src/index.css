@@ -92,7 +92,6 @@ nav {
 
 main {
   display: flex;
-  flex-direction: column;
 }
 
 h1 {
@@ -123,6 +122,9 @@ p {
 form {
   display: flex;
   flex-direction: column;
+  width: 45%;
+  padding: 0;
+  margin: 0;
 }
 
 label {
@@ -139,7 +141,7 @@ label {
 /* centered the input boxes */
 input[type=text],
 input[type=search] {
-  width: 28%;
+  width: 70%;
   height: 10px;
   margin: 0 auto;
   padding: 2rem;
@@ -175,11 +177,28 @@ nav button:hover, .tripsHeaders:hover, .showMore:hover, nav button:focus, .trips
 }
 
 /* CARD STYLING */
+.container {
+  width: 100%;
+}
+
+.NewTrip {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listContainer {
+  flex-direction: column;
+  width: 45%;
+}
+
+.cardSection {
+    width: 100%;
+}
 
 .card {
+  width: 100%;
   margin: 2rem;
   padding: 2.7rem;
-  width: 50%;
   border: 1px solid rgb(100, 100, 100);
   overflow: hidden;
   white-space: normal;
@@ -251,6 +270,7 @@ button {
 /* changed the background colour of the buttons for "saved restaurants" and "find restaurants" */
 button.tripsHeaders {
   background-color: #ffffff;
+  text-align: right;
   color: #000000;
   font-size: 2rem;
 }
@@ -258,7 +278,7 @@ button.tripsHeaders {
 /* centered the save trip button */
 form button {
   margin: 1rem auto;
-  width: 10%;
+  width: 20%;
 }
 
 footer {

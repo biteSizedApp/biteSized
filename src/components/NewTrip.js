@@ -101,26 +101,28 @@ class NewTrip extends Component {
         return (
             <section className="NewTrip">
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
-                <form action="" onSubmit={this.getCityId}>
-                    <h3>new trip</h3>
-                    <label htmlFor="tripName">Please enter a name for your trip</label>
-                    <input type="text" id="tripName" placeholder="create a trip name"/>
-                    <label htmlFor="citySearch">Where are you going?</label>
-                    <input
-                        autoComplete="off"
-                        type="search"
-                        id="citySearch"
-                        ref={input => this.search = input}
-                        onChange={this.handleInputChange}
-                        value={this.state.cityName}
-                        placeholder="search cities near you"
-                    />
-                    <button>save trip</button>
-                </form>
-                <button className="tripsHeaders">Find restaurants</button>
-                <button className="tripsHeaders">Saved restaurants</button>
-                <RestaurantList cityId={this.state.cityId} />
-                <button class="showMore">Show more</button>
+                    <form action="" onSubmit={this.getCityId}>
+                        <h3>new trip</h3>
+                        <label htmlFor="tripName">Please enter a name for your trip</label>
+                        <input type="text" id="tripName" placeholder="create a trip name"/>
+                        <label htmlFor="citySearch">Where are you going?</label>
+                        <input
+                            autoComplete="off"
+                            type="search"
+                            id="citySearch"
+                            ref={input => this.search = input}
+                            onChange={this.handleInputChange}
+                            value={this.state.cityName}
+                            placeholder="search cities near you"
+                        />
+                        <button>save trip</button>
+                    </form>
+                <div className="listContainer">
+                    <button className="tripsHeaders">Find restaurants</button>
+                    <button className="tripsHeaders">Saved restaurants</button>
+                    <RestaurantList cityId={this.state.cityId} />
+                    <button class="showMore">Show more</button>
+                </div>
             </section>
         )
     }

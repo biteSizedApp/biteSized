@@ -223,31 +223,31 @@ class NewTrip extends Component {
         console.log(this.state.cityName)
         return (
             <section className="NewTrip">
-                <form action="SUBMIT" onSubmit={this.getCityId}>
-                    <h3>new trip</h3>
-                    <label htmlFor="citySearch">Where are you going?</label>
-                    <div class="cityInput">
-                        <input
-                            autoComplete="off"
-                            type="search"
-                            id="citySearch"
-                            placeholder="search cities near you"
-                            ref={input => this.search = input}
-                            onChange={this.handleCityInputChange}
-                            value={this.state.cityName}
-                        />
-                        <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
-                        <button id="citySearchSubmit" className="submitCity">GO</button>
-                    </div>
-                        <label htmlFor="tripName">Please enter a name for your trip</label>
-                        <input
-                            type="text"
-                            className="newTripName"
-                            placeholder="create a new trip"
-                            onChange={this.handleNameInputChange}
-                        />
-                    <button id="saveTrip" className="saveTripButton" onClick={this.saveToDb}>save trip</button>
-                </form>
+                    <form action="SUBMIT" onSubmit={this.getCityId}>
+                        <h3>new trip</h3>
+                        <label htmlFor="citySearch">Where are you going?</label>
+                        <div class="cityInput">
+                            <input
+                                autoComplete="off"
+                                type="search"
+                                id="citySearch"
+                                placeholder="search cities near you"
+                                ref={input => this.search = input}
+                                onChange={this.handleCityInputChange}
+                                value={this.state.cityName}
+                            />
+                            <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
+                            <button id="citySearchSubmit" className="submitCity">GO</button>
+                        </div>
+                            <label htmlFor="tripName">Please enter a name for your trip</label>
+                            <input
+                                type="text"
+                                className="newTripName"
+                                placeholder="create a new trip"
+                                onChange={this.handleNameInputChange}
+                            />
+                        <button id="saveTrip" className="saveTripButton" onClick={this.saveToDb}>save trip</button>
+                    </form>
 
                 <div className="listContainer">
                         <button

@@ -213,7 +213,7 @@ button.tripsHeaders {
 
 .saveTripButton {
   padding: 1.7rem;
-  width: calc(35% - 10px);
+  width: calc(30% - 10px);
   background-color: #000000;
 }
 

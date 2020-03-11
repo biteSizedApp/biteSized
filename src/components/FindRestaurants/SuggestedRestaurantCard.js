@@ -24,12 +24,6 @@ class SuggestedRestaurantCard extends Component {
         }
     }
 
-    addToList = (e) => {
-        this.props.addRestaurantToList(e, this.state.restaurant);
-        this.setState ({
-            added: true,
-        })
-    }
 
     render() {
         let elementToDisplay;

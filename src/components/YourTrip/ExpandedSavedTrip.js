@@ -6,7 +6,7 @@ import firebase from '../../firebase';
 class ExpandedSavedTrip extends Component {
   constructor() {
     super();
-  
+
     this.state = {
       noteText: '',
     }
@@ -27,14 +27,14 @@ class ExpandedSavedTrip extends Component {
     this.setState({
       noteText: note,
     })
-  } 
+  }
 
   // saves a user note to the database to the corresponding restaurant
   saveNote = (e, targetRestaurantName) => {
     // pass restaurant's name as a parameter
     // save the db key for this trip in a variable
     // map over the database to find the object corresponding to this key, and push the note's value to the restaurant in restaurant list
-    
+
     e.preventDefault();
     // get to the node that corresponds to the trip
     const nodeDbRef = firebase.database().ref(`/${this.props.tripProp.key}`)
@@ -54,7 +54,7 @@ class ExpandedSavedTrip extends Component {
     }))
 
     // add the note to firebase
-    nodeDbRef.child(`/restaurantList/${restaurantIndex}`).update({userNote: this.state.noteText});
+    nodeDbRef.child(`/restaurantList/${restaurantIndex}`).update({ userNote: this.state.noteText });
 
     // reset state
     this.setState({
@@ -62,53 +62,55 @@ class ExpandedSavedTrip extends Component {
     })
   }
 
-  
+
 
 
   render() {
     const tripObj = this.props.tripProp.trip;
 
     return (
-       <div className="expandedSavedTrip">
-         <h3>{tripObj.tripName}</h3>
-         <h4>{tripObj.city}</h4>
+      <div className="expandedSavedTrip">
+        <h3>{tripObj.tripName}</h3>
+        <h4>{tripObj.city}</h4>
 
-          <ul>
-            {tripObj.restaurantList.map((restaurant, i) => {
-              return (
-                <li key={i}>                
-                  <img src={restaurant.featuredImg} alt={restaurant.name}></img>
-                  <p>{restaurant.name}</p>
-                  <p>{restaurant.cuisineType}</p>
-                  <address>
-                    <p>{restaurant.address}</p>
-                    <p>{restaurant.phoneNumber}</p>
-                  </address>
-                  <p>Average cost for two: ${restaurant.avgCostForTwo}</p>
-                  <p>{restaurant.rating}</p>
+        <ul>
+          {tripObj.restaurantList.map((restaurant, i) => {
+            return (
+              <li key={i}>
+                {restaurant.featuredImg !== ""
+                  ? <img src={restaurant.featuredImg} alt={restaurant.name} />
+                  : <img src={require('../../assets/placeholder.png')} alt="no image available" />}
+                <p>{restaurant.name}</p>
+                <p>{restaurant.cuisineType}</p>
+                <address>
+                  <p>{restaurant.address}</p>
+                  <p>{restaurant.phoneNumber}</p>
+                </address>
+                <p>Average cost for two: ${restaurant.avgCostForTwo}</p>
+                <p>{restaurant.rating}</p>
 
-                  {restaurant.userNote 
-                    ? <p>{restaurant.userNote}</p>
-                    : <form action="SUBMIT">
-                        <label htmlFor="restaurantNotes" className="sr-only">Leave a note about your experience.</label>
-                        <textarea name="restaurantNotes" id="restaurantNotes" cols="30" rows="10" placeholder="Leave a note about your experience." onChange={this.grabNoteValue}></textarea>
-                        <button type="submit" onClick={(e) => {this.saveNote(e, restaurant.name)}}>Add Note</button>
-                      </form>
-                  }
-                  {/* add notes to the restaurant */}
-                  
+                {restaurant.userNote
+                  ? <p>{restaurant.userNote}</p>
+                  : <form action="SUBMIT">
+                    <label htmlFor="restaurantNotes" className="sr-only">Leave a note about your experience.</label>
+                    <textarea name="restaurantNotes" id="restaurantNotes" cols="30" rows="10" placeholder="Leave a note about your experience." onChange={this.grabNoteValue}></textarea>
+                    <button type="submit" onClick={(e) => { this.saveNote(e, restaurant.name) }}>Add Note</button>
+                  </form>
+                }
+                {/* add notes to the restaurant */}
 
-                  {/* clicking this will delete the restaurant from the database */}
-                  <button onClick={this.deleteRestaurant}><i className="fas fa-times" aria-label="close"></i></button>
-                </li>
 
-              )
-            }) }
-          </ul>
+                {/* clicking this will delete the restaurant from the database */}
+                <button onClick={this.deleteRestaurant}><i className="fas fa-times" aria-label="close"></i></button>
+              </li>
+
+            )
+          })}
+        </ul>
         {/* close the modal window on click */}
-        <button onClick={this.props.close}><i className="fas fa-times" aria-label="close"></i></button>  
-        
-       </div>     
+        <button onClick={this.props.close}><i className="fas fa-times" aria-label="close"></i></button>
+
+      </div>
     );
   }
 }

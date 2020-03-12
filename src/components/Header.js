@@ -9,11 +9,27 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <nav>
-          <NavLink to="/" exact>Home</NavLink>
-          <NavLink to="/yourTrips" exact>Your Trips</NavLink>   
-        </nav>
-        <h1>bite-sized travel</h1>
+        <div className="headerTitle">
+          <img className="icon" src={require("../assets/headerIcon.png")} alt="icon of utensils on a plate" />
+
+          <div className="title">
+              <h1>bite-sized travel</h1>
+          </div>
+
+          <nav>
+            <ul>
+              <li>
+                <NavLink to="/" exact>Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/yourTrips" exact>Your Trips</NavLink> 
+              </li>
+            </ul>  
+          </nav>
+        </div>
+        
+        <div className="heroImage">
+        </div>
       </header>
     );
   }

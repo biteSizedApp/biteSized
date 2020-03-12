@@ -34,7 +34,6 @@ button {
   padding: 0;
 }
 
-
 html, body {
   color: #404040;
   font-size: 62.5%;
@@ -172,6 +171,7 @@ select,
 }
 
 select {
+  position: relative;
   width: calc(40% - 10px);
   height: 50px;
   background-color: #ffffff;
@@ -245,12 +245,6 @@ a:visted {
   color: #404040;
 }
 
-nav li:hover,
-li:hover {
-  /* font-weight: 700; */
-  cursor: pointer;
-}
-
 nav li {
   font-size: 1.5rem;
   font-weight: 700;
@@ -265,8 +259,15 @@ nav li:hover,
 .showMore:hover,
 nav li:focus,
 .tripsHeaders:focus,
-.showMore:focus {
+.showMore:focus,
+nav li:hover,
+li:hover {
+  cursor: pointer;
   border-bottom: 4px solid var(--brandColourBeige);
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 /* Added font weight to the hover */
@@ -280,7 +281,8 @@ nav li:focus,
 }
 
 /* CARD STYLING */
-.NewTrip {
+.NewTrip,
+.suggestedRestaurantList {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -294,12 +296,10 @@ nav li:focus,
 }
 
 .card {
-  width: 90%;
-  margin: 2rem 0;
+  margin: 2rem;
   padding: 2.7rem;
   border: 1px solid rgb(100, 100, 100);
   overflow: hidden;
-  white-space: normal;
   box-sizing: content-box;
 }
 
@@ -328,7 +328,7 @@ nav li:focus,
 
 #addToList {
   top: -10px;
-  right: -3%;
+  right: -2%;
 }
 
 #addedToList {
@@ -401,11 +401,6 @@ footer {
 }
 
 @media (max-width: 960px) {
-  form,
-  .listContainer,
-  .card {
-    margin: 2rem 0;
-  }
   .NewTrip {
     align-items: center;
     justify-content: center;
@@ -414,10 +409,6 @@ footer {
     width: 80%;;
   }
   .listContainer {
-    width: 85%;
-  }
-
-  .card {
     width: 85%;
   }
   .saveTripButton {

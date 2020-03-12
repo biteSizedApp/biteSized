@@ -67,13 +67,9 @@ class SavedTrip extends Component {
           })}
         </ul>
 
-<<<<<<< HEAD
         {/* modal window with trip info is open when user clicks this button */}
-        <button onClick={this.expandModal}>Expand</button>
-=======
         <button className="expand" onClick={this.expandModal}>Expand</button>
 
->>>>>>> henry/yourTripStyling
         {this.state.showDetails ? <ExpandedSavedTrip tripProp={this.props.tripProp} close={this.expandModal}/> : null}
       </div>
     );

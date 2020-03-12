@@ -69,12 +69,6 @@ class NewTrip extends Component {
             if(cityName !== '') {
                 this.setState({
                     suggestedCities: topSuggestions
-                }, () => {
-                    if(!this.state.cityName) {
-                        this.setState({
-                            suggestedCities: []
-                        })
-                    }
                 })
             }
         }).catch((error) => {
@@ -139,9 +133,7 @@ class NewTrip extends Component {
             cityName: event.target.value,
             // assigns the new object with added city name to the state
             trip: prevState,
-        }
-        // , () => console.log(this.state)
-        )
+        })
     }
 
     handleNameInputChange = (event) => {
@@ -246,17 +238,10 @@ class NewTrip extends Component {
     render() {
         return (
             <section className="NewTrip">
-                <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
+                
                     <form action="SUBMIT" onSubmit={this.getCityId}>
                         <h3>new trip</h3>
-                        <label htmlFor="tripName">Please enter a name for your trip</label>
-                        <input 
-                            type="text" 
-                            id="tripName" 
-                            ref={trip => this.text = trip}
-                            onChange={this.handleNameInputChange}
-                            value={this.state.tripNickName}
-                        />
+
                         <label htmlFor="citySearch">Where are you going?</label>
                         <div class="cityInput">
                             <input
@@ -267,16 +252,22 @@ class NewTrip extends Component {
                                 ref={input => this.search = input}
                                 onChange={this.handleCityInputChange}
                                 value={this.state.cityName}
-                        />
-                        <button id="citySearchSubmit" className="submitCity">GO</button>
-                        </div>
-                            <label htmlFor="tripName">Please enter a name for your trip</label>
-                            <input
-                                type="text"
-                                className="newTripName"
-                                placeholder="create a new trip"
-                                onChange={this.handleNameInputChange}
                             />
+                            <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
+                            <button id="citySearchSubmit" className="submitCity">GO</button>
+                        </div>
+
+                        <label htmlFor="tripName">Please enter a name for your trip</label>
+                        <input
+                            id="tripName" 
+                            type="text"
+                            className="tripName"
+                            ref={trip => this.text = trip}
+                            placeholder="create a new trip"
+                            onChange={this.handleNameInputChange}
+                            value={this.state.tripNickName}
+                        />
+
                         <button id="saveTrip" className="saveTripButton" onClick={this.saveToDb}>save trip</button>
                     </form>
 
@@ -295,28 +286,7 @@ class NewTrip extends Component {
                     </button>
                         <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
                 </div>
-<<<<<<< HEAD
-=======
-                {/* {/* <button className="tripsHeaders">Find restaurants</button>
-                <button className="tripsHeaders">Saved restaurants</button> */}
->>>>>>> henry/yourTripStyling
-
-                    {/* <div className="toggleTabs">
-                        <button
-                            className="tripsHeaders"
-                            value="findRestaurants"
-                            onClick={this.handleFindClick}>
-                            Find restaurants
-                        </button>
-                        <button
-                            className="tripsHeaders"
-                            value="savedRestaurants"
-                            onClick={this.handleSavedClick}>
-                            Saved restaurants
-                        </button>
-                    </div>
-                    <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} /> */}
-                </section>
+            </section>
         )
     }
 }

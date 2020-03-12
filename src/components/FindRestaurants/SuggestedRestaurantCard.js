@@ -24,7 +24,6 @@ class SuggestedRestaurantCard extends Component {
         }
     }
 
-<<<<<<< HEAD
     addToList = (e) => {
         this.setState ({
             restaurant: {
@@ -35,26 +34,24 @@ class SuggestedRestaurantCard extends Component {
             this.props.addRestaurantToList(this.state.restaurant);   
         })
     }
-=======
->>>>>>> henry/yourTripStyling
 
 
     render() {
         let elementToDisplay;
 
         if (!this.state.added) {
-            elementToDisplay = <button id="addToList" onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i> add to list</button>   
+            elementToDisplay = <button className="addToList" onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i> add to list</button>   
         } else {
-            elementToDisplay = <p><i id="addedToList" className="fas fa-check" aria-label="added to restaurant list"></i></p>
+            elementToDisplay = <p><i className="addedToList" className="fas fa-check" aria-label="added to restaurant list"></i></p>
         }
 
 
         this.props.savedRestaurants.filter((item) => {
             console.log(item.name);
             if (item.name !== this.state.restaurant.name) {
-                return elementToDisplay = <button onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
+                return elementToDisplay = <button className="addToList" onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
             } else {
-                return elementToDisplay = <p><i className="fas fa-check" aria-label="added to restaurant list"></i></p>
+                return elementToDisplay = <p className="addToList"><i className="fas fa-check" aria-label="added to restaurant list"></i></p>
             }
         })
 

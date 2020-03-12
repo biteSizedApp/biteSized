@@ -96,13 +96,6 @@ nav {
   justify-content: flex-end;
 }
 
-<<<<<<< HEAD
-=======
-main {
-  /* display: flex; */
-}
-
->>>>>>> henry/yourTripStyling
 h1 {
   font-size: 4rem;
   padding: 1rem;
@@ -326,9 +319,9 @@ button:hover {
   text-align: left;
 }
 
-#addToList,
-#addedToList,
-#closeCard {
+.addToList,
+.addedToList,
+.closeCard {
   float: right;
   position: relative;
   background-color: transparent;
@@ -337,35 +330,35 @@ button:hover {
   border-bottom: 4px solid transparent;
 }
 
-#addToList {
+.addToList {
   top: -10px;
   right: -2%;
 }
 
-#addedToList {
+.addedToList {
   right: -2%;
 }
 
-#closeCard,
-#addToList {
+.closeCard,
+.addToList {
   color: #000000;
 }
 
-#closeCard {
+.closeCard {
   right: -2%;
   background-color: transparent;
 }
 
-#addToList:hover,
-#closeCard:hover {
+.addToList:hover,
+.closeCard:hover {
   border-bottom: 4px solid var(--brandColourBeige);
 }
 
-#addToList:hover {
+.addToList:hover {
   padding-bottom: 0.8rem;
 }
 
-#closeCard:hover {
+.closeCard:hover {
   padding-bottom: 0.5rem;
 }
 
@@ -389,8 +382,6 @@ address {
 }
 /* END OF CARD STYLES */
 
-<<<<<<< HEAD
-=======
 /* removed border bottom style and added above for hover */
 .showMore {
   color: #000000;
@@ -504,7 +495,6 @@ button.expand {
 }
 
 
->>>>>>> henry/yourTripStyling
 footer {
   color: #ffffff;
   background-color: #5D5D5D;

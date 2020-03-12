@@ -438,10 +438,13 @@ button.tripsHeaders {
 
 .savedTripCard {
   border: 1px solid black;
-  width: 31%;
+  width: 98%;
   margin: 1%;
   position: relative;
   padding: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .expandedSavedTrip {
@@ -478,8 +481,8 @@ button.tripsHeaders {
 }
 
 .yourTripsGrid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 button.deleteButton {
   position: absolute;
@@ -532,5 +535,13 @@ footer {
   select {
     margin-top: 1rem;
     width: 98%;
+  }
+  .yourTripsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 440px) {
+  .yourTripsGrid {
+    grid-template-columns: 1fr;
   }
 }

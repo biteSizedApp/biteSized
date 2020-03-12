@@ -17,8 +17,9 @@ class Header extends Component {
           </div>
 
           <nav>
-            <NavLink to="/" exact>Home</NavLink>
-            <NavLink to="/yourTrips" exact>Your Trips</NavLink>   
+            <ul></ul>
+              <li><NavLink to="/" exact>Home</NavLink></li>
+              <li><NavLink to="/yourTrips" exact>Your Trips</NavLink></li>
           </nav>
         </div>
         

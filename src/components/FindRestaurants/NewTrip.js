@@ -243,7 +243,7 @@ class NewTrip extends Component {
                         <h3>new trip</h3>
 
                         <label htmlFor="citySearch">Where are you going?</label>
-                        <div class="cityInput">
+                        <div className="cityInput">
                             <input
                                 autoComplete="off"
                                 type="search"

@@ -45,7 +45,12 @@ html, body {
 }
 
 body {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  position: relative;
+}
+
+img {
+  width: 100%;
 }
 
 li {
@@ -86,14 +91,11 @@ li {
   left: 12%;
 }
 
-.aboutSection {
-  width: 70%;
-  margin: 0 auto;
-}
 
 nav {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 h1 {
@@ -235,7 +237,7 @@ ul,
 li {
   text-decoration: none;
   list-style-type: none;
-  display: inline-block;
+  display: block;
   padding: 1rem;
 }
 
@@ -245,12 +247,12 @@ a {
 }
 
 a:active,
-a:visted {
+a:visited {
   color: #404040;
 }
 
 nav li {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #000000;
   background-color: transparent;
@@ -258,20 +260,21 @@ nav li {
 }
 
 /* Put these under one rule to make it DRY-er */
-nav li:hover,
+nav a:hover,
 .tripsHeaders:hover,
 .showMore:hover,
-nav li:focus,
+nav a:focus,
 .tripsHeaders:focus,
 .showMore:focus,
-nav li:hover,
-li:hover {
+nav a:hover,
+a:hover {
   cursor: pointer;
   border-bottom: 4px solid var(--brandColourBeige);
 }
 
 button:hover {
   cursor: pointer;
+  background-color: var(--brandColourPinkishRed);
 }
 
 /* Added font weight to the hover */
@@ -442,23 +445,17 @@ button.tripsHeaders {
 }
 
 .expandedSavedTrip {
-  width: 900px;
+  width: 1200px;
   border: 1px solid black;
   background-color: var(--brandColourPinkishRed);
   transition: 1.1s ease-out;
-  filter: blur(0);
   transform: scale(1);  
-  opacity: 1;
-  visibility: visible;
-  z-index: 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-}
-
-.savedTripCard li {
-  /* list-style: decimal; */
+  z-index: 10;
+  position: fixed;
+  top: 20px;
+  bottom: 20px;
+  transform: translate(50%);
+  overflow-y: scroll;
 }
 
 .restListContainer ul {
@@ -489,11 +486,6 @@ button.deleteButton {
   top: 0;
   right: 0;
 }
-
-button.expand {
-
-}
-
 
 footer {
   color: #ffffff;

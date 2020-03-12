@@ -79,27 +79,28 @@ class ExpandedSavedTrip extends Component {
                 <li>        
                   {restaurant.featuredImg !== ""
                     ? <img src={restaurant.featuredImg} alt={restaurant.name} />
-                    : <img src={require('../../assets/placeholder.png')} alt="no image available" />}        
-                  <p>{restaurant.name}</p>
-                  <p>{restaurant.cuisineType}</p>
-                  <address>
-                    <p>{restaurant.address}</p>
-                    <p>{restaurant.phoneNumber}</p>
-                  </address>
-                  <p>Average cost for two: ${restaurant.avgCostForTwo}</p>
-                  <p>{restaurant.rating}</p>
+                    : <img src={require('../../assets/placeholder.png')} alt="no image available" />}
+                    <div>
+                      <p>{restaurant.name}</p>
+                      <p>{restaurant.cuisineType}</p>
+                      <address>
+                        <p>{restaurant.address}</p>
+                        <p>{restaurant.phoneNumber}</p>
+                      </address>
+                      <p>Average cost for two: ${restaurant.avgCostForTwo}</p>
+                      <p>{restaurant.rating}</p>
 
-                  {restaurant.userNote 
-                    ? <p>{restaurant.userNote}</p>
-                    : <form action="SUBMIT">
-                        <label htmlFor="restaurantNotes" className="sr-only">Leave a note about your experience.</label>
-                        <textarea name="restaurantNotes" id="restaurantNotes" cols="30" rows="10" placeholder="Leave a note about your experience." onChange={this.grabNoteValue}></textarea>
-                        <button type="submit" onClick={(e) => {this.saveNote(e, restaurant.name)}}>Add Note</button>
-                      </form>
-                  }
-                  {/* add notes to the restaurant */}
+                      {/* add notes to the restaurant */}
+                      {restaurant.userNote 
+                        ? <p>{restaurant.userNote}</p>
+                        : <form action="SUBMIT">
+                            <label htmlFor="restaurantNotes" className="sr-only">Leave a note about your experience.</label>
+                            <textarea name="restaurantNotes" id="restaurantNotes" placeholder="Leave a note about your experience." onChange={this.grabNoteValue}></textarea>
+                            <button type="submit" onClick={(e) => {this.saveNote(e, restaurant.name)}}>Add Note</button>
+                          </form>
+                      }
+                    </div>        
                   
-
                   {/* clicking this will delete the restaurant from the database */}
                   <button onClick={this.deleteRestaurant}><i className="fas fa-times" aria-label="close"></i></button>
                 </li>
@@ -107,7 +108,7 @@ class ExpandedSavedTrip extends Component {
             }) }
           </ul>
         {/* close the modal window on click */}
-        <button onClick={this.props.close}><i className="fas fa-times" aria-label="close"></i></button>  
+        <button class="closeButton" onClick={this.props.close}><i className="fas fa-times" aria-label="close"></i></button>  
         
        </div>  
     );

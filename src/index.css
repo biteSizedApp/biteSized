@@ -96,7 +96,7 @@ nav {
 }
 
 main {
-  display: flex;
+  /* display: flex; */
 }
 
 h1 {
@@ -344,6 +344,30 @@ button.tripsHeaders {
 
 .savedTripCard {
   border: 1px solid black;
+  width: 31%;
+  margin: 1%;
+  position: relative;
+  padding: 1%;
+}
+
+.expandedSavedTrip {
+  width: 900px;
+  border: 1px solid black;
+  background-color: var(--brandColourPinkishRed);
+  transition: 1.1s ease-out;
+  filter: blur(0);
+  transform: scale(1);  
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+}
+
+.savedTripCard li {
+  /* list-style: decimal; */
 }
 
 .restListContainer ul {
@@ -358,14 +382,24 @@ button.tripsHeaders {
 .expandedSavedTrip li {
   border: 1px solid black;
   width: 45%;
-  margin: 0 2%;
+  margin: 2%;
 }
 
 .formContainer {
   margin: 4%;
 }
 
-.deleteButton {
+.yourTripsGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+button.deleteButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+button.expand {
 
 }
 

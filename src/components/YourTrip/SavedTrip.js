@@ -68,7 +68,7 @@ class SavedTrip extends Component {
           })}
         </ul>
 
-        <button onClick={this.expandModal}>Expand</button>
+        <button className="expand" onClick={this.expandModal}>Expand</button>
 
         {this.state.showDetails ? <ExpandedSavedTrip tripProp={this.props.tripProp} close={this.expandModal}/> : null}
       </div>

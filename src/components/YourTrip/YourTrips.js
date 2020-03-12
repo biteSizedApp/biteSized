@@ -58,7 +58,6 @@ class YourTrips extends Component {
             })
           }
           
-
         </ul>
 
       </main>

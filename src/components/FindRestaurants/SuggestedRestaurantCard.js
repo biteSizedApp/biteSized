@@ -35,7 +35,6 @@ class SuggestedRestaurantCard extends Component {
         })
     }
 
-
     render() {
         let elementToDisplay;
 
@@ -47,7 +46,6 @@ class SuggestedRestaurantCard extends Component {
 
 
         this.props.savedRestaurants.filter((item) => {
-            console.log(item.name);
             if (item.name !== this.state.restaurant.name) {
                 return elementToDisplay = <button className="addToList" onClick={this.addToList}><i className="fas fa-plus" aria-hidden></i>Add to list</button>
             } else {

@@ -103,7 +103,6 @@ class NewTrip extends Component {
             })
         } else {
             // should add notification on the page (like sweet alerts)
-            console.log("please choose a city first");
         }
         document.getElementById("citySearch").focus();
         this.setState({
@@ -158,7 +157,6 @@ class NewTrip extends Component {
         });
     }
 
-
     // this function will hide the default restaurant list and show the user's saved restaurants
     handleSavedClick = () => {
         this.setState({
@@ -180,8 +178,6 @@ class NewTrip extends Component {
 
     saveToDb = (e) => {
         e.preventDefault();
-        console.log(this.state.trip.restaurantList.length);
-
         if (
             this.state.trip.city &&
             this.state.trip.tripName &&
@@ -209,8 +205,6 @@ class NewTrip extends Component {
                         city: '',
                         restaurantList: [],
                     }
-                }, () => {
-                    console.log(this.state.trip)
                 }) 
             });
         } else if (!this.state.trip.tripName) {
@@ -231,9 +225,7 @@ class NewTrip extends Component {
                 icon: "error",
                 timer: 2000
             });
-        } else {
-            console.log('it doesnt work!');
-        }
+        } 
     }
 
     render() {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // get restaurant object from the search
 // parse needed information (e.g. name, address) with props
@@ -61,7 +61,7 @@ class SuggestedRestaurantCard extends Component {
                 {elementToDisplay}
                 {this.state.restaurant.featuredImg !== ""
                 ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}/>
-                : <img src={require('../../assets/placeholder.png')} alt="no image available"/>}
+                : <img src={require("../../assets/placeholder.png")} alt="no image available"/>}
                 <p><span className="restaurantTitle restaurantName">{this.state.restaurant.name}</span> - {this.state.restaurant.cuisineType}</p>
                 <address>
                     <p>{this.state.restaurant.address}</p>

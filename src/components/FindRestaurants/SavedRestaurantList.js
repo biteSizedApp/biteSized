@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import SavedRestaurantCard from './SavedRestaurantCard'
+import React, { Component } from "react";
+import SavedRestaurantCard from "./SavedRestaurantCard"
 
 class SavedRestaurantList extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class SavedRestaurantList extends Component {
 
   
   removeRestaurantFromList = (restaurantObj) => {
-    // if the restaurantobj.name is equal to the item that we're filtering over
+    // if the restaurantobj.name is equal to the item that we"re filtering over
     // item.restaurnat.name
     // if this name is not equal to
 

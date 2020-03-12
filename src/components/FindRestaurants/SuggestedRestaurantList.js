@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import React, { Component } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 
-import SavedRestaurantList from './SavedRestaurantList.js'
-import SuggestedRestaurantCard from './SuggestedRestaurantCard.js';
+import SavedRestaurantList from "./SavedRestaurantList.js"
+import SuggestedRestaurantCard from "./SuggestedRestaurantCard.js";
 
 
 // the city id from the parent component is passed into axios call as props to retrieve the restaurant list as an array
@@ -26,7 +26,7 @@ class SuggestedRestaurantList extends Component {
     }
   }
 
-  // OLGA: i'm not getting filtered results if we write axios call in componentDidMount. If i write it in componentDidUpdate i do get the filtered results, but it keeps making the call indefinitely
+  // OLGA: i"m not getting filtered results if we write axios call in componentDidMount. If i write it in componentDidUpdate i do get the filtered results, but it keeps making the call indefinitely
   getRestaurantList = (isLoading) => {
     this.setState({
       isLoading
@@ -61,8 +61,8 @@ class SuggestedRestaurantList extends Component {
         }
       }).catch((error) => {
         Swal.fire({
-          icon: 'error',
-          title: 'Something went wrong!',
+          icon: "error",
+          title: "Something went wrong!",
           text: `${error}`,
           timer: 3000,
         })
@@ -118,11 +118,11 @@ class SuggestedRestaurantList extends Component {
     return (
       <div className="SuggestedRestaurantList">
         {
-        this.props.listToDisplay === 'displaySavedRestos'
+        this.props.listToDisplay === "displaySavedRestos"
         // if the saved restaurant button is clicked, show the SavedRestaurnatList component
         ? <SavedRestaurantList ref="child" savedRestaurants={this.state.savedRestaurants} removeRestaurantFromList={this.removeRestaurantFromList}/>
         : ( this.state.isLoading === true )
-        ? <h2>loading restaurants...</h2>
+        ? <p>loading restaurants...</p>
         : this.state.results.map((item) => {
           item.restaurant.added = this.state.added;
           return (
@@ -132,7 +132,7 @@ class SuggestedRestaurantList extends Component {
         )}
         )}
         {
-        this.state.results.length !== 0 && this.props.listToDisplay !== 'displaySavedRestos'
+        this.state.results.length !== 0 && this.props.listToDisplay !== "displaySavedRestos"
         ? <button className="showMore" onClick={this.displayMore}>Show more</button>
         : null
         }

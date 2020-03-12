@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import firebase from '../../firebase';
-import Swal from 'sweetalert2';
+import React, { Component } from "react";
+import axios from "axios";
+import firebase from "../../firebase";
+import Swal from "sweetalert2";
 
-import SuggestedRestaurantList from './SuggestedRestaurantList';
-import Suggestions from './Suggestions';
+import SuggestedRestaurantList from "./SuggestedRestaurantList";
+import Suggestions from "./Suggestions";
 
 
 
@@ -25,15 +25,15 @@ class NewTrip extends Component {
             // stores the information about the trip, that will be saved to firebase
             // figure out a prop that will reset this trip object in app and header
             trip: {
-                tripName: '',
-                city: '',
+                tripName: "",
+                city: "",
                 restaurantList: [],
             },
-            cityName: '',
+            cityName: "",
             tripNickName: "",
-            cityId: '',
+            cityId: "",
             suggestedCities: [],
-            userSelection: '',
+            userSelection: "",
             testState: false,
             listToDisplay: "",
             isLoading: false
@@ -66,15 +66,15 @@ class NewTrip extends Component {
                 // shows the first 5 matched cities
                 return index <= 4
             })
-            if(cityName !== '') {
+            if(cityName !== "") {
                 this.setState({
                     suggestedCities: topSuggestions
                 })
             }
         }).catch((error) => {
             Swal.fire({
-                icon: 'error',
-                title: 'Something went wrong!',
+                icon: "error",
+                title: "Something went wrong!",
                 text: `${error}`,
                 timer: 3000,
             })
@@ -153,19 +153,19 @@ class NewTrip extends Component {
     // this function will show the default restaurant list 
     handleFindClick = () => {
         this.setState({
-            listToDisplay: 'displayFindRestos'
+            listToDisplay: "displayFindRestos"
         });
     }
 
 
-    // this function will hide the default restaurant list and show the user's saved restaurants
+    // this function will hide the default restaurant list and show the user"s saved restaurants
     handleSavedClick = () => {
         this.setState({
-            listToDisplay: 'displaySavedRestos'
+            listToDisplay: "displaySavedRestos"
         })
     }
 
-    // add saved restaurant list from SuggestedRestaurantList component to the trip object in state (called in SuggestedRestaurantCard when user clicks 'add to list' button)
+    // add saved restaurant list from SuggestedRestaurantList component to the trip object in state (called in SuggestedRestaurantCard when user clicks "add to list" button)
     addRestaurantListToTrip = (restaurantList) => {
         // copies the object within this.state.trip
         const prevState = this.state.trip;
@@ -204,8 +204,8 @@ class NewTrip extends Component {
                 dbRef.push(this.state.trip);
                 this.setState({
                     trip: {
-                        tripName: '',
-                        city: '',
+                        tripName: "",
+                        city: "",
                         restaurantList: [],
                     }
                 }, () => {
@@ -231,7 +231,7 @@ class NewTrip extends Component {
                 timer: 2000
             });
         } else {
-            console.log('it doesnt work!');
+            console.log("it doesnt work!");
         }
     }
 
@@ -240,7 +240,7 @@ class NewTrip extends Component {
             <section className="NewTrip">
                 
                     <form action="SUBMIT" onSubmit={this.getCityId}>
-                        <h3>new trip</h3>
+                        <h2>new trip</h2>
 
                         <label htmlFor="citySearch">Where are you going?</label>
                         <div className="cityInput">

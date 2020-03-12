@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import firebase from '../../firebase';
-import Swal from 'sweetalert2';
+import React, { Component } from "react";
+import firebase from "../../firebase";
+import Swal from "sweetalert2";
 
-import ExpandedSavedTrip from './ExpandedSavedTrip';
+import ExpandedSavedTrip from "./ExpandedSavedTrip";
 
 
 
@@ -27,19 +27,19 @@ class SavedTrip extends Component {
     const dbRef = firebase.database().ref();
     
     Swal.fire({
-      title: 'Are you sure you want to delete your trip?',
+      title: "Are you sure you want to delete your trip?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
     }).then((result) => {
       if (result.value) {
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
+          "Deleted!",
+          "Your file has been deleted.",
+          "success"
         ).then(() => {
           // find a child in the database with the given key and remove it
           dbRef.child(tripKey).remove();
@@ -50,12 +50,12 @@ class SavedTrip extends Component {
 
   render() {
     return (
-      <div className="savedTripCard">
+      <li className="savedTripCard">
 
-        <h4>{this.props.tripProp.trip.tripName}</h4>
-        <h5>{this.props.tripProp.trip.city}</h5>
+        <h3>{this.props.tripProp.trip.tripName}</h3>
+        <h4>{this.props.tripProp.trip.city}</h4>
 
-        <button className='deleteButton' aria-label="delete card" onClick={(e) => {this.deleteCard(e, this.props.tripProp.key)}}>
+        <button className="deleteButton" aria-label="delete card" onClick={(e) => {this.deleteCard(e, this.props.tripProp.key)}}>
           <i className="fas fa-times" aria-hidden></i>
         </button>
 
@@ -71,7 +71,7 @@ class SavedTrip extends Component {
         <button className="expand" onClick={this.expandModal}>Expand</button>
 
         {this.state.showDetails ? <ExpandedSavedTrip tripProp={this.props.tripProp} close={this.expandModal}/> : null}
-      </div>
+      </li>
     );
   }
 }

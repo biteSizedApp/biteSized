@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 
 // function component that takes in an array of suggested cities as props and triggers the getUserChoice function in NewTrip component to bind the city name with the select change 

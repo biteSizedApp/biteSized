@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import firebase from '../../firebase';
+import React, { Component } from "react";
+import firebase from "../../firebase";
 
-import SavedTrip from './SavedTrip';
+import SavedTrip from "./SavedTrip";
 
 // fetch all saved trips objects from firebase and store them in an array in state
 // map through the trips array, feed the info to individual trip card via props
@@ -19,7 +19,7 @@ class YourTrips extends Component {
   componentDidMount() {
     const dbRef = firebase.database().ref();
 
-    dbRef.on('value', (data) => {
+    dbRef.on("value", (data) => {
 
       const dbData = data.val();
       const dbSavedTrips = [];
@@ -43,12 +43,11 @@ class YourTrips extends Component {
   render() {
 
     return (
-      <main>
+      <section>
         {/* is this an h3 ?*/}
-        <h3>Your Trips</h3>
+        <h2>Your Trips</h2>
         {/* holds all the saved trips cards */}
         <ul className="yourTripsGrid">
-
           {/* pass each restaurant object as props */}
           {
             this.state.savedTrips.map((item) => {
@@ -57,11 +56,8 @@ class YourTrips extends Component {
               )
             })
           }
-          
-
         </ul>
-
-      </main>
+      </section>
     );
   }
 }

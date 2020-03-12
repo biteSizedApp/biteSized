@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 import {
   HashRouter as Router,
   Route,
-} from 'react-router-dom'
+} from "react-router-dom"
 
-import Header from './components/Header';
-import NewTrip from './components/FindRestaurants/NewTrip';
-import YourTrips from './components/YourTrip/YourTrips';
-import Footer from './components/Footer';
+import Header from "./components/Header";
+import NewTrip from "./components/FindRestaurants/NewTrip";
+import YourTrips from "./components/YourTrip/YourTrips";
+import Footer from "./components/Footer";
 
 // import axios from "axios";
 

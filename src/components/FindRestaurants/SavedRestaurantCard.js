@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function SavedRestaurantCard(props) {
 
@@ -11,7 +11,7 @@ function SavedRestaurantCard(props) {
               <button className="closeCard" onClick={(e) => { props.removeRestaurantFromList(item) }}><i className="fas fa-times"></i></button>
               {item.featuredImg !== ""
               ? <img src={item.featuredImg} alt={item.name} />
-              : <img src={require('../../assets/placeholder.png')} alt="no image available" />}
+              : <img src={require("../../assets/placeholder.png")} alt="no image available" />}
               <p><span className="restaurantTitle restaurantName">{item.name}</span> - {item.cuisineType}</p>
               <p>{item.cuisineType}</p>
               <address>

@@ -16,7 +16,7 @@ function SavedRestaurantCard(props) {
             </address>
             <p>Average cost for two: ${item.avgCostForTwo}</p>
             <p>{item.rating}</p>
-    
+
             {/* click to add to saved restaurants listThe icon will change to a check mark */}
             <button onClick={(e) => { props.removeRestaurantFromList(item) }}><i className="fas fa-plus" aria-hidden></i>remove</button>
           </div>

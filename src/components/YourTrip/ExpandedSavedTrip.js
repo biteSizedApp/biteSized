@@ -105,7 +105,7 @@ class ExpandedSavedTrip extends Component {
             }) }
           </ul>
         {/* close the modal window on click */}
-        <button onClick={this.props.close}><i className="fas fa-times" aria-label="close"></i></button>  
+        <button class="closeButton" onClick={this.props.close}><i className="fas fa-times" aria-label="close"></i></button>  
         
       </div>  
     );

@@ -43,7 +43,7 @@ class YourTrips extends Component {
   render() {
 
     return (
-      <main>
+      <section>
         {/* is this an h3 ?*/}
         <h3>Your Trips</h3>
         {/* holds all the saved trips cards */}
@@ -57,10 +57,8 @@ class YourTrips extends Component {
               )
             })
           }
-          
         </ul>
-
-      </main>
+      </section>
     );
   }
 }

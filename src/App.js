@@ -7,7 +7,7 @@ import {
 
 import Header from './components/Header';
 import NewTrip from './components/findRestaurants/NewTrip';
-import YourTrips from './components/YourTrip/YourTrips';
+import YourTrips from './components/yourTrip/YourTrips';
 import Footer from './components/Footer';
 
 // import axios from "axios";

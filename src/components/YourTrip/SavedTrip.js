@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../../firebase';
 import Swal from 'sweetalert2';
-import { Link, Route } from 'react-router-dom';
 
 import ExpandedSavedTrip from './ExpandedSavedTrip';
 
@@ -69,8 +68,8 @@ class SavedTrip extends Component {
           })}
         </ul>
 
+        {/* modal window with trip info is open when user clicks this button */}
         <button onClick={this.expandModal}>Expand</button>
-
         {this.state.showDetails ? <ExpandedSavedTrip tripProp={this.props.tripProp} close={this.expandModal}/> : null}
       </div>
     );

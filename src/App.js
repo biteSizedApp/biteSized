@@ -20,12 +20,13 @@ class App extends Component {
       <Router basename="/">
         <div className="App">
           <Header />
-            <main>
-              {/* <About /> */}
-              <Route path="/" exact component={NewTrip} />
-              <Route path="/yourTrips" exact component={YourTrips} />
-              {/* <Route path="/trip" component={ExpandedSavedTrip} /> */}
-            </main>
+
+          <main>
+            {/* <About /> */}
+            <Route path="/" exact component={NewTrip} />
+            <Route path="/yourTrips" exact component={YourTrips} />
+          </main>
+
           <Footer />
         </div>
       </Router>

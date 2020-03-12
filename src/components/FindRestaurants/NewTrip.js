@@ -30,6 +30,7 @@ class NewTrip extends Component {
                 restaurantList: [],
             },
             cityName: '',
+            tripNickName: "",
             cityId: '',
             suggestedCities: [],
             userSelection: '',
@@ -48,6 +49,7 @@ class NewTrip extends Component {
             method: "GET",
             responseType: "json",
             headers: {
+                // "user-key": "7cec49712d95851f70de3b8beaf245d9",
                 "user-key": "f13ce4f744fbf8bc4b1497187a1d6ad4",
             }
         }).then((res) => {
@@ -76,7 +78,12 @@ class NewTrip extends Component {
                 })
             }
         }).catch((error) => {
-            console.log(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Something went wrong!',
+                text: `${error}`,
+                timer: 3000,
+            })
         })
     }
 
@@ -105,7 +112,6 @@ class NewTrip extends Component {
         }
         document.getElementById("citySearch").focus();
         this.setState({
-            cityName: "",
             suggestedCities: []
         })
     }
@@ -129,7 +135,6 @@ class NewTrip extends Component {
         const prevState = this.state.trip;
         // adds city name as another property to the copied trip object
         prevState.city = event.target.value;
-
         this.setState({
             cityName: event.target.value,
             // assigns the new object with added city name to the state
@@ -147,6 +152,7 @@ class NewTrip extends Component {
 
         this.setState({
             trip: prevState,
+            tripNickName: this.text.value
         }
         // , () => console.log(this.state)
         )
@@ -188,6 +194,15 @@ class NewTrip extends Component {
             this.state.trip.tripName &&
             this.state.trip.restaurantList.length > 0
         ) {
+            this.setState({
+                // reset trip name input
+                tripNickName: "",
+                // reset city name input
+                cityName: ""
+            }, () => {
+                // reset displayed restaurant list
+                this.refs.child.resetRestaurantList();
+            })
             Swal.fire({
                 title: "Your trip has been saved!",
                 icon: "success",
@@ -225,7 +240,6 @@ class NewTrip extends Component {
             });
         } else {
             console.log('it doesnt work!');
-
         }
     }
 
@@ -235,6 +249,14 @@ class NewTrip extends Component {
                 <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
                     <form action="SUBMIT" onSubmit={this.getCityId}>
                         <h3>new trip</h3>
+                        <label htmlFor="tripName">Please enter a name for your trip</label>
+                        <input 
+                            type="text" 
+                            id="tripName" 
+                            ref={trip => this.text = trip}
+                            onChange={this.handleNameInputChange}
+                            value={this.state.tripNickName}
+                        />
                         <label htmlFor="citySearch">Where are you going?</label>
                         <div class="cityInput">
                             <input

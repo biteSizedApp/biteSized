@@ -60,7 +60,6 @@ class SavedTrip extends Component {
         </button>
 
         <ul>
-          {/* map through saved restaurant list here */}
           {this.props.tripProp.trip.restaurantList.map((restaurant, index) => {
             return (
               <li key={index}>{restaurant.name}</li>
@@ -68,8 +67,13 @@ class SavedTrip extends Component {
           })}
         </ul>
 
+<<<<<<< HEAD
         {/* modal window with trip info is open when user clicks this button */}
         <button onClick={this.expandModal}>Expand</button>
+=======
+        <button className="expand" onClick={this.expandModal}>Expand</button>
+
+>>>>>>> henry/yourTripStyling
         {this.state.showDetails ? <ExpandedSavedTrip tripProp={this.props.tripProp} close={this.expandModal}/> : null}
       </div>
     );

@@ -48,6 +48,10 @@ body {
   font-size: 1.5rem;
 }
 
+li {
+  list-style-type: none;
+}
+
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -92,6 +96,13 @@ nav {
   justify-content: flex-end;
 }
 
+<<<<<<< HEAD
+=======
+main {
+  /* display: flex; */
+}
+
+>>>>>>> henry/yourTripStyling
 h1 {
   font-size: 4rem;
   padding: 1rem;
@@ -378,6 +389,122 @@ address {
 }
 /* END OF CARD STYLES */
 
+<<<<<<< HEAD
+=======
+/* removed border bottom style and added above for hover */
+.showMore {
+  color: #000000;
+  font-size: 1.9rem;
+  margin: 3rem;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+button {
+  font-family: Barlow;
+  padding: 1rem;
+  margin: 1rem;
+  color: #ffffff;
+  border: none;
+  background-color: var(--brandColourRed);
+}
+
+/* changed the background colour of the buttons for "saved restaurants" and "find restaurants" */
+button.tripsHeaders {
+  background-color: #ffffff;
+  text-align: right;
+  color: #000000;
+  font-size: 2rem;
+}
+
+.saveTripButton {
+  background-color: #000000;
+  padding: 1.7rem;
+}
+
+.cardContainer {
+  display: flex;
+  padding: 2%;
+}
+
+.cardContainer img {
+  width: 50%;
+  margin: 4%;
+  
+ }
+
+.cardContainer textarea{
+  margin: 4%;
+ }
+
+.cardContent {
+  margin: 4%;
+  text-align: left;
+ }
+
+.savedTripCard {
+  border: 1px solid black;
+  width: 31%;
+  margin: 1%;
+  position: relative;
+  padding: 1%;
+}
+
+.expandedSavedTrip {
+  width: 900px;
+  border: 1px solid black;
+  background-color: var(--brandColourPinkishRed);
+  transition: 1.1s ease-out;
+  filter: blur(0);
+  transform: scale(1);  
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+}
+
+.savedTripCard li {
+  /* list-style: decimal; */
+}
+
+.restListContainer ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.restListContainer form {
+  width: 100%;
+}
+.expandedSavedTrip li {
+  border: 1px solid black;
+  width: 45%;
+  margin: 2%;
+}
+
+.formContainer {
+  margin: 4%;
+}
+
+.yourTripsGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+button.deleteButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+button.expand {
+
+}
+
+
+>>>>>>> henry/yourTripStyling
 footer {
   color: #ffffff;
   background-color: #5D5D5D;

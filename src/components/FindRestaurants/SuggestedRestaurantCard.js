@@ -24,6 +24,7 @@ class SuggestedRestaurantCard extends Component {
         }
     }
 
+<<<<<<< HEAD
     addToList = (e) => {
         this.setState ({
             restaurant: {
@@ -34,6 +35,8 @@ class SuggestedRestaurantCard extends Component {
             this.props.addRestaurantToList(this.state.restaurant);   
         })
     }
+=======
+>>>>>>> henry/yourTripStyling
 
 
     render() {

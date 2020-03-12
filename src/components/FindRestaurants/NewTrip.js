@@ -295,6 +295,11 @@ class NewTrip extends Component {
                     </button>
                         <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
                 </div>
+<<<<<<< HEAD
+=======
+                {/* {/* <button className="tripsHeaders">Find restaurants</button>
+                <button className="tripsHeaders">Saved restaurants</button> */}
+>>>>>>> henry/yourTripStyling
 
                     {/* <div className="toggleTabs">
                         <button

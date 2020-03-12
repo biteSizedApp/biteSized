@@ -14,11 +14,9 @@ class ExpandedSavedTrip extends Component {
 
 
   // WORK IN PROGRESS
-  deleteRestaurant = (e) => {
-    e.preventDefault();
-    console.log(this.props.tripProp);
-    console.log('restaurant deleted');
-  }
+  // deleteRestaurant = (e) => {
+  //   e.preventDefault();
+  // }
 
 
   grabNoteValue = (e) => {
@@ -61,9 +59,6 @@ class ExpandedSavedTrip extends Component {
       userNote: '',
     })
   }
-
-  
-
 
   render() {
     const tripObj = this.props.tripProp.trip;

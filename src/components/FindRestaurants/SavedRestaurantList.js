@@ -9,7 +9,6 @@ class SavedRestaurantList extends Component {
       savedRestaurant: props.savedRestaurants,
     }
   }
-
   
   removeRestaurantFromList = (restaurantObj) => {
     // if the restaurantobj.name is equal to the item that we're filtering over

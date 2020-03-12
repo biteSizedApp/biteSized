@@ -57,17 +57,21 @@ class SuggestedRestaurantCard extends Component {
 
         return (
             <div className="card">
-                {/* click to add to saved restaurants listThe icon will change to a check mark */}
                 {elementToDisplay}
+
                 {this.state.restaurant.featuredImg !== ""
                 ? <img src={this.state.restaurant.featuredImg} alt={this.state.restaurant.name}/>
                 : <img src={require('../../assets/placeholder.png')} alt="no image available"/>}
+
                 <p><span className="restaurantTitle restaurantName">{this.state.restaurant.name}</span> - {this.state.restaurant.cuisineType}</p>
+
                 <address>
                     <p>{this.state.restaurant.address}</p>
                     <p>{this.state.restaurant.phoneNumber}</p>
                 </address>
+
                 <p>Average cost for two: ${this.state.restaurant.avgCostForTwo}</p>
+                
                 <p><span className="rating">{this.state.restaurant.rating}</span></p>
             </div>
         )

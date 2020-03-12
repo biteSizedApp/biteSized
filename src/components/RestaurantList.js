@@ -61,11 +61,14 @@ class RestaurantList extends Component {
         {/* Map through results array and passing the results on our Suggested card component */}
         {this.state.results.map((item) => {
           return (
-            
-            <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} />
-
+            <SuggestedCard
+              restaurant={item.restaurant}
+              key={item.restaurant.id}
+              addRestaurantToList={this.addRestaurantToList}
+            />
           )
-        })}
+        })
+        }
       </div>
     )
   }

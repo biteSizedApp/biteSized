@@ -120,14 +120,24 @@ class SuggestedRestaurantList extends Component {
         {
         this.props.listToDisplay === 'displaySavedRestos'
         // if the saved restaurant button is clicked, show the SavedRestaurnatList component
-        ? <SavedRestaurantList ref="child" savedRestaurants={this.state.savedRestaurants} removeRestaurantFromList={this.removeRestaurantFromList}/>
+        ? <SavedRestaurantList
+            ref="child"
+            savedRestaurants={this.state.savedRestaurants} 
+            removeRestaurantFromList={this.removeRestaurantFromList}
+          />
+        
         : ( this.state.isLoading === true )
-        ? <h2>loading restaurants...</h2>
+        ? <p>loading restaurants...</p>
         : this.state.results.map((item) => {
           item.restaurant.added = this.state.added;
           return (
             // if the find restaurant button is clicked, show this
-            <SuggestedRestaurantCard restaurant={item.restaurant} savedRestaurants={this.state.savedRestaurants} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} />
+            <SuggestedRestaurantCard
+              restaurant={item.restaurant}
+              savedRestaurants={this.state.savedRestaurants}
+              key={item.restaurant.id}
+              addRestaurantToList={this.addRestaurantToList}
+            />
             
         )}
         )}

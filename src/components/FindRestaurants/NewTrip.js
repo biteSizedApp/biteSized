@@ -21,6 +21,7 @@ import Suggestions from './Suggestions';
 class NewTrip extends Component {
     constructor() {
         super();
+        
         this.state = {
             // stores the information about the trip, that will be saved to firebase
             // figure out a prop that will reset this trip object in app and header
@@ -238,11 +239,11 @@ class NewTrip extends Component {
     render() {
         return (
             <section className="NewTrip">
-                
                     <form action="SUBMIT" onSubmit={this.getCityId}>
                         <h3>new trip</h3>
 
                         <label htmlFor="citySearch">Where are you going?</label>
+
                         <div className="cityInput">
                             <input
                                 autoComplete="off"
@@ -253,11 +254,14 @@ class NewTrip extends Component {
                                 onChange={this.handleCityInputChange}
                                 value={this.state.cityName}
                             />
+
                             <Suggestions results={this.state.suggestedCities} getUserChoice={this.getUserChoice} />
+
                             <button id="citySearchSubmit" className="submitCity">GO</button>
                         </div>
 
                         <label htmlFor="tripName">Please enter a name for your trip</label>
+
                         <input
                             id="tripName" 
                             type="text"
@@ -278,13 +282,15 @@ class NewTrip extends Component {
                         onClick={this.handleFindClick}>
                         Find restaurants
                     </button>
+
                     <button
                         className="tripsHeaders"
                         value="savedRestaurants"
                         onClick={this.handleSavedClick}>
                         Saved restaurants
                     </button>
-                        <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
+                    
+                    <SuggestedRestaurantList cityId={this.state.cityId} listToDisplay={this.state.listToDisplay} ref="child" addRestaurantListToTrip={this.addRestaurantListToTrip} />
                 </div>
             </section>
         )

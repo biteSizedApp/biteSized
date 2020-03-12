@@ -9,7 +9,7 @@ import ExpandedSavedTrip from './ExpandedSavedTrip';
 class SavedTrip extends Component {
   constructor() {
     super();
-
+    
     this.state = {
       showDetails: false
     }
@@ -55,7 +55,8 @@ class SavedTrip extends Component {
         <h4>{this.props.tripProp.trip.tripName}</h4>
         <h5>{this.props.tripProp.trip.city}</h5>
 
-        <button className='deleteButton' aria-label="delete card" onClick={(e) => {this.deleteCard(e, this.props.tripProp.key)}}>
+        <button
+          className="deleteButton" aria-label="delete card" onClick={(e) => {this.deleteCard(e, this.props.tripProp.key)}}>
           <i className="fas fa-times" aria-hidden></i>
         </button>
 
@@ -64,13 +65,18 @@ class SavedTrip extends Component {
             return (
               <li key={index}>{restaurant.name}</li>
             )
-          })}
+          })
+          }
         </ul>
 
         {/* modal window with trip info is open when user clicks this button */}
         <button className="expand" onClick={this.expandModal}>Expand</button>
 
-        {this.state.showDetails ? <ExpandedSavedTrip tripProp={this.props.tripProp} close={this.expandModal}/> : null}
+        {
+          this.state.showDetails
+          ? <ExpandedSavedTrip tripProp={this.props.tripProp} close={this.expandModal} />
+          : null
+        }
       </div>
     );
   }

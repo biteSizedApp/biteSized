@@ -79,14 +79,20 @@ class ExpandedSavedTrip extends Component {
                 <li>        
                   {restaurant.featuredImg !== ""
                     ? <img src={restaurant.featuredImg} alt={restaurant.name} />
-                    : <img src={require('../../assets/placeholder.png')} alt="no image available" />}        
+                    : <img src={require('../../assets/placeholder.png')} alt="no image available" />
+                  }
+
                   <p>{restaurant.name}</p>
+
                   <p>{restaurant.cuisineType}</p>
+
                   <address>
                     <p>{restaurant.address}</p>
                     <p>{restaurant.phoneNumber}</p>
                   </address>
+
                   <p>Average cost for two: ${restaurant.avgCostForTwo}</p>
+                  
                   <p>{restaurant.rating}</p>
 
                   {restaurant.userNote 
@@ -97,9 +103,6 @@ class ExpandedSavedTrip extends Component {
                         <button type="submit" onClick={(e) => {this.saveNote(e, restaurant.name)}}>Add Note</button>
                       </form>
                   }
-                  {/* add notes to the restaurant */}
-                  
-
                   {/* clicking this will delete the restaurant from the database */}
                   <button onClick={this.deleteRestaurant}><i className="fas fa-times" aria-label="close"></i></button>
                 </li>
@@ -109,7 +112,7 @@ class ExpandedSavedTrip extends Component {
         {/* close the modal window on click */}
         <button onClick={this.props.close}><i className="fas fa-times" aria-label="close"></i></button>  
         
-       </div>  
+      </div>  
     );
   }
 }

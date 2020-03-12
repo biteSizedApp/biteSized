@@ -69,15 +69,17 @@ class ExpandedSavedTrip extends Component {
     const tripObj = this.props.tripProp.trip;
 
     return (
-       <div className="expandedSavedTrip">
-         <h3>{tripObj.tripName}</h3>
-         <h4>{tripObj.city}</h4>
+      <div className="expandedSavedTrip">
+        <h3>{tripObj.tripName}</h3>
+        <h4>{tripObj.city}</h4>
 
           <ul>
             {tripObj.restaurantList.map((restaurant, i) => {
               return (
-                <li key={i}>                
-                  <img src={restaurant.featuredImg} alt={restaurant.name}></img>
+                <li>        
+                  {restaurant.featuredImg !== ""
+                    ? <img src={restaurant.featuredImg} alt={restaurant.name} />
+                    : <img src={require('../../assets/placeholder.png')} alt="no image available" />}        
                   <p>{restaurant.name}</p>
                   <p>{restaurant.cuisineType}</p>
                   <address>

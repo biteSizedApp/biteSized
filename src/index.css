@@ -1,18 +1,427 @@
-body {
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
+
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
+
+html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+
+*, *:before, *:after {box-sizing: inherit}
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@500&display=swap');
+
+
+/* added css variables for the brand colours so its easier to access. Just type var(--rootVariableName) to use it as your value. */
+
+:root {
+  --brandColourRed:#D03529;
+  --brandColourPinkishRed: #E7635D;
+  --brandColourBeige:#EDEDC3;
+}
+
+h1,
+h2,
+p,
+main,
+div,
+img,
+section, 
+ul,
+li,
+body,
+button {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body {
+  color: #404040;
+  font-size: 62.5%;
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+  width: 100%;
+  height: 100%;
+	overflow-x: hidden;
 }
 
-img {
-  width: 400px;
-  /* height: 400px; */
+body {
+  font-size: 1.5rem;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.heroImage {
+	width: 100%;
+	min-height: 100vh;
+	background: url(./assets/hero.jpg) no-repeat top center fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.headerSection {
+  display: flex;
+}
+
+.headerTitle {
+  display: flex;
+  padding: 1.5rem;
+}
+
+.title {
+  margin: 0 auto;
+}
+
+/* applied position relative to the title so we could get it ccntered exactly where we want it. */
+.title h1 {
+  position: relative;
+  left: 12%;
+}
+
+.aboutSection {
+  width: 70%;
+  margin: 0 auto;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+h1 {
+  font-size: 4rem;
+  padding: 1rem;
+  letter-spacing: 0.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 3rem;
+  padding: 2.3rem;
+}
+
+h3 {
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+p {
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+}
+
+/* display flexed the form so that the inputs are stacked on top of each other */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 0;
+  margin-bottom: 3rem;
+  position: -webkit-sticky;
+  position: sticky;
+  margin: 2rem;
+}
+
+label {
+  font-size: 1.5rem;
+  margin: 3% 0;
+}
+
+/* centered the save trip button */
+form button {
+  margin: 1rem auto;
+  width: 20%;
+}
+
+.icon {
+  width: 65px;
+  height: 65px;
+  padding: 1rem;
+}
+
+/* centered the input boxes */
+input[type=text],
+input[type=search],
+select {
+  height: 10px;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+}
+
+input[type=search],
+select {
+  position: relative;
+  display: inline-block;
+  -webkit-appearance: textfield;
+}
+
+input[type=text],
+input[type=search],
+select,
+.cityInput {
+  width: calc(100% - 10px);
+  margin: 0 auto;
+}
+
+select {
+  position: relative;
+  width: calc(40% - 10px);
+  height: 50px;
+  background-color: #ffffff;
+  font-family: 'Barlow', sans-serif;
+}
+
+.submitCity {
+  width: 85px;
+  padding: 1.3rem;
+  margin-left: 1rem;
+}
+
+.submitCity:hover {
+  font-weight: 700;
+}
+
+button {
+  font-family: Barlow;
+  padding: 1rem;
+  margin: 1rem;
+  color: #ffffff;
+  border: 1px solid transparent;
+  background-color: var(--brandColourRed);
+
+}
+
+/* changed the background colour of the buttons for "saved restaurants" and "find restaurants" */
+button.tripsHeaders {
+  background-color: #ffffff;
+  text-align: right;
+  color: #404040;
+  font-size: 2rem;
+  margin-top: 3rem;
+}
+
+.saveTripButton {
+  padding: 1.7rem;
+  width: calc(30% - 10px);
+  background-color: #000000;
+}
+
+.saveTripButton:hover {
+  font-weight: 700;
+}
+
+/* removed border bottom style and added above for hover */
+.showMore {
+  color: #000000;
+  font-size: 1.9rem;
+  margin: 3rem;
+  background-color: transparent;
+  border-bottom: 4px solid transparent;
+  font-weight: 700;
+}
+
+ul,
+li {
+  text-decoration: none;
+  list-style-type: none;
+  display: inline-block;
+  padding: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:active,
+a:visted {
+  color: #404040;
+}
+
+nav li {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  background-color: transparent;
+  border-bottom: 4px solid transparent;
+}
+
+/* Put these under one rule to make it DRY-er */
+nav li:hover,
+.tripsHeaders:hover,
+.showMore:hover,
+nav li:focus,
+.tripsHeaders:focus,
+.showMore:focus,
+nav li:hover,
+li:hover {
+  cursor: pointer;
+  border-bottom: 4px solid var(--brandColourBeige);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* Added font weight to the hover */
+.tripsHeaders:hover {
+  font-weight: 700;
+}
+
+.tripsHeaders {
+  border-bottom: 4px solid transparent;
+  font-weight: 700;
+}
+
+/* CARD STYLING */
+.NewTrip,
+.suggestedRestaurantList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.listContainer {
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: 2rem;
+}
+
+.card {
+  margin: 2rem;
+  padding: 2.7rem;
+  border: 1px solid rgb(100, 100, 100);
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+.card img {
+  float: left;
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  padding-right: 2.7rem;
+}
+
+.card p {
+  text-align: left;
+}
+
+#addToList,
+#addedToList,
+#closeCard {
+  float: right;
+  position: relative;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border-bottom: 4px solid transparent;
+}
+
+#addToList {
+  top: -10px;
+  right: -2%;
+}
+
+#addedToList {
+  right: -2%;
+}
+
+#closeCard,
+#addToList {
+  color: #000000;
+}
+
+#closeCard {
+  right: -2%;
+  background-color: transparent;
+}
+
+#addToList:hover,
+#closeCard:hover {
+  border-bottom: 4px solid var(--brandColourBeige);
+}
+
+#addToList:hover {
+  padding-bottom: 0.8rem;
+}
+
+#closeCard:hover {
+  padding-bottom: 0.5rem;
+}
+
+.restaurantTitle {
+  font-size: 1.7rem;
+}
+
+.restaurantName {
+  font-weight: 700;
+}
+
+address {
+  margin: 2rem;
+}
+
+.rating {
+  float: right;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--brandColourPinkishRed)
+}
+/* END OF CARD STYLES */
+
+footer {
+  color: #ffffff;
+  background-color: #5D5D5D;
+  padding: 1.5rem;
+}
+
+@media(max-width: 1205px) {
+  form {
+    margin: 2rem;
+  }
+}
+
+@media(max-width: 1072px) {
+    .cityInput {
+    width: 100%;
+  }
+  select {
+    margin-top: 1rem;
+    width: 98%;
+  }
+}
+
+@media (max-width: 960px) {
+  .NewTrip {
+    align-items: center;
+    justify-content: center;
+  }
+  form {
+    width: 80%;;
+  }
+  .listContainer {
+    width: 85%;
+  }
+  .saveTripButton {
+    width: 18%;
+  }
+}
+
+@media (max-width: 643px) {
+  .cityInput {
+    width: 100%;
+  }
+  select {
+    margin-top: 1rem;
+    width: 98%;
+  }
 }

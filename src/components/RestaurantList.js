@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import SuggestedCard from './SuggestedRestaurantCard';
+import SuggestedRestaurantCard from './SuggestedRestaurantCard';
 // import Suggestions from './Suggestions'
 
 
@@ -30,7 +30,7 @@ class RestaurantList extends Component {
       method: "GET",
       responseType: "json",
       headers: {
-        "user-key": "cff8655f9125581c7db4a5e95cd60d6f",
+        "user-key": "f13ce4f744fbf8bc4b1497187a1d6ad4",
       }
       //  saving the results to state
     }).then((results) => {
@@ -61,7 +61,7 @@ class RestaurantList extends Component {
         {/* Map through results array and passing the results on our Suggested card component */}
         {this.state.results.map((item) => {
           return (
-
+            
             <SuggestedCard restaurant={item.restaurant} key={item.restaurant.id} addRestaurantToList={this.addRestaurantToList} />
 
           )
